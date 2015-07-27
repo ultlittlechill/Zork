@@ -15,6 +15,7 @@ public class Interpreter {
     }
 
     private void doIt() throws Exception {
+
         String command;
         BufferedReader commandLine = new BufferedReader(
             new InputStreamReader(System.in));
