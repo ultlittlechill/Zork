@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Interpreter {
 
-    private Room currentRoom = null;
+    private GameState state;
 
     public static void main(String args[]) {
         try {
@@ -19,14 +19,12 @@ public class Interpreter {
 
     private void doIt() throws Exception {
 
-        Dungeon trinkle = buildDungeon();
+        state = new GameState(buildTrinkleDungeon());
 
         String command;
         BufferedReader commandLine = new BufferedReader(
             new InputStreamReader(System.in));
-        System.out.println("Welcome to " + trinkle.getName() + "!");
-
-        currentRoom = trinkle.getEntry();
+        System.out.println("Welcome to " + state.getDungeon().getName() + "!");
 
         command = promptUser(commandLine);
 
@@ -42,12 +40,12 @@ public class Interpreter {
     }
 
     private String promptUser(BufferedReader commandLine) throws IOException {
-        System.out.println(currentRoom.describe());
+        System.out.println(state.getAdventurersCurrentRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }
 
-    private Dungeon buildDungeon() {
+    private Dungeon buildTrinkleDungeon() {
         Room rotunda = new Room("Rotunda");
         rotunda.setDesc(
 "You are in a beautiful round room, with a ceiling that seemingly reaches\n" +

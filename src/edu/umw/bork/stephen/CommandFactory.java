@@ -1,9 +1,14 @@
 
 package edu.umw.bork.stephen;
 
+import java.util.List;
+import java.util.Arrays;
+
 public class CommandFactory {
 
     private static CommandFactory theInstance;
+    public static List<String> MOVEMENT_COMMANDS = 
+        Arrays.asList("n","w","e","s","u","d" );
 
     public static synchronized CommandFactory instance() {
         if (theInstance == null) {
@@ -16,7 +21,12 @@ public class CommandFactory {
     }
 
     public Command parse(String command) {
-        return new Command();
+        // For now, only one type of command: "move".
+        if (MOVEMENT_COMMANDS.contains(command)) {
+            return new Command(command);
+        } else {
+            return null;
+        }
     }
 
 }
