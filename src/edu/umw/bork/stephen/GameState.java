@@ -27,6 +27,10 @@ public class GameState {
         return adventurersCurrentRoom;
     }
 
+    void setAdventurersCurrentRoom(Room room) {
+        adventurersCurrentRoom = room;
+    }
+
     Dungeon getDungeon() {
         return dungeon;
     }

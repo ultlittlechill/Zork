@@ -21,11 +21,11 @@ public class CommandFactory {
     }
 
     public Command parse(String command) {
-        // For now, only one type of command: "move".
         if (MOVEMENT_COMMANDS.contains(command)) {
             return new Command(command);
         } else {
-            return null;
+            // For now, only one type of command: "move".
+            return new Command(command);
         }
     }
 

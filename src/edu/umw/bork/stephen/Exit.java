@@ -12,6 +12,11 @@ public class Exit {
     }
 
     String describe() {
-        return "You can go " + dir + " to the " + loc.getTitle() + ".";
+        return "You can go " + dir + " to " + loc.getTitle() + ".";
     }
+
+    String getDir() { return dir; }
+
+    Room getLoc() { return loc; }
+    
 }

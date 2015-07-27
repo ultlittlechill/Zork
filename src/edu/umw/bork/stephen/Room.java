@@ -37,10 +37,22 @@ public class Room {
         //    description += "There is a " + item.getName() + " here.\n";
         //}
         for (Exit exit : exits) {
-            description += exit.describe();
+            description += exit.describe() + "\n";
         }
         beenHere = true;
         return description;
     }
     
+    public Room leaveBy(String dir) {
+        for (Exit exit : exits) {
+            if (exit.getDir().equals(dir)) {
+                return exit.getLoc();
+            }
+        }
+        return null;
+    }
+
+    void addExit(Room loc, String dir) {
+        exits.add(new Exit(dir,loc));
+    }
 }
