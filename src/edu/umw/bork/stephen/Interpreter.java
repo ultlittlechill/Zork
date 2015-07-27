@@ -26,5 +26,6 @@ public class Interpreter {
             System.out.print("> ");
             command = commandLine.readLine();
         }
+        System.out.println("Bye!");
     }
 }
