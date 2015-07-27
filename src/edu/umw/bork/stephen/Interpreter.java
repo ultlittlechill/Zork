@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Interpreter {
 
-    private GameState state;
+    private GameState state; // not strictly necessary; GameState is singleton
 
     public static void main(String args[]) {
         try {
@@ -19,7 +19,8 @@ public class Interpreter {
 
     private void doIt() throws Exception {
 
-        state = new GameState(buildTrinkleDungeon());
+        GameState.instance().initialize(buildTrinkleDungeon());
+        state = GameState.instance();
 
         String command;
         BufferedReader commandLine = new BufferedReader(
