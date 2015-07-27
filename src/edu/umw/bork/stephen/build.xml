@@ -1,0 +1,27 @@
+<project name="Bork" default="run" basedir="/home/teaching/240/bork">
+
+<property name="classesDir" value="/tmp/classes" />
+
+<path id="classpath">
+    <pathelement path="${classesDir}" />
+</path>
+
+<target name="run" depends="build">
+    <java classname="edu.umw.bork.stephen.Interpreter" />
+</target>
+
+<target name="build" depends="compile"/>
+
+<target name="compile">
+    <mkdir dir="${classesDir}"/>
+    <javac
+        srcdir="src"
+        destdir="${classesDir}"
+        classpathref="classpath"/>
+</target>
+
+<target name="clean">
+    <delete dir="${classesDir}"/>
+</target>
+
+</project>
