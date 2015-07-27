@@ -9,6 +9,7 @@ public class Room {
     private String desc;
     private boolean beenHere;
     private ArrayList<Item> contents;
+    private ArrayList<Exit> exits;
 
     Room(String title) {
         this.title = title;
@@ -27,9 +28,15 @@ public class Room {
     public String describe() {
         String description;
         if (beenHere) {
-            description = title;
+            description = title + "\n";
         } else {
-            description = title + "\n" + desc;
+            description = title + "\n" + desc + "\n";
+        }
+        for (Item item : contents) {
+            description += "There is a " + item.getName() + " here.\n";
+        }
+        for (Exit exit : exits) {
+            description += exit.describe();
         }
         beenHere = true;
         return description;
