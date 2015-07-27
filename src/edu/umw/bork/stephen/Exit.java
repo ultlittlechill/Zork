@@ -3,10 +3,10 @@ package edu.umw.bork.stephen;
 
 public class Exit {
 
-    private char dir;
+    private String dir;
     private Room loc;
 
-    Exit(char dir, Room loc) {
+    Exit(String dir, Room loc) {
         this.dir = dir;
         this.loc = loc;
     }
