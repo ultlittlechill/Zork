@@ -20,10 +20,6 @@ public class Room {
 
     String getTitle() { return title; }
 
-    String getDesc() { 
-        return desc;
-    }
-
     void setDesc(String desc) { this.desc = desc; }
 
     public String describe() {

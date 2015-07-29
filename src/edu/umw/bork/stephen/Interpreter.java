@@ -29,7 +29,7 @@ public class Interpreter {
 
         command = promptUser(commandLine);
 
-        while (!command.equals("quit")) {
+        while (!command.equals("q")) {
 
             System.out.println(
                 CommandFactory.instance().parse(command).execute());
