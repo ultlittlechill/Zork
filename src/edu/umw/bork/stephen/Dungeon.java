@@ -29,6 +29,10 @@ public class Dungeon {
         this.entry = entry;
     }
 
+    /**
+     * Read from the .bork filename passed, and instantiate a Dungeon object
+     * based on it.
+     */
     public Dungeon(String filename) throws IOException,
         IllegalDungeonFormatException {
 
@@ -37,15 +41,15 @@ public class Dungeon {
         BufferedReader r = new BufferedReader(new FileReader(filename));
         name = r.readLine();
 
-        r.readLine();   // throw away version indicator
+        r.readLine();   // Throw away version indicator.
 
-        // throw away delimiter
+        // Throw away delimiter.
         if (!r.readLine().equals(TOP_LEVEL_DELIM)) {
             throw new IllegalDungeonFormatException("No '" +
                 TOP_LEVEL_DELIM + "' after version indicator.");
         }
 
-        // throw away Rooms starter
+        // Throw away Rooms starter.
         if (!r.readLine().equals(ROOMS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                 ROOMS_MARKER + "' line where expected.");
@@ -62,6 +66,19 @@ public class Dungeon {
                 add(new Room(r));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
+
+        // Throw away Exits starter.
+        if (!r.readLine().equals(EXITS_MARKER)) {
+            throw new IllegalDungeonFormatException("No '" +
+                EXITS_MARKER + "' line where expected.");
+        }
+
+        try {
+            // Instantiate exits.
+            while (true) {
+                Exit exit = new Exit(r, this);
+            }
+        } catch (Exit.NoExitException e) {  /* end of exits */ }
 
         r.close();
     }

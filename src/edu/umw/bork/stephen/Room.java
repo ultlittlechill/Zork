@@ -82,13 +82,13 @@ public class Room {
     public Room leaveBy(String dir) {
         for (Exit exit : exits) {
             if (exit.getDir().equals(dir)) {
-                return exit.getLoc();
+                return exit.getDest();
             }
         }
         return null;
     }
 
-    void addExit(Room loc, String dir) {
-        exits.add(new Exit(dir,loc));
+    void addExit(Exit exit) {
+        exits.add(exit);
     }
 }

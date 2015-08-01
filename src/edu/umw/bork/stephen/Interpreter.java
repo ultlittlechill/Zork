@@ -67,13 +67,13 @@ public class Interpreter {
         b6.setDesc(
 "Sunlight streams through tall windows and illuminates a brilliant\n" +
 "classroom.");
-        rotunda.addExit(basement,"d");
-        basement.addExit(rotunda,"u");
-        basement.addExit(b6,"w");
-        basement.addExit(stephensOffice,"e");
-        stephensOffice.addExit(basement,"w");
-        b6.addExit(basement,"e");
-        
+        new Exit("d",rotunda,basement);
+        new Exit("u",basement,rotunda);
+        new Exit("w",basement,b6);
+        new Exit("e",basement,stephensOffice);
+        new Exit("w",stephensOffice,basement);
+        new Exit("e",b6,basement);
+            
         return new Dungeon("Trinkle", rotunda);
     }
 
