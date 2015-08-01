@@ -12,9 +12,14 @@ public class Interpreter {
 
     public static void main(String args[]) {
 
+        if (args.length < 1) {
+            System.err.println("Usage: Interpreter borkFile.bork.");
+            System.exit(1);
+        }
+
         try {
-            GameState.instance().initialize(buildTrinkleDungeon());
             state = GameState.instance();
+            state.initialize(new Dungeon(args[0]));
 
             String command;
             BufferedReader commandLine = new BufferedReader(
@@ -42,7 +47,7 @@ public class Interpreter {
     private static String promptUser(BufferedReader commandLine) 
         throws IOException {
 
-        System.out.println(state.getAdventurersCurrentRoom().describe());
+        System.out.print(state.getAdventurersCurrentRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }
