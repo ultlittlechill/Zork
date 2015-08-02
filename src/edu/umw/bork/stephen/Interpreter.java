@@ -7,46 +7,47 @@ import java.util.*;
 
 public class Interpreter {
 
-    private GameState state; // not strictly necessary; GameState is singleton
+    private static GameState state; // not strictly necessary; GameState is 
+                                    // singleton
 
     public static void main(String args[]) {
+
         try {
-            new Interpreter().doIt();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+            state = GameState.instance();
+            state.initialize(buildTrinkleDungeon());
 
-    private void doIt() throws Exception {
-
-        GameState.instance().initialize(buildTrinkleDungeon());
-        state = GameState.instance();
-
-        String command;
-        BufferedReader commandLine = new BufferedReader(
-            new InputStreamReader(System.in));
-        System.out.println("Welcome to " + state.getDungeon().getName() + "!");
-
-        command = promptUser(commandLine);
-
-        while (!command.equals("q")) {
-
-            System.out.println(
-                CommandFactory.instance().parse(command).execute());
+            String command;
+            BufferedReader commandLine = new BufferedReader(
+                new InputStreamReader(System.in));
+            System.out.println("Welcome to " + state.getDungeon().getName() +
+                "!");
 
             command = promptUser(commandLine);
-        }
 
-        System.out.println("Bye!");
+            while (!command.equals("q")) {
+
+                System.out.println(
+                    CommandFactory.instance().parse(command).execute());
+
+                command = promptUser(commandLine);
+            }
+
+            System.out.println("Bye!");
+
+        } catch(Exception e) { 
+            e.printStackTrace(); 
+        }
     }
 
-    private String promptUser(BufferedReader commandLine) throws IOException {
-        System.out.println(state.getAdventurersCurrentRoom().describe());
+    private static String promptUser(BufferedReader commandLine) 
+        throws IOException {
+
+        System.out.print(state.getAdventurersCurrentRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }
 
-    private Dungeon buildTrinkleDungeon() {
+    private static Dungeon buildTrinkleDungeon() {
         Room rotunda = new Room("Rotunda");
         rotunda.setDesc(
 "You are in a beautiful round room, with a ceiling that seemingly reaches\n" +
@@ -61,13 +62,13 @@ public class Interpreter {
         b6.setDesc(
 "Sunlight streams through tall windows and illuminates a brilliant\n" +
 "classroom.");
-        rotunda.addExit(basement,"d");
-        basement.addExit(rotunda,"u");
-        basement.addExit(b6,"w");
-        basement.addExit(stephensOffice,"e");
-        stephensOffice.addExit(basement,"w");
-        b6.addExit(basement,"e");
-        
+        new Exit("d",rotunda,basement);
+        new Exit("u",basement,rotunda);
+        new Exit("w",basement,b6);
+        new Exit("e",basement,stephensOffice);
+        new Exit("w",stephensOffice,basement);
+        new Exit("e",b6,basement);
+            
         return new Dungeon("Trinkle", rotunda);
     }
 

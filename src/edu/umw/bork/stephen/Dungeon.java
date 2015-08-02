@@ -15,8 +15,6 @@ public class Dungeon {
         rooms = new ArrayList<Room>();
     }
 
-    // for persistence, a big ol constructor will load from file.
-    
     public Room getEntry() { return entry; }
     public String getName() { return name; }
     public void add(Room room) { rooms.add(room); }

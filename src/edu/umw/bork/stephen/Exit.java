@@ -4,19 +4,26 @@ package edu.umw.bork.stephen;
 public class Exit {
 
     private String dir;
-    private Room loc;
+    private Room src, dest;
 
-    Exit(String dir, Room loc) {
+    Exit(String dir, Room src, Room dest) {
+        init();
         this.dir = dir;
-        this.loc = loc;
+        this.src = src;
+        this.dest = dest;
+        src.addExit(this);
+    }
+
+    // Common object initialization tasks.
+    private void init() {
     }
 
     String describe() {
-        return "You can go " + dir + " to " + loc.getTitle() + ".";
+        return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
 
     String getDir() { return dir; }
-
-    Room getLoc() { return loc; }
+    Room getSrc() { return src; }
+    Room getDest() { return dest; }
     
 }
