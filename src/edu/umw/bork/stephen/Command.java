@@ -13,7 +13,17 @@ public class Command {
     }
 
     public String execute() {
-        if (CommandFactory.MOVEMENT_COMMANDS.contains(dir)) {
+        if (dir.equals("save")) {
+            try {
+                GameState.instance().store();
+                return "Data saved to " + GameState.DEFAULT_SAVE_FILE + 
+                    GameState.SAVE_FILE_EXTENSION + ".\n";
+            } catch (Exception e) {
+                System.err.println("Couldn't save!");
+                e.printStackTrace();
+                return "";
+            }
+        } else if (CommandFactory.MOVEMENT_COMMANDS.contains(dir)) {
             Room currentRoom = 
                 GameState.instance().getAdventurersCurrentRoom();
             Room nextRoom = currentRoom.leaveBy(dir);

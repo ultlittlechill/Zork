@@ -22,9 +22,11 @@ public class Dungeon {
     private String name;
     private Room entry;
     private Hashtable<String,Room> rooms;
+    private String filename;
 
     Dungeon(String name, Room entry) {
         init();
+        this.filename = null;    // null indicates not hydrated from file.
         this.name = name;
         this.entry = entry;
     }
@@ -37,6 +39,7 @@ public class Dungeon {
         IllegalDungeonFormatException {
 
         init();
+        this.filename = filename;
 
         BufferedReader r = new BufferedReader(new FileReader(filename));
         name = r.readLine();
@@ -91,6 +94,7 @@ public class Dungeon {
 
     public Room getEntry() { return entry; }
     public String getName() { return name; }
+    public String getFilename() { return filename; }
     public void add(Room room) { rooms.put(room.getTitle(),room); }
 
     public Room getRoom(String roomTitle) {
