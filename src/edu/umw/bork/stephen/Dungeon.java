@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Dungeon {
 
@@ -14,10 +15,14 @@ public class Dungeon {
         }
     }
 
+    // Variables relating to dungeon file (.bork) storage.
     public static String TOP_LEVEL_DELIM = "===";
     public static String SECOND_LEVEL_DELIM = "---";
     public static String ROOMS_MARKER = "Rooms:";
     public static String EXITS_MARKER = "Exits:";
+    
+    // Variables relating to game state (.sav) storage.
+    static String DUNGEON_FILENAME_LEADER = "Dungeon file: ";
 
     private String name;
     private Room entry;
@@ -90,6 +95,22 @@ public class Dungeon {
     // is used.
     private void init() {
         rooms = new Hashtable<String,Room>();
+    }
+
+    /*
+     * Store the current (changeable) state of this dungeon to the writer
+     * passed.
+     */
+    void storeState(PrintWriter w) throws IOException {
+        w.println(DUNGEON_FILENAME_LEADER + getFilename());
+    }
+
+    /*
+     * Restore the (changeable) state of this dungeon to that reflected in the
+     * reader passed.
+     */
+    void restoreState(BufferedReader r) throws IOException {
+        // Nothing to do for now.
     }
 
     public Room getEntry() { return entry; }

@@ -9,9 +9,14 @@ import java.io.IOException;
 
 public class GameState {
 
+    public static class IllegalSaveFormatException extends Exception {
+        public IllegalSaveFormatException(String e) {
+            super(e);
+        }
+    }
+
     static String DEFAULT_SAVE_FILE = "/tmp/bork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
-    static String DUNGEON_FILENAME_LEADER = "Dungeon file: ";
     static String CURRENT_ROOM_LEADER = "Current room: ";
 
     private static GameState theInstance;
@@ -28,8 +33,27 @@ public class GameState {
     private GameState() {
     }
 
-    void restore(String filename) {
+    void restore(String filename) throws IOException, 
+        IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
+        BufferedReader r = new BufferedReader(new FileReader(filename));
+
+        r.readLine();   // Throw away version indicator.
+        String dungeonFileLine = r.readLine();
+
+        if (!dungeonFileLine.startsWith(Dungeon.DUNGEON_FILENAME_LEADER)) {
+            throw new IllegalSaveFormatException("No '" +
+                Dungeon.DUNGEON_FILENAME_LEADER + 
+                "' after version indicator.");
+        }
+
+        dungeon = new Dungeon(dungeonFileLine.substring(
+            Dungeon.DUNGEON_FILENAME_LEADER.length()));
+        dungeon.restoreState(r);
+
+        String currentRoomLine = r.readLine();
+        adventurersCurrentRoom = dungeon.getRoom(
+            currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
     }
 
     void store() throws IOException {
@@ -40,7 +64,7 @@ public class GameState {
         String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
         w.println("Bork v2.0 save data");
-        w.println(DUNGEON_FILENAME_LEADER + dungeon.getFilename());
+        dungeon.storeState(w);
         w.println(CURRENT_ROOM_LEADER + 
             getAdventurersCurrentRoom().getTitle());
         w.close();

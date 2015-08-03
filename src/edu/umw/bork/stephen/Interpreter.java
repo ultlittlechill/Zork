@@ -10,16 +10,26 @@ public class Interpreter {
     private static GameState state; // not strictly necessary; GameState is 
                                     // singleton
 
+    public static String USAGE_MSG = 
+        "Usage: Interpreter borkFile.bork|saveFile.sav.";
+
     public static void main(String args[]) {
 
         if (args.length < 1) {
-            System.err.println("Usage: Interpreter borkFile.bork.");
+            System.err.println(USAGE_MSG);
             System.exit(1);
         }
 
         try {
             state = GameState.instance();
-            state.initialize(new Dungeon(args[0]));
+            if (args[0].endsWith(".bork")) {
+                state.initialize(new Dungeon(args[0]));
+            } else if (args[0].endsWith(".sav")) {
+                state.restore(args[0]);
+            } else {
+                System.err.println(USAGE_MSG);
+                System.exit(2);
+            }
 
             String command;
             BufferedReader commandLine = new BufferedReader(
