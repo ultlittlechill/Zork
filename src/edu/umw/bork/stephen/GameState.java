@@ -41,14 +41,14 @@ public class GameState {
         r.readLine();   // Throw away version indicator.
         String dungeonFileLine = r.readLine();
 
-        if (!dungeonFileLine.startsWith(Dungeon.DUNGEON_FILENAME_LEADER)) {
+        if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
             throw new IllegalSaveFormatException("No '" +
-                Dungeon.DUNGEON_FILENAME_LEADER + 
+                Dungeon.FILENAME_LEADER + 
                 "' after version indicator.");
         }
 
         dungeon = new Dungeon(dungeonFileLine.substring(
-            Dungeon.DUNGEON_FILENAME_LEADER.length()));
+            Dungeon.FILENAME_LEADER.length()));
         dungeon.restoreState(r);
 
         String currentRoomLine = r.readLine();

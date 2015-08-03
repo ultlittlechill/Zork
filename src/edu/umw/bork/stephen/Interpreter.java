@@ -20,22 +20,24 @@ public class Interpreter {
             System.exit(1);
         }
 
+        String command;
+        BufferedReader commandLine = new BufferedReader(
+            new InputStreamReader(System.in));
+
         try {
             state = GameState.instance();
             if (args[0].endsWith(".bork")) {
                 state.initialize(new Dungeon(args[0]));
+                System.out.println("Welcome to " + 
+                    state.getDungeon().getName() + "!");
             } else if (args[0].endsWith(".sav")) {
                 state.restore(args[0]);
+                System.out.println("Welcome back to " + 
+                    state.getDungeon().getName() + "!");
             } else {
                 System.err.println(USAGE_MSG);
                 System.exit(2);
             }
-
-            String command;
-            BufferedReader commandLine = new BufferedReader(
-                new InputStreamReader(System.in));
-            System.out.println("Welcome to " + state.getDungeon().getName() +
-                "!");
 
             command = promptUser(commandLine);
 

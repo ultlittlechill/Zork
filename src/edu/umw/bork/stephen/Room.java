@@ -4,6 +4,7 @@ package edu.umw.bork.stephen;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Room {
 
@@ -61,6 +62,32 @@ public class Room {
     String getTitle() { return title; }
 
     void setDesc(String desc) { this.desc = desc; }
+
+    /*
+     * Store the current (changeable) state of this room to the writer
+     * passed.
+     */
+    void storeState(PrintWriter w) throws IOException {
+        // At this point, nothing to save for this room if the user hasn't
+        // visited it.
+        if (beenHere) {
+            w.println(title + ":");
+            w.println("beenHere=true");
+            w.println(Dungeon.SECOND_LEVEL_DELIM);
+        }
+    }
+
+    void restoreState(BufferedReader r) throws IOException,
+        GameState.IllegalSaveFormatException {
+
+        String line = r.readLine();
+        if (!line.startsWith("beenHere")) {
+            throw new GameState.IllegalSaveFormatException("No beenHere.");
+        }
+        beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
+
+        r.readLine();   // consume end-of-room delimiter
+    }
 
     public String describe() {
         String description;

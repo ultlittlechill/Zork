@@ -15,14 +15,17 @@ public class Dungeon {
         }
     }
 
-    // Variables relating to dungeon file (.bork) storage.
+    // Variables relating to both dungeon file and game state storage.
     public static String TOP_LEVEL_DELIM = "===";
     public static String SECOND_LEVEL_DELIM = "---";
+
+    // Variables relating to dungeon file (.bork) storage.
     public static String ROOMS_MARKER = "Rooms:";
     public static String EXITS_MARKER = "Exits:";
     
     // Variables relating to game state (.sav) storage.
-    static String DUNGEON_FILENAME_LEADER = "Dungeon file: ";
+    static String FILENAME_LEADER = "Dungeon file: ";
+    static String ROOM_STATES_MARKER = "Room states:";
 
     private String name;
     private Room entry;
@@ -102,15 +105,33 @@ public class Dungeon {
      * passed.
      */
     void storeState(PrintWriter w) throws IOException {
-        w.println(DUNGEON_FILENAME_LEADER + getFilename());
+        w.println(FILENAME_LEADER + getFilename());
+        w.println(ROOM_STATES_MARKER);
+        for (Room room : rooms.values()) {
+            room.storeState(w);
+        }
+        w.println(TOP_LEVEL_DELIM);
     }
 
     /*
      * Restore the (changeable) state of this dungeon to that reflected in the
      * reader passed.
      */
-    void restoreState(BufferedReader r) throws IOException {
-        // Nothing to do for now.
+    void restoreState(BufferedReader r) throws IOException,
+        GameState.IllegalSaveFormatException {
+
+        // Note: the filename has already been read at this point.
+        
+        if (!r.readLine().equals(ROOM_STATES_MARKER)) {
+            throw new GameState.IllegalSaveFormatException("No '" +
+                ROOM_STATES_MARKER + "' after dungeon filename in save file.");
+        }
+
+        String roomName = r.readLine();
+        while (!roomName.equals(TOP_LEVEL_DELIM)) {
+            getRoom(roomName.substring(0,roomName.length()-1)).restoreState(r);
+            roomName = r.readLine();
+        }
     }
 
     public Room getEntry() { return entry; }
