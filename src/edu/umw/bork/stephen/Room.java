@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 public class Room {
 
-    public class NoRoomException extends Exception {}
+    class NoRoomException extends Exception {}
 
     private String title;
     private String desc;

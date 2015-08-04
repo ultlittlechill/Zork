@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Exit {
 
-    public class NoExitException extends Exception {}
+    class NoExitException extends Exception {}
 
     private String dir;
     private Room src;
