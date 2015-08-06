@@ -21,12 +21,15 @@ public class CommandFactory {
     }
 
     public Command parse(String command) {
-        if (MOVEMENT_COMMANDS.contains(command)) {
-            return new Command(command);
-        } else {
-            // For now, only one type of command: "move".
-            return new Command(command);
+        String parts[] = command.split(" ");
+        String verb = parts[0];
+        String noun = parts.length >= 2 ? parts[1] : "";
+        if (verb.equals("save")) {
+            return new SaveCommand(noun);
         }
+        if (MOVEMENT_COMMANDS.contains(verb)) {
+            return new MovementCommand(verb);
+        }
+        return new UnknownCommand(command);
     }
-
 }
