@@ -22,6 +22,7 @@ public class Dungeon {
     // Variables relating to dungeon file (.bork) storage.
     public static String ROOMS_MARKER = "Rooms:";
     public static String EXITS_MARKER = "Exits:";
+    public static String ITEMS_MARKER = "Items:";
     
     // Variables relating to game state (.sav) storage.
     static String FILENAME_LEADER = "Dungeon file: ";
@@ -91,6 +92,18 @@ public class Dungeon {
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
 
+        // Throw away Items starter.
+        if (!r.readLine().equals(ITEMS_MARKER)) {
+            throw new IllegalDungeonFormatException("No '" +
+                ITEMS_MARKER + "' line where expected.");
+        }
+
+        try {
+            // Instantiate items.
+            while (true) {
+                Item item = new Item(r, this);
+            }
+        } catch (Item.NoItemException e) {  /* end of exits */ }
         r.close();
     }
     

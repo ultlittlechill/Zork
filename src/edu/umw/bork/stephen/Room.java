@@ -13,7 +13,7 @@ public class Room {
     private String title;
     private String desc;
     private boolean beenHere;
-    //private ArrayList<Item> contents;
+    private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
 
     Room(String title) {
@@ -54,7 +54,7 @@ public class Room {
 
     // Common object initialization tasks.
     private void init() {
-        //contents = new ArrayList<Item>();
+        contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
     }
@@ -117,5 +117,9 @@ public class Room {
 
     void addExit(Exit exit) {
         exits.add(exit);
+    }
+
+    void add(Item item) {
+        contents.add(item);
     }
 }
