@@ -20,7 +20,6 @@ public class GameState {
 
     private static GameState theInstance;
     private Dungeon dungeon;
-    private Adventurer adventurer;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -63,7 +62,7 @@ public class GameState {
         PrintWriter w = new PrintWriter(new FileWriter(filename));
         w.println("Bork v2.0 save data");
         dungeon.storeState(w);
-        adventurer.storeState(w);
+        Adventurer.instance().storeState(w);
         w.close();
     }
 
