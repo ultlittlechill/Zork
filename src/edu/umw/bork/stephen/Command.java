@@ -24,11 +24,10 @@ public class Command {
                 return "";
             }
         } else if (CommandFactory.MOVEMENT_COMMANDS.contains(dir)) {
-            Room currentRoom = 
-                GameState.instance().getAdventurersCurrentRoom();
+            Room currentRoom = Adventurer.instance().getRoom();
             Room nextRoom = currentRoom.leaveBy(dir);
             if (nextRoom != null) {  // could try/catch here.
-                GameState.instance().setAdventurersCurrentRoom(nextRoom);
+                Adventurer.instance().setRoom(nextRoom);
                 return "";
             } else {
                 return "You can't go " + dir + ".\n";

@@ -59,7 +59,7 @@ public class Interpreter {
     private static String promptUser(BufferedReader commandLine) 
         throws IOException {
 
-        System.out.print(state.getAdventurersCurrentRoom().describe());
+        System.out.print(Adventurer.instance().getRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }

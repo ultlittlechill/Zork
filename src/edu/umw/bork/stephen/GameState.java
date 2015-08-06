@@ -17,11 +17,10 @@ public class GameState {
 
     static String DEFAULT_SAVE_FILE = "/tmp/bork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
-    static String CURRENT_ROOM_LEADER = "Current room: ";
 
     private static GameState theInstance;
     private Dungeon dungeon;
-    private Room adventurersCurrentRoom;
+    private Adventurer adventurer;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -51,9 +50,8 @@ public class GameState {
             Dungeon.FILENAME_LEADER.length()));
         dungeon.restoreState(r);
 
-        String currentRoomLine = r.readLine();
-        adventurersCurrentRoom = dungeon.getRoom(
-            currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+        Adventurer a = Adventurer.instance();
+        a.initialize(r, dungeon);
     }
 
     void store() throws IOException {
@@ -65,22 +63,13 @@ public class GameState {
         PrintWriter w = new PrintWriter(new FileWriter(filename));
         w.println("Bork v2.0 save data");
         dungeon.storeState(w);
-        w.println(CURRENT_ROOM_LEADER + 
-            getAdventurersCurrentRoom().getTitle());
+        adventurer.storeState(w);
         w.close();
     }
 
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
-        adventurersCurrentRoom = dungeon.getEntry();
-    }
-
-    Room getAdventurersCurrentRoom() {
-        return adventurersCurrentRoom;
-    }
-
-    void setAdventurersCurrentRoom(Room room) {
-        adventurersCurrentRoom = room;
+        Adventurer.instance().setRoom(dungeon.getEntry());
     }
 
     Dungeon getDungeon() {
