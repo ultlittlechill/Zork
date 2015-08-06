@@ -30,6 +30,9 @@ public class CommandFactory {
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }
+        if (parts.length == 2) {
+            return new ItemSpecificCommand(verb, noun);
+        }
         return new UnknownCommand(command);
     }
 }

@@ -38,4 +38,11 @@ public class Item {
                 Dungeon.SECOND_LEVEL_DELIM + "' after item.");
         }
     }
+
+    boolean goesBy(String name) {
+        // could have other aliases
+        return this.name.equals(name);
+    }
+
+    String getName() { return name; }
 }

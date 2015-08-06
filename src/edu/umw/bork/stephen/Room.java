@@ -96,9 +96,9 @@ public class Room {
         } else {
             description = title + "\n" + desc + "\n";
         }
-        //for (Item item : contents) {
-        //    description += "There is a " + item.getName() + " here.\n";
-        //}
+        for (Item item : contents) {
+            description += "There is a " + item.getName() + " here.\n";
+        }
         for (Exit exit : exits) {
             description += exit.describe() + "\n";
         }
@@ -121,5 +121,13 @@ public class Room {
 
     void add(Item item) {
         contents.add(item);
+    }
+
+    Item getItem(String name) {
+        return null;
+    }
+
+    ArrayList<Item> getContents() {
+        return contents;
     }
 }
