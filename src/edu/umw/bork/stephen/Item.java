@@ -28,7 +28,6 @@ public class Item {
 
         weight = Integer.valueOf(
             r.readLine().substring(WEIGHT_LEADER.length()));
-System.out.println("the weight is: " + weight);
 
         String initialRoom = r.readLine();
         d.getRoom(initialRoom).add(this);
