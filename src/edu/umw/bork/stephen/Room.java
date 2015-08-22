@@ -13,7 +13,6 @@ public class Room {
     private String title;
     private String desc;
     private boolean beenHere;
-    //private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
 
     Room(String title) {
@@ -54,7 +53,6 @@ public class Room {
 
     // Common object initialization tasks.
     private void init() {
-        //contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
     }
@@ -96,9 +94,6 @@ public class Room {
         } else {
             description = title + "\n" + desc + "\n";
         }
-        //for (Item item : contents) {
-        //    description += "There is a " + item.getName() + " here.\n";
-        //}
         for (Exit exit : exits) {
             description += exit.describe() + "\n";
         }
