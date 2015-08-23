@@ -21,6 +21,8 @@ class ItemSpecificCommand extends Command {
             return "There's no " + noun + " here.";
         }
         
-        return "Congratulations, you " + verb + "ed the " + noun + ".";
+        String msg = itemReferredTo.getMessageForVerb(verb);
+        return msg == null ? 
+            "Sorry, you can't " + verb + " the " + noun + "." : msg;
     }
 }
