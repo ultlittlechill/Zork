@@ -8,8 +8,6 @@ public class Item {
 
     class NoItemException extends Exception {}
 
-    static String WEIGHT_LEADER = "weight=";
-
     private String name;
     private int weight;
 
@@ -18,19 +16,17 @@ public class Item {
         this.weight = weight;
     }
 
-    Item(BufferedReader r, Dungeon d) throws IOException, NoItemException,
+    Item(BufferedReader r) throws IOException, NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
+        // Read item name.
         name = r.readLine();
         if (name.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoItemException();
         }
 
-        weight = Integer.valueOf(
-            r.readLine().substring(WEIGHT_LEADER.length()));
-
-        String initialRoom = r.readLine();
-        d.getRoom(initialRoom).add(this);
+        // Read item weight.
+        weight = Integer.valueOf(r.readLine());
 
         // throw away delimiter
         if (!r.readLine().equals(Dungeon.SECOND_LEVEL_DELIM)) {
@@ -38,4 +34,6 @@ public class Item {
                 Dungeon.SECOND_LEVEL_DELIM + "' after item.");
         }
     }
+
+    public String getName() { return name; }
 }

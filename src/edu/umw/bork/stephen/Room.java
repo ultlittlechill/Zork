@@ -10,6 +10,8 @@ public class Room {
 
     class NoRoomException extends Exception {}
 
+    static String ITEM_STARTER = "Item: ";
+
     private String title;
     private String desc;
     private boolean beenHere;
@@ -23,12 +25,14 @@ public class Room {
 
     /** Given a Reader object positioned at the beginning of a "room" file
         entry, read and return a Room object representing it. 
+        @param d The containing {@link edu.umw.stephen.bork.Dungeon} object, 
+        necessary to retrieve {@link edu.umw.stephen.bork.Item} objects.
         @throws NoRoomException The reader object is not positioned at the
         start of a room entry. A side effect of this is the reader's cursor
         is now positioned one line past where it was.
         @throws IOException A generic file I/O error occurred.
      */
-    Room(BufferedReader r) throws IOException, NoRoomException,
+    Room(BufferedReader r, Dungeon d) throws IOException, NoRoomException,
         Dungeon.IllegalDungeonFormatException {
 
         init();
@@ -41,7 +45,15 @@ public class Room {
         String lineOfDesc = r.readLine();
         while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
                !lineOfDesc.equals(Dungeon.TOP_LEVEL_DELIM)) {
-            desc += lineOfDesc + "\n";
+
+            // If the current line starts with "Item: ", add the appropriate
+            // item to this room's contents. Otherwise, it's part of the
+            // textual description, so append it.
+            if (lineOfDesc.startsWith(ITEM_STARTER)) {
+                add(d.getItem(lineOfDesc.substring(ITEM_STARTER.length())));
+            } else {
+                desc += lineOfDesc + "\n";
+            }
             lineOfDesc = r.readLine();
         }
 
@@ -96,9 +108,9 @@ public class Room {
         } else {
             description = title + "\n" + desc + "\n";
         }
-        //for (Item item : contents) {
-        //    description += "There is a " + item.getName() + " here.\n";
-        //}
+        for (Item item : contents) {
+            description += "There is a " + item.getName() + " here.\n";
+        }
         for (Exit exit : exits) {
             description += exit.describe() + "\n";
         }

@@ -60,7 +60,7 @@ public class GameState {
     void store(String saveName) throws IOException {
         String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
-        w.println("Bork v2.0 save data");
+        w.println("Bork v3.0 save data");
         dungeon.storeState(w);
         Adventurer.instance().storeState(w);
         w.close();

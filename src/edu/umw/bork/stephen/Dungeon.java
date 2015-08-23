@@ -31,6 +31,7 @@ public class Dungeon {
     private String name;
     private Room entry;
     private Hashtable<String,Room> rooms;
+    private Hashtable<String,Item> items;
     private String filename;
 
     Dungeon(String name, Room entry) {
@@ -61,21 +62,33 @@ public class Dungeon {
                 TOP_LEVEL_DELIM + "' after version indicator.");
         }
 
+        // Throw away Items starter.
+        if (!r.readLine().equals(ITEMS_MARKER)) {
+            throw new IllegalDungeonFormatException("No '" +
+                ITEMS_MARKER + "' line where expected.");
+        }
+
+        try {
+            // Instantiate items.
+            while (true) {
+                add(new Item(r));
+            }
+        } catch (Item.NoItemException e) {  /* end of items */ }
+
         // Throw away Rooms starter.
         if (!r.readLine().equals(ROOMS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                 ROOMS_MARKER + "' line where expected.");
         }
 
-
         try {
             // Instantiate and add first room (the entry).
-            entry = new Room(r);
+            entry = new Room(r, this);
             add(entry);
 
             // Instantiate and add other rooms.
             while (true) {
-                add(new Room(r));
+                add(new Room(r, this));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
 
@@ -92,18 +105,6 @@ public class Dungeon {
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
 
-        // Throw away Items starter.
-        if (!r.readLine().equals(ITEMS_MARKER)) {
-            throw new IllegalDungeonFormatException("No '" +
-                ITEMS_MARKER + "' line where expected.");
-        }
-
-        try {
-            // Instantiate items.
-            while (true) {
-                Item item = new Item(r, this);
-            }
-        } catch (Item.NoItemException e) {  /* end of exits */ }
         r.close();
     }
     
@@ -111,6 +112,7 @@ public class Dungeon {
     // is used.
     private void init() {
         rooms = new Hashtable<String,Room>();
+        items = new Hashtable<String,Item>();
     }
 
     /*
@@ -151,8 +153,13 @@ public class Dungeon {
     public String getName() { return name; }
     public String getFilename() { return filename; }
     public void add(Room room) { rooms.put(room.getTitle(),room); }
+    public void add(Item item) { items.put(item.getName(),item); }
 
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
+    }
+
+    public Item getItem(String itemName) {
+        return items.get(itemName);
     }
 }

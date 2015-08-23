@@ -1,6 +1,14 @@
 Trinkle
 Bork v3.0
 ===
+Items:
+DrPepper
+10
+---
+StarWarsToy
+5
+---
+===
 Rooms:
 Rotunda
 You are in a beautiful round entry chamber, with tall white pillars that
@@ -8,11 +16,13 @@ seemingly reach to the skies.
 There is an elevator here.
 ---
 Basement hallway
+Item: DrPepper
 A long, white hallway stretches to the east and west. It is cold here, and you
 can detect the faint smell of body odor. A vending machine hums softly in the
 corner.
 ---
 Stephen's office
+Item: StarWarsToy
 This is a cluttered office, with many geeky toys sprawling on a desk.
 ---
 Room B6
@@ -56,15 +66,5 @@ Stephen's office
 Stephen's office
 e
 Basement hallway
----
-===
-Items:
-Dr. Pepper
-weight=10
-Basement hallway
----
-Star Wars toy
-weight=5
-Stephen's office
 ---
 ===
