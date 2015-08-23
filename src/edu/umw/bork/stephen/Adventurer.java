@@ -8,6 +8,8 @@ import java.io.IOException;
 
 public class Adventurer {
 
+    class UnknownItemException extends Exception {}
+
     static String CURRENT_ROOM_LEADER = "Current room: ";
 
     private int health;
@@ -44,5 +46,23 @@ public class Adventurer {
 
     void storeState(PrintWriter w) throws IOException {
         w.println(CURRENT_ROOM_LEADER + currentRoom.getTitle());
+    }
+
+    Item getItemNamed(String name) throws UnknownItemException {
+        // First, check inventory.
+        for (Item item : inventory) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        // Next, check room contents.
+        for (Item item : currentRoom.getContents()) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        throw new UnknownItemException();
     }
 }

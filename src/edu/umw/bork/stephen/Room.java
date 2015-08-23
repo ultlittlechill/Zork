@@ -134,4 +134,12 @@ public class Room {
     void add(Item item) {
         contents.add(item);
     }
+
+    Item getItem(String name) {
+        return null;
+    }
+
+    ArrayList<Item> getContents() {
+        return contents;
+    }
 }
