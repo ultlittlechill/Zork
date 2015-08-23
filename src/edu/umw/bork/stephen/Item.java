@@ -35,5 +35,10 @@ public class Item {
         }
     }
 
-    public String getName() { return name; }
+    boolean goesBy(String name) {
+        // could have other aliases
+        return this.name.equals(name);
+    }
+
+    String getName() { return name; }
 }
