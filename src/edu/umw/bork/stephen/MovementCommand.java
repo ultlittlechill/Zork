@@ -3,8 +3,8 @@ package edu.umw.bork.stephen;
 
 class MovementCommand extends Command {
 
-    private String dir;     // for now, this class is only for direction 
-                            // commands.
+    private String dir;
+                       
 
     MovementCommand(String dir) {
         this.dir = dir;
