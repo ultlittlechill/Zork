@@ -19,7 +19,7 @@ public class Dungeon {
     public String getName() { return name; }
     public void add(Room room) { rooms.put(room.getTitle(), room); }
 
-    public void getRoom(String roomTitle) {
+    public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle); 
     }
 
