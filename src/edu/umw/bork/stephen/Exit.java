@@ -9,8 +9,7 @@ public class Exit {
     class NoExitException extends Exception {}
 
     private String dir;
-    private Room src;
-    private Room dest;
+    private Room src, dest;
 
     Exit(String dir, Room src, Room dest) {
         init();

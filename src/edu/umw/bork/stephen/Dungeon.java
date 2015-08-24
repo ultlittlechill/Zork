@@ -37,6 +37,7 @@ public class Dungeon {
         this.filename = null;    // null indicates not hydrated from file.
         this.name = name;
         this.entry = entry;
+        rooms = new Hashtable<String,Room>();
     }
 
     /**
