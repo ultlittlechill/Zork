@@ -22,6 +22,9 @@ public class Interpreter {
             System.out.println("\nWelcome to " + state.getDungeon().getName() +
                 "!");
 
+            System.out.print("\n" + 
+                state.getAdventurersCurrentRoom().describe() + "\n");
+
             command = promptUser(commandLine);
 
             while (!command.equals("q")) {
@@ -42,8 +45,6 @@ public class Interpreter {
     private static String promptUser(BufferedReader commandLine) 
         throws IOException {
 
-        System.out.println("\n" + 
-            state.getAdventurersCurrentRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }
