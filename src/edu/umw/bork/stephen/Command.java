@@ -21,9 +21,9 @@ public class Command {
                 GameState.instance().setAdventurersCurrentRoom(nextRoom);
                 return "";
             } else {
-                return "You can't go " + dir + ".";
+                return "You can't go " + dir + ".\n";
             }
         }
-        return "Unknown command '" + dir + "'?";
+        return "Unknown command '" + dir + "'?\n";
     }
 }

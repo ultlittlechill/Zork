@@ -19,14 +19,14 @@ public class Interpreter {
             String command;
             BufferedReader commandLine = new BufferedReader(
                 new InputStreamReader(System.in));
-            System.out.println("Welcome to " + state.getDungeon().getName() +
+            System.out.println("\nWelcome to " + state.getDungeon().getName() +
                 "!");
 
             command = promptUser(commandLine);
 
             while (!command.equals("q")) {
 
-                System.out.println(
+                System.out.print(
                     CommandFactory.instance().parse(command).execute());
 
                 command = promptUser(commandLine);
@@ -42,7 +42,8 @@ public class Interpreter {
     private static String promptUser(BufferedReader commandLine) 
         throws IOException {
 
-        System.out.print(state.getAdventurersCurrentRoom().describe());
+        System.out.println("\n" + 
+            state.getAdventurersCurrentRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }

@@ -23,12 +23,12 @@ public class Room {
     public String describe() {
         String description;
         if (beenHere) {
-            description = title + "\n";
+            description = title;
         } else {
             description = title + "\n" + desc + "\n";
         }
         for (Exit exit : exits) {
-            description += exit.describe() + "\n";
+            description += "\n" + exit.describe();
         }
         beenHere = true;
         return description;
