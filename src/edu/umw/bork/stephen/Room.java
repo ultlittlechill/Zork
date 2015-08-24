@@ -104,15 +104,16 @@ public class Room {
     public String describe() {
         String description;
         if (beenHere) {
-            description = title + "\n";
+            description = title;
         } else {
-            description = title + "\n" + desc + "\n";
+            description = title + "\n" + desc;
         }
         for (Item item : contents) {
-            description += "There is a " + item.getName() + " here.\n";
+            description += "\nThere is a " + item.getName() + " here.";
         }
+        if (contents.size() > 0) { description += "\n"; }
         for (Exit exit : exits) {
-            description += exit.describe() + "\n";
+            description += "\n" + exit.describe();
         }
         beenHere = true;
         return description;

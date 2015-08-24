@@ -28,11 +28,11 @@ public class Interpreter {
             state = GameState.instance();
             if (args[0].endsWith(".bork")) {
                 state.initialize(new Dungeon(args[0]));
-                System.out.println("Welcome to " + 
+                System.out.println("\nWelcome to " + 
                     state.getDungeon().getName() + "!");
             } else if (args[0].endsWith(".sav")) {
                 state.restore(args[0]);
-                System.out.println("Welcome back to " + 
+                System.out.println("\nWelcome back to " + 
                     state.getDungeon().getName() + "!");
             } else {
                 System.err.println(USAGE_MSG);
@@ -43,7 +43,7 @@ public class Interpreter {
 
             while (!command.equals("q")) {
 
-                System.out.println(
+                System.out.print(
                     CommandFactory.instance().parse(command).execute());
 
                 command = promptUser(commandLine);
@@ -59,7 +59,7 @@ public class Interpreter {
     private static String promptUser(BufferedReader commandLine) 
         throws IOException {
 
-        System.out.print(Adventurer.instance().getRoom().describe());
+        System.out.println("\n" + Adventurer.instance().getRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }
