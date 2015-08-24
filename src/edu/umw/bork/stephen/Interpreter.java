@@ -39,6 +39,9 @@ public class Interpreter {
                 System.exit(2);
             }
 
+            System.out.print("\n" + 
+                Adventurer.instance().getRoom().describe() + "\n");
+
             command = promptUser(commandLine);
 
             while (!command.equals("q")) {
@@ -59,7 +62,6 @@ public class Interpreter {
     private static String promptUser(BufferedReader commandLine) 
         throws IOException {
 
-        System.out.println("\n" + Adventurer.instance().getRoom().describe());
         System.out.print("> ");
         return commandLine.readLine();
     }
