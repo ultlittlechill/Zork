@@ -1,8 +1,7 @@
 
 package edu.umw.bork.stephen;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.util.Scanner;
 
 public class Exit {
 
@@ -19,33 +18,34 @@ public class Exit {
         src.addExit(this);
     }
 
-    /** Given a Reader object positioned at the beginning of an "exit" file
+    /** Given a Scanner object positioned at the beginning of an "exit" file
         entry, read and return an Exit object representing it. 
         @param d The dungeon that contains this exit (so that Room objects 
         may be obtained.)
         @throws NoExitException The reader object is not positioned at the
         start of an exit entry. A side effect of this is the reader's cursor
         is now positioned one line past where it was.
-        @throws IOException A generic file I/O error occurred.
+        @throws IllegalDungeonFormatException A structural problem with the
+        dungeon file itself, detected when trying to read this room.
      */
-    Exit(BufferedReader r, Dungeon d) throws IOException, NoExitException,
+    Exit(Scanner s, Dungeon d) throws NoExitException,
         Dungeon.IllegalDungeonFormatException {
 
         init();
-        String srcTitle = r.readLine();
+        String srcTitle = s.nextLine();
         if (srcTitle.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoExitException();
         }
         src = d.getRoom(srcTitle);
-        dir = r.readLine();
-        dest = d.getRoom(r.readLine());
+        dir = s.nextLine();
+        dest = d.getRoom(s.nextLine());
         
         // I'm an Exit object. Great. Add me as an exit to my source Room too,
         // though.
         src.addExit(this);
 
         // throw away delimiter
-        if (!r.readLine().equals(Dungeon.SECOND_LEVEL_DELIM)) {
+        if (!s.nextLine().equals(Dungeon.SECOND_LEVEL_DELIM)) {
             throw new Dungeon.IllegalDungeonFormatException("No '" +
                 Dungeon.SECOND_LEVEL_DELIM + "' after exit.");
         }

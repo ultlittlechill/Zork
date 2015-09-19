@@ -1,11 +1,12 @@
 
 package edu.umw.bork.stephen;
 
-import java.io.BufferedReader;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.io.IOException;
 
 public class GameState {
 
@@ -33,13 +34,13 @@ public class GameState {
     private GameState() {
     }
 
-    void restore(String filename) throws IOException, 
+    void restore(String filename) throws FileNotFoundException,
         IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
-        BufferedReader r = new BufferedReader(new FileReader(filename));
+        Scanner s = new Scanner(new FileReader(filename));
 
-        r.readLine();   // Throw away version indicator.
-        String dungeonFileLine = r.readLine();
+        s.nextLine();   // Throw away version indicator.
+        String dungeonFileLine = s.nextLine();
 
         if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
             throw new IllegalSaveFormatException("No '" +
@@ -49,9 +50,9 @@ public class GameState {
 
         dungeon = new Dungeon(dungeonFileLine.substring(
             Dungeon.FILENAME_LEADER.length()));
-        dungeon.restoreState(r);
+        dungeon.restoreState(s);
 
-        String currentRoomLine = r.readLine();
+        String currentRoomLine = s.nextLine();
         adventurersCurrentRoom = dungeon.getRoom(
             currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
     }

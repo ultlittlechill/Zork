@@ -1,8 +1,7 @@
 
 package edu.umw.bork.stephen;
 
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 
 public class Interpreter {
@@ -21,8 +20,7 @@ public class Interpreter {
         }
 
         String command;
-        BufferedReader commandLine = new BufferedReader(
-            new InputStreamReader(System.in));
+        Scanner commandLine = new Scanner(System.in);
 
         try {
             state = GameState.instance();
@@ -59,11 +57,10 @@ public class Interpreter {
         }
     }
 
-    private static String promptUser(BufferedReader commandLine) 
-        throws IOException {
+    private static String promptUser(Scanner commandLine) {
 
         System.out.print("> ");
-        return commandLine.readLine();
+        return commandLine.nextLine();
     }
 
 }

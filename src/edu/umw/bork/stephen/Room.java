@@ -2,7 +2,7 @@
 package edu.umw.bork.stephen;
 
 import java.util.ArrayList;
-import java.io.BufferedReader;
+import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -20,28 +20,29 @@ public class Room {
         this.title = title;
     }
 
-    /** Given a Reader object positioned at the beginning of a "room" file
+    /** Given a Scanner object positioned at the beginning of a "room" file
         entry, read and return a Room object representing it. 
         @throws NoRoomException The reader object is not positioned at the
         start of a room entry. A side effect of this is the reader's cursor
         is now positioned one line past where it was.
-        @throws IOException A generic file I/O error occurred.
+        @throws IllegalDungeonFormatException A structural problem with the
+        dungeon file itself, detected when trying to read this room.
      */
-    Room(BufferedReader r) throws IOException, NoRoomException,
+    Room(Scanner s) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {
 
         init();
-        title = r.readLine();
+        title = s.nextLine();
         desc = "";
         if (title.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoRoomException();
         }
         
-        String lineOfDesc = r.readLine();
+        String lineOfDesc = s.nextLine();
         while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
                !lineOfDesc.equals(Dungeon.TOP_LEVEL_DELIM)) {
             desc += lineOfDesc + "\n";
-            lineOfDesc = r.readLine();
+            lineOfDesc = s.nextLine();
         }
 
         // throw away delimiter
@@ -75,16 +76,15 @@ public class Room {
         }
     }
 
-    void restoreState(BufferedReader r) throws IOException,
-        GameState.IllegalSaveFormatException {
+    void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
-        String line = r.readLine();
+        String line = s.nextLine();
         if (!line.startsWith("beenHere")) {
             throw new GameState.IllegalSaveFormatException("No beenHere.");
         }
         beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
 
-        r.readLine();   // consume end-of-room delimiter
+        s.nextLine();   // consume end-of-room delimiter
     }
 
     public String describe() {
