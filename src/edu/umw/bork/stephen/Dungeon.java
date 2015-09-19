@@ -2,9 +2,10 @@
 package edu.umw.bork.stephen;
 
 import java.util.Hashtable;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.util.Scanner;
 import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.PrintWriter;
 
 public class Dungeon {
@@ -46,25 +47,25 @@ public class Dungeon {
      * Read from the .bork filename passed, and instantiate a Dungeon object
      * based on it.
      */
-    public Dungeon(String filename) throws IOException,
+    public Dungeon(String filename) throws FileNotFoundException,
         IllegalDungeonFormatException {
 
         init();
         this.filename = filename;
 
-        BufferedReader r = new BufferedReader(new FileReader(filename));
-        name = r.readLine();
+        Scanner s = new Scanner(new FileReader(filename));
+        name = s.nextLine();
 
-        r.readLine();   // Throw away version indicator.
+        s.nextLine();   // Throw away version indicator.
 
         // Throw away delimiter.
-        if (!r.readLine().equals(TOP_LEVEL_DELIM)) {
+        if (!s.nextLine().equals(TOP_LEVEL_DELIM)) {
             throw new IllegalDungeonFormatException("No '" +
                 TOP_LEVEL_DELIM + "' after version indicator.");
         }
 
         // Throw away Items starter.
-        if (!r.readLine().equals(ITEMS_MARKER)) {
+        if (!s.nextLine().equals(ITEMS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                 ITEMS_MARKER + "' line where expected.");
         }
@@ -72,29 +73,29 @@ public class Dungeon {
         try {
             // Instantiate items.
             while (true) {
-                add(new Item(r));
+                add(new Item(s));
             }
         } catch (Item.NoItemException e) {  /* end of items */ }
 
         // Throw away Rooms starter.
-        if (!r.readLine().equals(ROOMS_MARKER)) {
+        if (!s.nextLine().equals(ROOMS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                 ROOMS_MARKER + "' line where expected.");
         }
 
         try {
             // Instantiate and add first room (the entry).
-            entry = new Room(r, this);
+            entry = new Room(s, this);
             add(entry);
 
             // Instantiate and add other rooms.
             while (true) {
-                add(new Room(r, this));
+                add(new Room(s, this));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
 
         // Throw away Exits starter.
-        if (!r.readLine().equals(EXITS_MARKER)) {
+        if (!s.nextLine().equals(EXITS_MARKER)) {
             throw new IllegalDungeonFormatException("No '" +
                 EXITS_MARKER + "' line where expected.");
         }
@@ -102,11 +103,11 @@ public class Dungeon {
         try {
             // Instantiate exits.
             while (true) {
-                Exit exit = new Exit(r, this);
+                Exit exit = new Exit(s, this);
             }
         } catch (Exit.NoExitException e) {  /* end of exits */ }
 
-        r.close();
+        s.close();
     }
     
     // Common object initialization tasks, regardless of which constructor
@@ -133,20 +134,19 @@ public class Dungeon {
      * Restore the (changeable) state of this dungeon to that reflected in the
      * reader passed.
      */
-    void restoreState(BufferedReader r) throws IOException,
-        GameState.IllegalSaveFormatException {
+    void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
         // Note: the filename has already been read at this point.
         
-        if (!r.readLine().equals(ROOM_STATES_MARKER)) {
+        if (!s.nextLine().equals(ROOM_STATES_MARKER)) {
             throw new GameState.IllegalSaveFormatException("No '" +
                 ROOM_STATES_MARKER + "' after dungeon filename in save file.");
         }
 
-        String roomName = r.readLine();
+        String roomName = s.nextLine();
         while (!roomName.equals(TOP_LEVEL_DELIM)) {
-            getRoom(roomName.substring(0,roomName.length()-1)).restoreState(r);
-            roomName = r.readLine();
+            getRoom(roomName.substring(0,roomName.length()-1)).restoreState(s);
+            roomName = s.nextLine();
         }
     }
 

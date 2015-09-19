@@ -2,7 +2,7 @@
 package edu.umw.bork.stephen;
 
 import java.util.ArrayList;
-import java.io.BufferedReader;
+import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.IOException;
 
@@ -38,8 +38,8 @@ public class Adventurer {
         return currentRoom;
     }
 
-    void initialize(BufferedReader r, Dungeon d) throws IOException {
-        String currentRoomLine = r.readLine();
+    void initialize(Scanner s, Dungeon d) {
+        String currentRoomLine = s.nextLine();
         setRoom(d.getRoom(
             currentRoomLine.substring(CURRENT_ROOM_LEADER.length())));
     }

@@ -1,8 +1,7 @@
 
 package edu.umw.bork.stephen;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.util.Scanner;
 import java.util.Hashtable;
 
 public class Item {
@@ -23,22 +22,22 @@ public class Item {
         this.weight = weight;
     }
 
-    Item(BufferedReader r) throws IOException, NoItemException,
+    Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
         init();
 
         // Read item name.
-        name = r.readLine();
+        name = s.nextLine();
         if (name.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoItemException();
         }
 
         // Read item weight.
-        weight = Integer.valueOf(r.readLine());
+        weight = Integer.valueOf(s.nextLine());
 
         // Read and parse verbs lines, as long as there are more.
-        String verbLine = r.readLine();
+        String verbLine = s.nextLine();
         while (!verbLine.equals(Dungeon.SECOND_LEVEL_DELIM)) {
             if (verbLine.equals(Dungeon.TOP_LEVEL_DELIM)) {
                 throw new Dungeon.IllegalDungeonFormatException("No '" +
@@ -47,7 +46,7 @@ public class Item {
             String[] verbParts = verbLine.split(":");
             messages.put(verbParts[0],verbParts[1]);
             
-            verbLine = r.readLine();
+            verbLine = s.nextLine();
         }
     }
 
