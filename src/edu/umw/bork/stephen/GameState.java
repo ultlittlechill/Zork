@@ -51,7 +51,7 @@ public class GameState {
         dungeon.restoreState(s);
 
         Adventurer a = Adventurer.instance();
-        a.initialize(s, dungeon);
+        a.restoreState(s, dungeon);
     }
 
     void store() throws IOException {

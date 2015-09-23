@@ -28,6 +28,7 @@ public class Dungeon {
     // Variables relating to game state (.sav) storage.
     static String FILENAME_LEADER = "Dungeon file: ";
     static String ROOM_STATES_MARKER = "Room states:";
+    static String ADVENTURER_MARKER = "Adventurer:";
 
     private String name;
     private Room entry;
