@@ -3,10 +3,16 @@ package edu.umw.bork.stephen;
 
 class SaveCommand extends Command {
 
+    private static String DEFAULT_SAVE_FILENAME = "bork";
+
     private String saveFilename;
 
     SaveCommand(String saveFilename) {
-        this.saveFilename = saveFilename;
+        if (saveFilename == null || saveFilename.length() == 0) {
+            this.saveFilename = DEFAULT_SAVE_FILENAME;
+        } else {
+            this.saveFilename = saveFilename;
+        }
     }
 
     public String execute() {
