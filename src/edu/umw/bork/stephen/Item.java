@@ -6,11 +6,31 @@ import java.util.Hashtable;
 
 public class Item {
 
-    class NoItemException extends Exception {}
+    static class NoItemException extends Exception {}
 
     private String name;
     private int weight;
     private Hashtable<String,String> messages;
+
+
+    static Item getItemNamed(String name) throws NoItemException {
+        // First, check inventory.
+        for (Item item : GameState.instance().getInventory()) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        // Next, check room contents.
+        for (Item item : 
+            GameState.instance().getAdventurersCurrentRoom().getContents()) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        throw new NoItemException();
+    }
 
     void init() {
         messages = new Hashtable<String,String>();

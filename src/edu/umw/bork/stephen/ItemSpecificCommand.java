@@ -16,8 +16,8 @@ class ItemSpecificCommand extends Command {
         
         Item itemReferredTo = null;
         try {
-            itemReferredTo = Adventurer.instance().getItemNamed(noun);
-        } catch (Adventurer.UnknownItemException e) {
+            itemReferredTo = Item.getItemNamed(noun);
+        } catch (Item.NoItemException e) {
             return "There's no " + noun + " here.";
         }
         

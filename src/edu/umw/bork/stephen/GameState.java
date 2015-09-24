@@ -2,6 +2,7 @@
 package edu.umw.bork.stephen;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.FileReader;
@@ -19,8 +20,14 @@ public class GameState {
     static String DEFAULT_SAVE_FILE = "/tmp/bork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
 
+    static String CURRENT_ROOM_LEADER = "Current room: ";
+    static String HEALTH_LEADER = "Health: ";
+
     private static GameState theInstance;
     private Dungeon dungeon;
+    private int health;
+    private ArrayList<Item> inventory;
+    private Room adventurersCurrentRoom;
 
     static synchronized GameState instance() {
         if (theInstance == null) {
@@ -30,6 +37,8 @@ public class GameState {
     }
 
     private GameState() {
+        health = 100;
+        inventory = new ArrayList<Item>();
     }
 
     void restore(String filename) throws FileNotFoundException,
@@ -50,8 +59,13 @@ public class GameState {
             Dungeon.FILENAME_LEADER.length()));
         dungeon.restoreState(s);
 
-        Adventurer a = Adventurer.instance();
-        a.restoreState(s, dungeon);
+        s.nextLine();  // Throw away "Adventurer:".
+        String currentRoomLine = s.nextLine();
+        GameState.instance().setAdventurersCurrentRoom(dungeon.getRoom(
+            currentRoomLine.substring(CURRENT_ROOM_LEADER.length())));
+        String healthLine = s.nextLine();
+        health = Integer.valueOf(
+            healthLine.substring(HEALTH_LEADER.length()));
     }
 
     void store() throws IOException {
@@ -63,16 +77,32 @@ public class GameState {
         PrintWriter w = new PrintWriter(new FileWriter(filename));
         w.println("Bork v3.0 save data");
         dungeon.storeState(w);
-        Adventurer.instance().storeState(w);
+        w.println(Dungeon.ADVENTURER_MARKER);
+        w.println(CURRENT_ROOM_LEADER + 
+            GameState.instance().getAdventurersCurrentRoom().getTitle());
+        w.println(HEALTH_LEADER + health);
         w.close();
     }
 
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
-        Adventurer.instance().setRoom(dungeon.getEntry());
+        adventurersCurrentRoom = dungeon.getEntry();
     }
 
     Dungeon getDungeon() {
         return dungeon;
     }
+
+    ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    Room getAdventurersCurrentRoom() {
+        return adventurersCurrentRoom;
+    }
+
+    void setAdventurersCurrentRoom(Room room) {
+        adventurersCurrentRoom = room;
+    }
+
 }
