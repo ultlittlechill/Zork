@@ -25,7 +25,6 @@ public class GameState {
 
     private static GameState theInstance;
     private Dungeon dungeon;
-    private int health;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
 
@@ -37,7 +36,6 @@ public class GameState {
     }
 
     private GameState() {
-        health = 100;
         inventory = new ArrayList<Item>();
     }
 
@@ -63,9 +61,6 @@ public class GameState {
         String currentRoomLine = s.nextLine();
         GameState.instance().setAdventurersCurrentRoom(dungeon.getRoom(
             currentRoomLine.substring(CURRENT_ROOM_LEADER.length())));
-        String healthLine = s.nextLine();
-        health = Integer.valueOf(
-            healthLine.substring(HEALTH_LEADER.length()));
     }
 
     void store() throws IOException {
@@ -80,7 +75,6 @@ public class GameState {
         w.println(Dungeon.ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + 
             GameState.instance().getAdventurersCurrentRoom().getTitle());
-        w.println(HEALTH_LEADER + health);
         w.close();
     }
 
