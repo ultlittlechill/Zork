@@ -14,10 +14,11 @@ class TakeCommand extends Command {
             return "Take what?\n";
         }
         try {
-            Item theItem = Item.getItemNamed(itemName);
+            Room currentRoom = 
+                GameState.instance().getAdventurersCurrentRoom();
+            Item theItem = currentRoom.getItemNamed(itemName);
             GameState.instance().addToInventory(theItem);
-            GameState.instance().getAdventurersCurrentRoom().
-                remove(theItem);
+            currentRoom.remove(theItem);
             return itemName + " taken.\n";
         } catch (Item.NoItemException e) {
             return "There's no " + itemName + " here.\n";

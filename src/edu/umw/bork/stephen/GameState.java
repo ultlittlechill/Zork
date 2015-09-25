@@ -96,9 +96,9 @@ public class GameState {
         if (inventory.size() > 0) {
             w.print(INVENTORY_LEADER);
             for (int i=0; i<inventory.size()-1; i++) {
-                w.print(inventory.get(i).getName() + ",");
+                w.print(inventory.get(i).getPrimaryName() + ",");
             }
-            w.println(inventory.get(inventory.size()-1).getName());
+            w.println(inventory.get(inventory.size()-1).getPrimaryName());
         }
         w.close();
     }
@@ -124,12 +124,31 @@ public class GameState {
         inventory.remove(item);
     }
 
-    Item getItemFromInventoryNamed(String name) 
-        throws Item.NoItemException {
+    Item getItemInVicinityNamed(String name) throws Item.NoItemException {
 
-        Item item = Item.getItemNamed(name);
-        if (inventory.contains(item)) {
-            return item;
+        // First, check inventory.
+        for (Item item : inventory) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        // Next, check room contents.
+        for (Item item : adventurersCurrentRoom.getContents()) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+
+        throw new Item.NoItemException();
+    }
+
+    Item getItemFromInventoryNamed(String name) throws Item.NoItemException {
+
+        for (Item item : inventory) {
+            if (item.goesBy(name)) {
+                return item;
+            }
         }
         throw new Item.NoItemException();
     }

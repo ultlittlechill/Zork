@@ -165,17 +165,22 @@ public class Dungeon {
     public String getName() { return name; }
     public String getFilename() { return filename; }
     public void add(Room room) { rooms.put(room.getTitle(),room); }
-    public void add(Item item) { items.put(item.getName(),item); }
+    public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
 
-    public Item getItem(String itemName) throws Item.NoItemException {
+    /**
+     * Get the Item object whose primary name is passed. This has nothing to
+     * do with where the Adventurer might be, or what's in his/her inventory,
+     * etc.
+     */
+    public Item getItem(String primaryItemName) throws Item.NoItemException {
         
-        if (items.get(itemName) == null) {
+        if (items.get(primaryItemName) == null) {
             throw new Item.NoItemException();
         }
-        return items.get(itemName);
+        return items.get(primaryItemName);
     }
 }

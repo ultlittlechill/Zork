@@ -99,7 +99,7 @@ public class Room {
         w.println(title + ":");
         w.println("beenHere=" + beenHere);
         for (Item item : contents) {
-            w.println(item.getName());
+            w.println(item.getPrimaryName());
         }
         w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
@@ -137,7 +137,7 @@ public class Room {
             description = title + "\n" + desc;
         }
         for (Item item : contents) {
-            description += "\nThere is a " + item.getName() + " here.";
+            description += "\nThere is a " + item.getPrimaryName() + " here.";
         }
         if (contents.size() > 0) { description += "\n"; }
         if (!beenHere || full) {
@@ -170,8 +170,13 @@ public class Room {
         contents.remove(item);
     }
 
-    Item getItem(String name) {
-        return null;
+    Item getItemNamed(String name) throws Item.NoItemException {
+        for (Item item : contents) {
+            if (item.goesBy(name)) {
+                return item;
+            }
+        }
+        throw new Item.NoItemException();
     }
 
     ArrayList<Item> getContents() {

@@ -13,25 +13,6 @@ public class Item {
     private Hashtable<String,String> messages;
 
 
-    static Item getItemNamed(String name) throws NoItemException {
-        // First, check inventory.
-        for (Item item : GameState.instance().getInventory()) {
-            if (item.goesBy(name)) {
-                return item;
-            }
-        }
-
-        // Next, check room contents.
-        for (Item item : 
-            GameState.instance().getAdventurersCurrentRoom().getContents()) {
-            if (item.goesBy(name)) {
-                return item;
-            }
-        }
-
-        throw new NoItemException();
-    }
-
     void init() {
         messages = new Hashtable<String,String>();
     }
@@ -75,7 +56,7 @@ public class Item {
         return this.name.equals(name);
     }
 
-    String getName() { return name; }
+    String getPrimaryName() { return name; }
 
     public String getMessageForVerb(String verb) {
         return messages.get(verb);
