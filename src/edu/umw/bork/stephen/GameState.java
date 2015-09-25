@@ -22,7 +22,7 @@ public class GameState {
     static String SAVE_FILE_VERSION = "Bork v3.0 save data";
 
     static String CURRENT_ROOM_LEADER = "Current room: ";
-    static String HEALTH_LEADER = "Health: ";
+    static String INVENTORY_LEADER = "Inventory: ";
 
     private static GameState theInstance;
     private Dungeon dungeon;
@@ -65,6 +65,19 @@ public class GameState {
         String currentRoomLine = s.nextLine();
         GameState.instance().setAdventurersCurrentRoom(dungeon.getRoom(
             currentRoomLine.substring(CURRENT_ROOM_LEADER.length())));
+        if (s.hasNext()) {
+            String inventoryList = s.nextLine().substring(
+                INVENTORY_LEADER.length());
+            String[] inventoryItems = inventoryList.split(",");
+            for (String itemName : inventoryItems) {
+                try {
+                    addToInventory(dungeon.getItem(itemName));
+                } catch (Item.NoItemException e) {
+                    throw new IllegalSaveFormatException("No such item '" +
+                        itemName + "'");
+                }
+            }
+        }
     }
 
     void store() throws IOException {
@@ -79,6 +92,13 @@ public class GameState {
         w.println(Dungeon.ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + 
             GameState.instance().getAdventurersCurrentRoom().getTitle());
+        if (inventory.size() > 0) {
+            w.print(INVENTORY_LEADER);
+            for (int i=0; i<inventory.size()-1; i++) {
+                w.print(inventory.get(i).getName() + ",");
+            }
+            w.println(inventory.get(inventory.size()-1).getName());
+        }
         w.close();
     }
 
