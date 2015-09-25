@@ -19,6 +19,7 @@ public class GameState {
 
     static String DEFAULT_SAVE_FILE = "/tmp/bork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
+    static String SAVE_FILE_VERSION = "Bork v3.0 save data";
 
     static String CURRENT_ROOM_LEADER = "Current room: ";
     static String HEALTH_LEADER = "Health: ";
@@ -44,7 +45,10 @@ public class GameState {
 
         Scanner s = new Scanner(new FileReader(filename));
 
-        s.nextLine();   // Throw away version indicator.
+        if (!s.nextLine().equals(SAVE_FILE_VERSION)) {
+            throw new IllegalSaveFormatException("Save file not compatible.");
+        }
+
         String dungeonFileLine = s.nextLine();
 
         if (!dungeonFileLine.startsWith(Dungeon.FILENAME_LEADER)) {
@@ -70,7 +74,7 @@ public class GameState {
     void store(String saveName) throws IOException {
         String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
-        w.println("Bork v3.0 save data");
+        w.println(SAVE_FILE_VERSION);
         dungeon.storeState(w);
         w.println(Dungeon.ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + 
