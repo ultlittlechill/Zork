@@ -21,6 +21,7 @@ public class GameState {
     static String SAVE_FILE_EXTENSION = ".sav";
     static String SAVE_FILE_VERSION = "Bork v3.0 save data";
 
+    static String ADVENTURER_MARKER = "Adventurer:";
     static String CURRENT_ROOM_LEADER = "Current room: ";
     static String INVENTORY_LEADER = "Inventory: ";
 
@@ -89,7 +90,7 @@ public class GameState {
         PrintWriter w = new PrintWriter(new FileWriter(filename));
         w.println(SAVE_FILE_VERSION);
         dungeon.storeState(w);
-        w.println(Dungeon.ADVENTURER_MARKER);
+        w.println(ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + 
             GameState.instance().getAdventurersCurrentRoom().getTitle());
         if (inventory.size() > 0) {
