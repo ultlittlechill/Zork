@@ -17,7 +17,7 @@ public class Item {
         messages = new Hashtable<String,String>();
     }
 
-    public Item(String name, int weight) {
+    public Item(String primaryName, int weight) {
         init();
         this.primaryName = primaryName;
         this.weight = weight;
