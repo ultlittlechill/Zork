@@ -10,6 +10,6 @@ class UnknownCommand extends Command {
     }
 
     String execute() {
-        return "I'm not sure what you mean by \"" + bogusCommand + "\".";
+        return "I'm not sure what you mean by \"" + bogusCommand + "\".\n";
     }
 }
