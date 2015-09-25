@@ -48,8 +48,18 @@ public class Dungeon {
      * Read from the .bork filename passed, and instantiate a Dungeon object
      * based on it.
      */
-    public Dungeon(String filename) throws FileNotFoundException,
+    public Dungeon(String filename) throws FileNotFoundException, 
         IllegalDungeonFormatException {
+
+        this(filename, true);
+    }
+
+    /**
+     * Read from the .bork filename passed, and instantiate a Dungeon object
+     * based on it, including (possibly) the items in their original locations.
+     */
+    public Dungeon(String filename, boolean includeItems) 
+        throws FileNotFoundException, IllegalDungeonFormatException {
 
         init();
         this.filename = filename;
@@ -86,12 +96,12 @@ public class Dungeon {
 
         try {
             // Instantiate and add first room (the entry).
-            entry = new Room(s, this);
+            entry = new Room(s, this, includeItems);
             add(entry);
 
             // Instantiate and add other rooms.
             while (true) {
-                add(new Room(s, this));
+                add(new Room(s, this, includeItems));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
 
@@ -146,7 +156,8 @@ public class Dungeon {
 
         String roomName = s.nextLine();
         while (!roomName.equals(TOP_LEVEL_DELIM)) {
-            getRoom(roomName.substring(0,roomName.length()-1)).restoreState(s);
+            getRoom(roomName.substring(0,roomName.length()-1)).
+                restoreState(s, this);
             roomName = s.nextLine();
         }
     }
@@ -161,7 +172,11 @@ public class Dungeon {
         return rooms.get(roomTitle);
     }
 
-    public Item getItem(String itemName) {
+    public Item getItem(String itemName) throws Item.NoItemException {
+        
+        if (items.get(itemName) == null) {
+            throw new Item.NoItemException();
+        }
         return items.get(itemName);
     }
 }

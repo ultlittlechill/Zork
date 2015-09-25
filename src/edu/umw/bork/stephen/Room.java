@@ -23,17 +23,24 @@ public class Room {
         this.title = title;
     }
 
+    Room(Scanner s, Dungeon d) throws NoRoomException,
+        Dungeon.IllegalDungeonFormatException {
+
+        this(s, d, true);
+    }
+
     /** Given a Scanner object positioned at the beginning of a "room" file
         entry, read and return a Room object representing it. 
         @param d The containing {@link edu.umw.stephen.bork.Dungeon} object, 
         necessary to retrieve {@link edu.umw.stephen.bork.Item} objects.
+        @param includeItems should items listed for this room be added to it?
         @throws NoRoomException The reader object is not positioned at the
         start of a room entry. A side effect of this is the reader's cursor
         is now positioned one line past where it was.
         @throws IllegalDungeonFormatException A structural problem with the
         dungeon file itself, detected when trying to read this room.
      */
-    Room(Scanner s, Dungeon d) throws NoRoomException,
+    Room(Scanner s, Dungeon d, boolean includeItems) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {
 
         init();
@@ -50,8 +57,14 @@ public class Room {
             // If the current line starts with "Item: ", add the appropriate
             // item to this room's contents. Otherwise, it's part of the
             // textual description, so append it.
-            if (lineOfDesc.startsWith(ITEM_STARTER)) {
-                add(d.getItem(lineOfDesc.substring(ITEM_STARTER.length())));
+            if (lineOfDesc.startsWith(ITEM_STARTER) && includeItems) {
+                String itemName = lineOfDesc.substring(ITEM_STARTER.length());
+                try {
+                    add(d.getItem(itemName));
+                } catch (Item.NoItemException e) {
+                    throw new Dungeon.IllegalDungeonFormatException(
+                        "No such item " + itemName + ".");
+                }
             } else {
                 desc += lineOfDesc + "\n";
             }
@@ -81,16 +94,16 @@ public class Room {
      * passed.
      */
     void storeState(PrintWriter w) throws IOException {
-        // At this point, nothing to save for this room if the user hasn't
-        // visited it.
-        if (beenHere) {
-            w.println(title + ":");
-            w.println("beenHere=true");
-            w.println(Dungeon.SECOND_LEVEL_DELIM);
+        w.println(title + ":");
+        w.println("beenHere=" + beenHere);
+        for (Item item : contents) {
+            w.println(item.getName());
         }
+        w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
 
-    void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
+    void restoreState(Scanner s, Dungeon d) throws 
+        GameState.IllegalSaveFormatException {
 
         String line = s.nextLine();
         if (!line.startsWith("beenHere")) {
@@ -98,7 +111,16 @@ public class Room {
         }
         beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
 
-        s.nextLine();   // consume end-of-room delimiter
+        line = s.nextLine();
+        while (!line.equals(Dungeon.SECOND_LEVEL_DELIM)) {
+            try {
+                add(d.getItem(line));
+            } catch (Item.NoItemException e) {
+                throw new GameState.IllegalSaveFormatException(
+                    "No such item " + line + ".");
+            }
+            line = s.nextLine();
+        }
     }
 
     public String describe() {
