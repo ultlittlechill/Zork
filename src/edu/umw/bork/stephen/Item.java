@@ -8,7 +8,7 @@ public class Item {
 
     static class NoItemException extends Exception {}
 
-    private String name;
+    private String primaryName;
     private int weight;
     private Hashtable<String,String> messages;
 
@@ -19,7 +19,7 @@ public class Item {
 
     public Item(String name, int weight) {
         init();
-        this.name = name;
+        this.primaryName = primaryName;
         this.weight = weight;
     }
 
@@ -29,8 +29,8 @@ public class Item {
         init();
 
         // Read item name.
-        name = s.nextLine();
-        if (name.equals(Dungeon.TOP_LEVEL_DELIM)) {
+        primaryName = s.nextLine();
+        if (primaryName.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoItemException();
         }
 
@@ -53,16 +53,16 @@ public class Item {
 
     boolean goesBy(String name) {
         // could have other aliases
-        return this.name.equals(name);
+        return this.primaryName.equals(name);
     }
 
-    String getPrimaryName() { return name; }
+    String getPrimaryName() { return primaryName; }
 
     public String getMessageForVerb(String verb) {
         return messages.get(verb);
     }
 
     public String toString() {
-        return name;
+        return primaryName;
     }
 }
