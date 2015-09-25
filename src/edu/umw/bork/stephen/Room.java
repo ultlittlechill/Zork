@@ -102,8 +102,12 @@ public class Room {
     }
 
     public String describe() {
+        return describe(false);
+    }
+
+    public String describe(boolean full) {
         String description;
-        if (beenHere) {
+        if (beenHere && !full) {
             description = title;
         } else {
             description = title + "\n" + desc;
@@ -112,8 +116,10 @@ public class Room {
             description += "\nThere is a " + item.getName() + " here.";
         }
         if (contents.size() > 0) { description += "\n"; }
-        for (Exit exit : exits) {
-            description += "\n" + exit.describe();
+        if (!beenHere || full) {
+            for (Exit exit : exits) {
+                description += "\n" + exit.describe();
+            }
         }
         beenHere = true;
         return description;
@@ -134,6 +140,10 @@ public class Room {
 
     void add(Item item) {
         contents.add(item);
+    }
+
+    void remove(Item item) {
+        contents.remove(item);
     }
 
     Item getItem(String name) {

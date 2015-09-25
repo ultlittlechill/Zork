@@ -27,6 +27,18 @@ public class CommandFactory {
         if (verb.equals("save")) {
             return new SaveCommand(noun);
         }
+        if (verb.equals("take")) {
+            return new TakeCommand(noun);
+        }
+        if (verb.equals("drop")) {
+            return new DropCommand(noun);
+        }
+        if (verb.equals("look")) {
+            return new LookCommand();
+        }
+        if (verb.equals("i") || verb.equals("inventory")) {
+            return new InventoryCommand();
+        }
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }

@@ -91,6 +91,24 @@ public class GameState {
         return inventory;
     }
 
+    void addToInventory(Item item) /* throws TooHeavyException */ {
+        inventory.add(item);
+    }
+
+    void removeFromInventory(Item item) {
+        inventory.remove(item);
+    }
+
+    Item getItemFromInventoryNamed(String name) 
+        throws Item.NoItemException {
+
+        Item item = Item.getItemNamed(name);
+        if (inventory.contains(item)) {
+            return item;
+        }
+        throw new Item.NoItemException();
+    }
+
     Room getAdventurersCurrentRoom() {
         return adventurersCurrentRoom;
     }

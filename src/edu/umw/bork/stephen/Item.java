@@ -80,4 +80,8 @@ public class Item {
     public String getMessageForVerb(String verb) {
         return messages.get(verb);
     }
+
+    public String toString() {
+        return "A " + name;
+    }
 }
