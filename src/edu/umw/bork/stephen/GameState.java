@@ -64,8 +64,8 @@ public class GameState {
 
         s.nextLine();  // Throw away "Adventurer:".
         String currentRoomLine = s.nextLine();
-        GameState.instance().setAdventurersCurrentRoom(dungeon.getRoom(
-            currentRoomLine.substring(CURRENT_ROOM_LEADER.length())));
+        adventurersCurrentRoom = dungeon.getRoom(
+            currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
         if (s.hasNext()) {
             String inventoryList = s.nextLine().substring(
                 INVENTORY_LEADER.length());
@@ -91,8 +91,7 @@ public class GameState {
         w.println(SAVE_FILE_VERSION);
         dungeon.storeState(w);
         w.println(ADVENTURER_MARKER);
-        w.println(CURRENT_ROOM_LEADER + 
-            GameState.instance().getAdventurersCurrentRoom().getTitle());
+        w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
         if (inventory.size() > 0) {
             w.print(INVENTORY_LEADER);
             for (int i=0; i<inventory.size()-1; i++) {
