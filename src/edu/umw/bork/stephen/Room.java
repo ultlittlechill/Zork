@@ -33,14 +33,14 @@ public class Room {
         entry, read and return a Room object representing it. 
         @param d The containing {@link edu.umw.stephen.bork.Dungeon} object, 
         necessary to retrieve {@link edu.umw.stephen.bork.Item} objects.
-        @param includeItems should items listed for this room be added to it?
+        @param initState should items listed for this room be added to it?
         @throws NoRoomException The reader object is not positioned at the
         start of a room entry. A side effect of this is the reader's cursor
         is now positioned one line past where it was.
         @throws IllegalDungeonFormatException A structural problem with the
         dungeon file itself, detected when trying to read this room.
      */
-    Room(Scanner s, Dungeon d, boolean includeItems) throws NoRoomException,
+    Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {
 
         init();
@@ -60,7 +60,7 @@ public class Room {
             if (lineOfDesc.startsWith(ITEM_STARTER)) {
                 String itemName = lineOfDesc.substring(ITEM_STARTER.length());
                 try {
-                    if (includeItems) {
+                    if (initState) {
                         add(d.getItem(itemName));
                     }
                 } catch (Item.NoItemException e) {

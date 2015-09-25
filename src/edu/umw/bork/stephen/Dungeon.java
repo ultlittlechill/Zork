@@ -57,7 +57,7 @@ public class Dungeon {
      * Read from the .bork filename passed, and instantiate a Dungeon object
      * based on it, including (possibly) the items in their original locations.
      */
-    public Dungeon(String filename, boolean includeItems) 
+    public Dungeon(String filename, boolean initState) 
         throws FileNotFoundException, IllegalDungeonFormatException {
 
         init();
@@ -95,12 +95,12 @@ public class Dungeon {
 
         try {
             // Instantiate and add first room (the entry).
-            entry = new Room(s, this, includeItems);
+            entry = new Room(s, this, initState);
             add(entry);
 
             // Instantiate and add other rooms.
             while (true) {
-                add(new Room(s, this, includeItems));
+                add(new Room(s, this, initState));
             }
         } catch (Room.NoRoomException e) {  /* end of rooms */ }
 
