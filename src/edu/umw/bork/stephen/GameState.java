@@ -107,10 +107,6 @@ public class GameState {
         adventurersCurrentRoom = dungeon.getEntry();
     }
 
-    Dungeon getDungeon() {
-        return dungeon;
-    }
-
     ArrayList<String> getInventoryNames() {
         ArrayList<String> names = new ArrayList<String>();
         for (Item item : inventory) {
@@ -162,6 +158,10 @@ public class GameState {
 
     void setAdventurersCurrentRoom(Room room) {
         adventurersCurrentRoom = room;
+    }
+
+    Dungeon getDungeon() {
+        return dungeon;
     }
 
 }
