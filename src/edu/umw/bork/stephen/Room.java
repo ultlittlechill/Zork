@@ -57,10 +57,12 @@ public class Room {
             // If the current line starts with "Item: ", add the appropriate
             // item to this room's contents. Otherwise, it's part of the
             // textual description, so append it.
-            if (lineOfDesc.startsWith(ITEM_STARTER) && includeItems) {
+            if (lineOfDesc.startsWith(ITEM_STARTER)) {
                 String itemName = lineOfDesc.substring(ITEM_STARTER.length());
                 try {
-                    add(d.getItem(itemName));
+                    if (includeItems) {
+                        add(d.getItem(itemName));
+                    }
                 } catch (Item.NoItemException e) {
                     throw new Dungeon.IllegalDungeonFormatException(
                         "No such item " + itemName + ".");
