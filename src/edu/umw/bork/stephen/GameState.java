@@ -111,8 +111,12 @@ public class GameState {
         return dungeon;
     }
 
-    ArrayList<Item> getInventory() {
-        return inventory;
+    ArrayList<String> getInventoryNames() {
+        ArrayList<String> names = new ArrayList<String>();
+        for (Item item : inventory) {
+            names.add(item.getPrimaryName());
+        }
+        return names;
     }
 
     void addToInventory(Item item) /* throws TooHeavyException */ {

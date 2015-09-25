@@ -63,6 +63,6 @@ public class Item {
     }
 
     public String toString() {
-        return "A " + name;
+        return name;
     }
 }
