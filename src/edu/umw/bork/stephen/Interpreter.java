@@ -38,8 +38,7 @@ public class Interpreter {
             }
 
             System.out.print("\n" + 
-                GameState.instance().getAdventurersCurrentRoom().describe() + 
-                "\n");
+                state.getAdventurersCurrentRoom().describe() + "\n");
 
             command = promptUser(commandLine);
 
