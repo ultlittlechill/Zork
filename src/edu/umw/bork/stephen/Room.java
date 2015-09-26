@@ -10,7 +10,7 @@ public class Room {
 
     class NoRoomException extends Exception {}
 
-    static String ITEM_STARTER = "Item: ";
+    static String ITEMS_STARTER = "Items: ";
 
     private String title;
     private String desc;
@@ -54,18 +54,18 @@ public class Room {
         while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
                !lineOfDesc.equals(Dungeon.TOP_LEVEL_DELIM)) {
 
-            // If the current line starts with "Item: ", add the appropriate
-            // item to this room's contents. Otherwise, it's part of the
-            // textual description, so append it.
-            if (lineOfDesc.startsWith(ITEM_STARTER)) {
-                String itemName = lineOfDesc.substring(ITEM_STARTER.length());
-                try {
-                    if (initState) {
-                        add(d.getItem(itemName));
+            if (lineOfDesc.startsWith(ITEMS_STARTER)) {
+                String itemsList = lineOfDesc.substring(ITEMS_STARTER.length());
+                String[] itemNames = itemsList.split(",");
+                for (String itemName : itemNames) {
+                    try {
+                        if (initState) {
+                            add(d.getItem(itemName));
+                        }
+                    } catch (Item.NoItemException e) {
+                        throw new Dungeon.IllegalDungeonFormatException(
+                            "No such item '" + itemName + "'");
                     }
-                } catch (Item.NoItemException e) {
-                    throw new Dungeon.IllegalDungeonFormatException(
-                        "No such item " + itemName + ".");
                 }
             } else {
                 desc += lineOfDesc + "\n";
@@ -98,8 +98,12 @@ public class Room {
     void storeState(PrintWriter w) throws IOException {
         w.println(title + ":");
         w.println("beenHere=" + beenHere);
-        for (Item item : contents) {
-            w.println(item.getPrimaryName());
+        if (contents.size() > 0) {
+            w.print(ITEMS_STARTER);
+            for (int i=0; i<contents.size()-1; i++) {
+                w.print(contents.get(i).getPrimaryName() + ",");
+            }
+            w.println(contents.get(contents.size()-1).getPrimaryName());
         }
         w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
@@ -114,14 +118,18 @@ public class Room {
         beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
 
         line = s.nextLine();
-        while (!line.equals(Dungeon.SECOND_LEVEL_DELIM)) {
-            try {
-                add(d.getItem(line));
-            } catch (Item.NoItemException e) {
-                throw new GameState.IllegalSaveFormatException(
-                    "No such item " + line + ".");
+        if (line.startsWith(ITEMS_STARTER)) {
+            String itemsList = line.substring(ITEMS_STARTER.length());
+            String[] itemNames = itemsList.split(",");
+            for (String itemName : itemNames) {
+                try {
+                    add(d.getItem(itemName));
+                } catch (Item.NoItemException e) {
+                    throw new GameState.IllegalSaveFormatException(
+                        "No such item '" + itemName + "'");
+                }
             }
-            line = s.nextLine();
+            s.nextLine();  // Consume "---".
         }
     }
 

@@ -8,9 +8,23 @@ kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
 drink:Gulp, gulp -- that was GOOD!  *belch*
 ---
+magicWand
+5
+---
 StarWarsToy
 5
 touch:Yoda says, "Do, or do not! There is no try."
+break:Whoops!
+---
+chainsaw
+35
+---
+WawaTravelMug
+10
+---
+donut
+7
+eat:You feel mildly guilt-ridden.
 ---
 ===
 Rooms:
@@ -19,22 +33,24 @@ You are in a beautiful round entry chamber, with tall white pillars that
 seemingly reach to the skies. There is an elevator here.
 ---
 Basement hallway
-Item: DrPepper
+Items: DrPepper
 A long, white hallway stretches to the east and west. It is cold here, and you
 can detect the faint smell of body odor. A vending machine hums softly in the
 corner.
 ---
 Stephen's office
-Item: StarWarsToy
+Items: StarWarsToy,WawaTravelMug,donut
 This is a cluttered office, with many geeky toys sprawling on a desk.
 ---
 Room B6
 Sunlight streams through tall windows and illuminates a brilliant classroom.
+Items: chainsaw
 ---
 Rotunda balcony
 You stand on a circular white balcony overlooking an entry hall.
 Columnar bannisters in ancient Grecian style stand between you and the
 precipice.
+Items: magicWand
 ---
 ===
 Exits:
