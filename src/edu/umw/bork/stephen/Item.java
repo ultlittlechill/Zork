@@ -13,14 +13,10 @@ public class Item {
     private Hashtable<String,String> messages;
 
 
-    void init() {
-        messages = new Hashtable<String,String>();
-    }
-
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
-        init();
+        messages = new Hashtable<String,String>();
 
         // Read item name.
         primaryName = s.nextLine();
