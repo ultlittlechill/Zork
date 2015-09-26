@@ -17,12 +17,6 @@ public class Item {
         messages = new Hashtable<String,String>();
     }
 
-    public Item(String primaryName, int weight) {
-        init();
-        this.primaryName = primaryName;
-        this.weight = weight;
-    }
-
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
