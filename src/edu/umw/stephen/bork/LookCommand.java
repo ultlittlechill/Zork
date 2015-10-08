@@ -1,5 +1,5 @@
 
-package edu.umw.bork.stephen;
+package edu.umw.stephen.bork;
 
 class LookCommand extends Command {
 
