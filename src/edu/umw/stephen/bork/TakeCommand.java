@@ -1,6 +1,8 @@
 
 package edu.umw.stephen.bork;
 
+import java.util.ArrayList;
+
 class TakeCommand extends Command {
 
     private String itemName;
@@ -13,10 +15,28 @@ class TakeCommand extends Command {
         if (itemName == null || itemName.trim().length() == 0) {
             return "Take what?\n";
         }
+        if (itemName.equals("all")) {
+            ArrayList<Item> roomContents = (ArrayList<Item>) 
+                GameState.instance().getAdventurersCurrentRoom().
+                getContents().clone();
+            if (roomContents.size() == 0) {
+                return "There's nothing here to take.\n";
+            }
+            String retval = "";
+            for (Item item : roomContents) {
+                retval += tryToTakeItemNamed(item.getPrimaryName());
+            }
+            return retval;
+        } else {
+            return tryToTakeItemNamed(itemName);
+        }
+    }
+
+    private String tryToTakeItemNamed(String name) {
         try {
             Room currentRoom = 
                 GameState.instance().getAdventurersCurrentRoom();
-            Item theItem = currentRoom.getItemNamed(itemName);
+            Item theItem = currentRoom.getItemNamed(name);
 
             if (GameState.instance().weightCarried() + theItem.getWeight()
                 > GameState.MAX_CARRY_WEIGHT) {
@@ -25,10 +45,10 @@ class TakeCommand extends Command {
 
             GameState.instance().addToInventory(theItem);
             currentRoom.remove(theItem);
-            return capitalize(itemName) + " taken.\n";
+            return capitalize(name) + " taken.\n";
 
         } catch (Item.NoItemException e) {
-            return "There's no " + itemName + " here.\n";
+            return "There's no " + name + " here.\n";
         }
     }
 
