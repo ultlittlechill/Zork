@@ -18,7 +18,7 @@ class DropCommand extends Command {
                 itemName);
             GameState.instance().removeFromInventory(theItem);
             GameState.instance().getAdventurersCurrentRoom().add(theItem);
-            return itemName + " dropped.\n";
+            return TakeCommand.capitalize(itemName) + " dropped.\n";
         } catch (Item.NoItemException e) {
             return "You don't have a " + itemName + ".\n";
         }

@@ -2,7 +2,7 @@ Trinkle
 Bork v3.0
 ===
 Items:
-Dr. Pepper
+Dr. Pepper,soda,can,pop
 10
 jump on:The can teeters under your weight and collapses.
 kick:The can skitters down the hallway.
@@ -10,11 +10,11 @@ shake:A liquid fizzes menacingly inside the can.
 drink:Gulp, gulp -- that was GOOD!  *belch*
 guzzle down:You drink so fast that it comes up your nose.
 ---
-magic wand
+magic wand,wand
 5
 wave:What are you, Harry Potter?
 ---
-Star Wars toy
+Star Wars toy,toy,Yoda,yoda,doll
 5
 touch:Yoda says, "Do, or do not! There is no try."
 break:Whoops!
@@ -22,10 +22,10 @@ break:Whoops!
 chainsaw
 35
 ---
-Wawa travel mug
+Wawa travel mug,travel mug,mug
 10
 ---
-donut
+donut,doughnut
 7
 eat:You feel mildly guilt-ridden.
 chow down:MMMM that was good!!

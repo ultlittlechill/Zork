@@ -19,9 +19,13 @@ class TakeCommand extends Command {
             Item theItem = currentRoom.getItemNamed(itemName);
             GameState.instance().addToInventory(theItem);
             currentRoom.remove(theItem);
-            return itemName + " taken.\n";
+            return capitalize(itemName) + " taken.\n";
         } catch (Item.NoItemException e) {
             return "There's no " + itemName + " here.\n";
         }
+    }
+
+    static String capitalize(String s) {
+        return Character.toUpperCase(s.charAt(0)) + s.substring(1);
     }
 }

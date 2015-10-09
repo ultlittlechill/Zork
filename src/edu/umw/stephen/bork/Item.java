@@ -3,26 +3,40 @@ package edu.umw.stephen.bork;
 
 import java.util.Scanner;
 import java.util.Hashtable;
+import java.util.ArrayList;
 
 public class Item {
 
     static class NoItemException extends Exception {}
 
     private String primaryName;
+    private ArrayList<String> aliases;
     private int weight;
     private Hashtable<String,String> messages;
 
 
+    private void init() {
+        messages = new Hashtable<String,String>();
+        aliases = new ArrayList<String>();
+    }
+
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
-        messages = new Hashtable<String,String>();
+        init();
 
         // Read item name.
-        primaryName = s.nextLine();
-        if (primaryName.equals(Dungeon.TOP_LEVEL_DELIM)) {
+        String namesLine = s.nextLine();
+        if (namesLine.equals(Dungeon.TOP_LEVEL_DELIM)) {
             throw new NoItemException();
         }
+
+        String[] names = namesLine.split(",");
+        primaryName = names[0];
+        for (int i=1; i<names.length; i++) {
+            aliases.add(names[i]);
+        }
+        
 
         // Read item weight.
         weight = Integer.valueOf(s.nextLine());
@@ -42,8 +56,7 @@ public class Item {
     }
 
     boolean goesBy(String name) {
-        // could have other aliases
-        return this.primaryName.equals(name);
+        return primaryName.equals(name) || aliases.contains(name);
     }
 
     String getPrimaryName() { return primaryName; }
