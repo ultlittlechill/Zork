@@ -4,12 +4,15 @@ Bork v3.0
 Items:
 Dr. Pepper
 10
+jump on:The can teeters under your weight and collapses.
 kick:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
 drink:Gulp, gulp -- that was GOOD!  *belch*
+guzzle down:You drink so fast that it comes up your nose.
 ---
 magic wand
 5
+wave:What are you, Harry Potter?
 ---
 Star Wars toy
 5
@@ -25,6 +28,7 @@ Wawa travel mug
 donut
 7
 eat:You feel mildly guilt-ridden.
+chow down:MMMM that was good!!
 ---
 ===
 Rooms:

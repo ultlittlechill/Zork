@@ -28,10 +28,10 @@ public class CommandFactory {
             return new SaveCommand(noun);
         }
         if (verb.equals("take")) {
-            return new TakeCommand(noun);
+            return new TakeCommand(pasteSecondAndBeyond(parts));
         }
         if (verb.equals("drop")) {
-            return new DropCommand(noun);
+            return new DropCommand(pasteSecondAndBeyond(parts));
         }
         if (verb.equals("look")) {
             return new LookCommand();
@@ -42,9 +42,20 @@ public class CommandFactory {
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }
-        if (parts.length == 2) {
-            return new ItemSpecificCommand(verb, noun);
+        if (parts.length >= 2) {
+            return new ItemSpecificCommand(command);
         }
         return new UnknownCommand(command);
+    }
+
+    private String pasteSecondAndBeyond(String[] parts) {
+        if (parts.length < 2) {
+            return "";
+        }
+        String string = parts[1];
+        for (int i=2; i<parts.length; i++) {
+            string += " " + parts[i];
+        }
+        return string;
     }
 }
