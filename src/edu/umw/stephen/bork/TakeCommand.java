@@ -16,9 +16,9 @@ class TakeCommand extends Command {
             return "Take what?\n";
         }
         if (itemName.equals("all")) {
-            ArrayList<Item> roomContents = (ArrayList<Item>) 
+            ArrayList<Item> roomContents = new ArrayList<Item>(
                 GameState.instance().getAdventurersCurrentRoom().
-                getContents().clone();
+                getContents());
             if (roomContents.size() == 0) {
                 return "There's nothing here to take.\n";
             }
