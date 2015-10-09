@@ -2,21 +2,21 @@ Trinkle
 Bork v3.0
 ===
 Items:
-Dr. Pepper,soda,can,pop
+Dr. Pepper,Dr Pepper,dr pepper,pepper,soda,can,pop
 10
 jump on,stand on:The can teeters under your weight and collapses.
-kick,throw,pitch,huck:The can skitters down the hallway.
-shake:A liquid fizzes menacingly inside the can.
-drink,quaff,imbibe,guzzle:Gulp, gulp -- that was GOOD!  *belch*
+kick,throw,pitch,huck:The can skitters down the hallway.|Weee!
+shake:A liquid fizzes menacingly inside the can.|*Fizzzz*|Slosh, slosh.
+drink,quaff,imbibe,guzzle:Gulp, gulp -- that was GOOD!  *belch*|Hits the spot!|*Buurrrrrrrrrp.*
 guzzle down:You drink so fast that it comes up your nose.
 ---
 magic wand,wand
 5
-wave,wield:What are you, Harry Potter?
+wave,wield:What are you, Harry Potter?|The wand does nothing.|Wow, that was fun.
 ---
 Star Wars toy,toy,Yoda,yoda,doll
 5
-touch,tickle,poke:Yoda says, "Do, or do not! There is no try."
+touch,tickle,poke:Yoda says, "Do, or do not! There is no try."|Yoda asks, "So certain are you?"|Yoda says, "My ally is the Force -- and a powerful ally it is."
 break:Whoops!
 ---
 chainsaw
@@ -30,8 +30,8 @@ empty:The mug is already empty.
 ---
 donut,doughnut
 7
-eat:You feel mildly guilt-ridden.
-chow down:MMMM that was good!!
+eat:You feel mildly guilt-ridden.|*Munch.*
+chow down:MMMM that was good!!|*Munch.*
 ---
 ===
 Rooms:

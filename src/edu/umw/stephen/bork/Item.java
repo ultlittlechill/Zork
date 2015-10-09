@@ -4,19 +4,22 @@ package edu.umw.stephen.bork;
 import java.util.Scanner;
 import java.util.Hashtable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 public class Item {
 
     static class NoItemException extends Exception {}
+    static Random rng = new Random();
 
     private String primaryName;
     private ArrayList<String> aliases;
     private int weight;
-    private Hashtable<String,String> messages;
+    private Hashtable<String,String[]> messages;
 
 
     private void init() {
-        messages = new Hashtable<String,String>();
+        messages = new Hashtable<String,String[]>();
         aliases = new ArrayList<String>();
     }
 
@@ -50,8 +53,9 @@ public class Item {
             }
             String[] verbParts = verbLine.split(":");
             String[] verbAliases = verbParts[0].split(",");
+            String[] messageTexts = verbParts[1].split("\\|");
             for (String verbAlias : verbAliases) {
-                messages.put(verbAlias,verbParts[1]);
+                messages.put(verbAlias, messageTexts);
             }
             
             verbLine = s.nextLine();
@@ -65,7 +69,8 @@ public class Item {
     String getPrimaryName() { return primaryName; }
 
     public String getMessageForVerb(String verb) {
-        return messages.get(verb);
+        String[] possibleMessages = messages.get(verb);
+        return possibleMessages[rng.nextInt(possibleMessages.length)];
     }
 
     public String toString() {
