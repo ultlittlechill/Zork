@@ -17,9 +17,16 @@ class TakeCommand extends Command {
             Room currentRoom = 
                 GameState.instance().getAdventurersCurrentRoom();
             Item theItem = currentRoom.getItemNamed(itemName);
+
+            if (GameState.instance().weightCarried() + theItem.getWeight()
+                > GameState.MAX_CARRY_WEIGHT) {
+                return "Your load is too heavy.\n";
+            }
+
             GameState.instance().addToInventory(theItem);
             currentRoom.remove(theItem);
             return capitalize(itemName) + " taken.\n";
+
         } catch (Item.NoItemException e) {
             return "There's no " + itemName + " here.\n";
         }

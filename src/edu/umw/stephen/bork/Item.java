@@ -71,4 +71,8 @@ public class Item {
     public String toString() {
         return primaryName;
     }
+
+    public int getWeight() {
+        return weight;
+    }
 }
