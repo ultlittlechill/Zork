@@ -4,26 +4,29 @@ Bork v3.0
 Items:
 Dr. Pepper,soda,can,pop
 10
-jump on:The can teeters under your weight and collapses.
-kick:The can skitters down the hallway.
+jump on,stand on:The can teeters under your weight and collapses.
+kick,throw,pitch,huck:The can skitters down the hallway.
 shake:A liquid fizzes menacingly inside the can.
-drink:Gulp, gulp -- that was GOOD!  *belch*
+drink,quaff,imbibe,guzzle:Gulp, gulp -- that was GOOD!  *belch*
 guzzle down:You drink so fast that it comes up your nose.
 ---
 magic wand,wand
 5
-wave:What are you, Harry Potter?
+wave,wield:What are you, Harry Potter?
 ---
 Star Wars toy,toy,Yoda,yoda,doll
 5
-touch:Yoda says, "Do, or do not! There is no try."
+touch,tickle,poke:Yoda says, "Do, or do not! There is no try."
 break:Whoops!
 ---
 chainsaw
 35
+use,start,start up:The chainsaw appears to be out of gas.
 ---
 Wawa travel mug,travel mug,mug
 10
+fill,fill up:There's nothing to fill the mug with.
+empty:The mug is already empty.
 ---
 donut,doughnut
 7

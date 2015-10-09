@@ -49,7 +49,10 @@ public class Item {
                     Dungeon.SECOND_LEVEL_DELIM + "' after item.");
             }
             String[] verbParts = verbLine.split(":");
-            messages.put(verbParts[0],verbParts[1]);
+            String[] verbAliases = verbParts[0].split(",");
+            for (String verbAlias : verbAliases) {
+                messages.put(verbAlias,verbParts[1]);
+            }
             
             verbLine = s.nextLine();
         }
