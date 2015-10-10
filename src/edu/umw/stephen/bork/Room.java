@@ -10,7 +10,7 @@ public class Room {
 
     class NoRoomException extends Exception {}
 
-    static String ITEMS_STARTER = "Items: ";
+    static String CONTENTS_STARTER = "Contents: ";
 
     private String title;
     private String desc;
@@ -54,8 +54,8 @@ public class Room {
         while (!lineOfDesc.equals(Dungeon.SECOND_LEVEL_DELIM) &&
                !lineOfDesc.equals(Dungeon.TOP_LEVEL_DELIM)) {
 
-            if (lineOfDesc.startsWith(ITEMS_STARTER)) {
-                String itemsList = lineOfDesc.substring(ITEMS_STARTER.length());
+            if (lineOfDesc.startsWith(CONTENTS_STARTER)) {
+                String itemsList = lineOfDesc.substring(CONTENTS_STARTER.length());
                 String[] itemNames = itemsList.split(",");
                 for (String itemName : itemNames) {
                     try {
@@ -99,7 +99,7 @@ public class Room {
         w.println(title + ":");
         w.println("beenHere=" + beenHere);
         if (contents.size() > 0) {
-            w.print(ITEMS_STARTER);
+            w.print(CONTENTS_STARTER);
             for (int i=0; i<contents.size()-1; i++) {
                 w.print(contents.get(i).getPrimaryName() + ",");
             }
@@ -118,8 +118,8 @@ public class Room {
         beenHere = Boolean.valueOf(line.substring(line.indexOf("=")+1));
 
         line = s.nextLine();
-        if (line.startsWith(ITEMS_STARTER)) {
-            String itemsList = line.substring(ITEMS_STARTER.length());
+        if (line.startsWith(CONTENTS_STARTER)) {
+            String itemsList = line.substring(CONTENTS_STARTER.length());
             String[] itemNames = itemsList.split(",");
             for (String itemName : itemNames) {
                 try {
