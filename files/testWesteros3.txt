@@ -1,0 +1,27 @@
+n
+n
+n
+take BastardSword
+take dragonglass
+s
+drop BastardSword
+take dagger
+s
+s
+s
+s
+s
+take wildfire
+e
+e
+i
+light wildfire
+examine dagger
+examine BastardSword
+examine BlackDragonEgg
+drop wildfire
+drop dagger
+take GreenDragonEgg
+i
+save myProgress.sav
+q
