@@ -22,7 +22,7 @@ s
 4
 examine:This is a dainty jeweled necklace sparkling blue.
 ---
-w
+wf
 2
 examine:This is a curious green liquid. You wonder what would happen if you tried to light it.
 light:The wildfire explodes in a dazzling mushroom cloud, killing you and everyone else in the world. Just kidding.
@@ -140,7 +140,7 @@ are hundreds of mineshafts in the depths of the Rock, as well as yet untouched
 gold veins. From below the Rock thunder can be heard, where the sea comes in.
 ---
 King's Landing
-Contents: w,s
+Contents: wf,s
 This extraordinary city is extremely populous, but rather unsightly and dirty
 compared to other cities. The city is roughly square-shaped, sprawling across
 several miles and defended by tall walls. Poorer smallfolk build shanty
