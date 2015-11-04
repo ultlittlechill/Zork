@@ -36,7 +36,7 @@ public class Dungeon {
     private String filename;
 
     /**
-    Creates a Dungeon object when passed a String for the name and a Room for the entry. 
+    Creates a Dungeon object when passed a String for the name and a Room for the entry.
     */
     Dungeon(String name, Room entry) {
         init();
@@ -47,8 +47,9 @@ public class Dungeon {
     }
 
     /**
-     * Read from the .bork filename passed, and instantiate a Dungeon object
-     * based on it.
+     Creates a Dungeon object from the filename passed. Throws FileNotFoundException if there is no file 
+     * Read from the .zork filename passed.Throws a IllegalDungeonFormatException if the zork file does not meet 
+     * the proper requirements.
      */
     public Dungeon(String filename) throws FileNotFoundException, 
         IllegalDungeonFormatException {
@@ -57,8 +58,9 @@ public class Dungeon {
     }
 
     /**
-     * Read from the .bork filename passed, and instantiate a Dungeon object
-     * based on it, including (possibly) the items in their original locations.
+	Creates a Dungeon object from the filename passed, and can place its items in thier origonal locations.
+	If the filename is null throws a FileNotFoundExeption. Throws an IllegalDungeonFormatException if the zork file
+	does not meet the proper requirements.
      */
     public Dungeon(String filename, boolean initState) 
         throws FileNotFoundException, IllegalDungeonFormatException {
@@ -123,16 +125,16 @@ public class Dungeon {
         s.close();
     }
     
-    // Common object initialization tasks, regardless of which constructor
-    // is used.
+/**Common object initialization tasks, regardless of which constructor
+    is used.*/
     private void init() {
         rooms = new Hashtable<String,Room>();
         items = new Hashtable<String,Item>();
     }
 
-    /*
+    /**
      * Store the current (changeable) state of this dungeon to the writer
-     * passed.
+     * passed. Passes IOException up the chain from Room.storeState()
      */
     void storeState(PrintWriter w) throws IOException {
         w.println(FILENAME_LEADER + getFilename());
@@ -143,9 +145,10 @@ public class Dungeon {
         w.println(TOP_LEVEL_DELIM);
     }
 
-    /*
+    /**
      * Restore the (changeable) state of this dungeon to that reflected in the
-     * reader passed.
+     * reader passed. Throws IllegalSaveFormatException if there is no "Room states:" marker after the dungeon filename
+     * @param Scanner of the save file of the dungeon. 
      */
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
@@ -164,12 +167,23 @@ public class Dungeon {
         }
     }
 
+/**returns the entry room this dungeon
+   @return The entry room of te dungeon*/
     public Room getEntry() { return entry; }
+
+/**returns the name of this dungeon as a String*/
     public String getName() { return name; }
+
+/**returns the String of the file's name the dungeon is built from*/
     public String getFilename() { return filename; }
+
+/**adds the room passed to this Dugeon's collection of rooms*/
     public void add(Room room) { rooms.put(room.getTitle(),room); }
+
+/**adds the item passed to this Dungeon's collection of Items*/
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
+/**returns the room in this dungeon who's name that matches the String passed*/
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
