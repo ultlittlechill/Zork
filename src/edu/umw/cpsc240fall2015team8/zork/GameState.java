@@ -9,6 +9,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+/**
+Manages the state of the player and the game, allowing for both saving and loading the sate.
+*/
 public class GameState {
 
     public static class IllegalSaveFormatException extends Exception {
@@ -32,6 +35,9 @@ public class GameState {
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
 
+    /**
+	Returns the GameState. If no GameState exists, it creates one and the returns it.
+    */
     static synchronized GameState instance() {
         if (theInstance == null) {
             theInstance = new GameState();
@@ -39,10 +45,18 @@ public class GameState {
         return theInstance;
     }
 
+    /**
+	Creates a new GameState object by initializing the player's inventory.
+    */
     private GameState() {
         inventory = new ArrayList<Item>();
     }
 
+    /**
+	Loads the GameState from a file represented by the given string. Throws FileNotFoundException if there is no file with the same name as the given string.
+	Throws IllegalSaveFormatException if the file is not properly formatted.
+	Throws IllegalDungeonFormatException if the dungeon file contained in the save file is not formatted correctly.
+    */
     void restore(String filename) throws FileNotFoundException,
         IllegalSaveFormatException, Dungeon.IllegalDungeonFormatException {
 
@@ -83,10 +97,17 @@ public class GameState {
         }
     }
 
+    /**
+	Calls the other store method with the default save file as an arguement.
+    */
     void store() throws IOException {
         store(DEFAULT_SAVE_FILE);
     }
 
+    /**
+	Saves the current state of the game to a file represented by the given string. 
+	Throws an IOException if PrintWriter throws an IOException
+    */
     void store(String saveName) throws IOException {
         String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
@@ -104,11 +125,17 @@ public class GameState {
         w.close();
     }
 
+    /**
+	Initializes the GameState to hold the passed dungeon and the current room to be the dungeon's entry. If null is passed, a null pointer exception will be thrown.
+    */
     void initialize(Dungeon dungeon) {
         this.dungeon = dungeon;
         adventurersCurrentRoom = dungeon.getEntry();
     }
 
+    /**
+	Returns an ArrayList of strings containing the names of all of the items in the player's inventory. If no items are in the player's inventory, returns an empty ArrayList.
+    */
     ArrayList<String> getInventoryNames() {
         ArrayList<String> names = new ArrayList<String>();
         for (Item item : inventory) {
@@ -117,14 +144,24 @@ public class GameState {
         return names;
     }
 
+    /**
+	Adds the passed item to the player's inventory. If null is passed, nothing changes.
+    */
     void addToInventory(Item item) /* throws TooHeavyException */ {
         inventory.add(item);
     }
 
+    /**
+	Removes the given item from the player's inventory. If null is passed, nbothing changes.
+    */
     void removeFromInventory(Item item) {
         inventory.remove(item);
     }
 
+    /**
+	Returns the Item from the current Room or inventory which has a name equal to the string passed.
+	If no Item is found, or if null is passed, throws NoItemException.
+    */
     Item getItemInVicinityNamed(String name) throws Item.NoItemException {
 
         // First, check inventory.
@@ -144,6 +181,10 @@ public class GameState {
         throw new Item.NoItemException();
     }
 
+    /**
+	Returns the item in the player's inventory whose name matches the given string. 
+	If the item is not in the player's inventory or null is passed, throws NoItemException.
+    */
     Item getItemFromInventoryNamed(String name) throws Item.NoItemException {
 
         for (Item item : inventory) {
@@ -154,6 +195,9 @@ public class GameState {
         throw new Item.NoItemException();
     }
 
+    /**
+	Returns the total weight carried in the player's inventory.
+    */
     int weightCarried() {
         int weight = 0;
         for (Item item : inventory) {
@@ -162,14 +206,23 @@ public class GameState {
         return weight;
     }
 
+    /**
+	Returns the room that the player is curently in.
+    */
     Room getAdventurersCurrentRoom() {
         return adventurersCurrentRoom;
     }
 
+    /**
+	Sets the current Room to the given Room.
+    */
     void setAdventurersCurrentRoom(Room room) {
         adventurersCurrentRoom = room;
     }
 
+    /**
+	Returns the Dungeon held by the GameState.
+    */
     Dungeon getDungeon() {
         return dungeon;
     }
