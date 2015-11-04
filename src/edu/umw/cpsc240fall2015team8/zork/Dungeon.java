@@ -35,6 +35,9 @@ public class Dungeon {
     private Hashtable<String,Item> items;
     private String filename;
 
+    /**
+    Creates a Dungeon object when passed a String for the name and a Room for the entry. 
+    */
     Dungeon(String name, Room entry) {
         init();
         this.filename = null;    // null indicates not hydrated from file.
