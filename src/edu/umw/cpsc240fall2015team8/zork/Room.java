@@ -29,16 +29,8 @@ public class Room {
         this(s, d, true);
     }
 
-    /** Given a Scanner object positioned at the beginning of a "room" file
-        entry, read and return a Room object representing it. 
-        @param d The containing {@link edu.umw.cpsc240fall2015team8.zork.Dungeon} object, 
-        necessary to retrieve {@link edu.umw.cpsc240fall2015team8.zork.Item} objects.
-        @param initState should items listed for this room be added to it?
-        @throws NoRoomException The reader object is not positioned at the
-        start of a room entry. A side effect of this is the reader's cursor
-        is now positioned one line past where it was.
-        @throws IllegalDungeonFormatException A structural problem with the
-        dungeon file itself, detected when trying to read this room.
+    /**
+	Creates a new room object from a given scanner, dungeon object, and boolean. If the boolean is true, items are added. If the boolean is false, no items are added. If the file is inproperly formatted, then a IllegalDungeonFormatException is thrown. If the file contains no data representing a room, then the NoRoomException is trown.  
      */
     Room(Scanner s, Dungeon d, boolean initState) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {
