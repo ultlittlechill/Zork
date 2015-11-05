@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 public class Dungeon {
 
     public static class IllegalDungeonFormatException extends Exception {
+/**Creates a IllegalDungeonFormatException*/
         public IllegalDungeonFormatException(String e) {
             super(e);
         }
@@ -47,9 +48,9 @@ public class Dungeon {
     }
 
     /**
-     Creates a Dungeon object from the filename passed. Throws FileNotFoundException if there is no file 
-     * Read from the .zork filename passed.Throws a IllegalDungeonFormatException if the zork file does not meet 
-     * the proper requirements.
+ Creates a Dungeon object from the filename passed.
+ @Throws FileNotFoundException if it can not find the file from the filename passed
+ @Throws IllegalDungeonFormatException if the zork file does not meet the proper requirements.
      */
     public Dungeon(String filename) throws FileNotFoundException, 
         IllegalDungeonFormatException {
@@ -59,8 +60,8 @@ public class Dungeon {
 
     /**
 	Creates a Dungeon object from the filename passed, and can place its items in thier origonal locations.
-	If the filename is null throws a FileNotFoundExeption. Throws an IllegalDungeonFormatException if the zork file
-	does not meet the proper requirements.
+	@Throws FileNotFoundException if it can not find the file from the filename passed
+	@Throws IllegalDungeonFormatException if the zork file does not meet the proper requirements
      */
     public Dungeon(String filename, boolean initState) 
         throws FileNotFoundException, IllegalDungeonFormatException {
@@ -134,7 +135,8 @@ public class Dungeon {
 
     /**
      * Store the current (changeable) state of this dungeon to the writer
-     * passed. Passes IOException up the chain from Room.storeState()
+     * passed. 
+     @Throws IOException if Room.storeState() throws IOException
      */
     void storeState(PrintWriter w) throws IOException {
         w.println(FILENAME_LEADER + getFilename());
@@ -147,8 +149,9 @@ public class Dungeon {
 
     /**
      * Restore the (changeable) state of this dungeon to that reflected in the
-     * reader passed. Throws IllegalSaveFormatException if there is no "Room states:" marker after the dungeon filename
-     * @param Scanner of the save file of the dungeon. 
+     * reader passed.
+     * @param Scanner of the save file of the dungeon.
+     * @Throws IllegalSaveFormatException if there is no "Room states:" marker after the dungeon file name
      */
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
 
@@ -192,6 +195,8 @@ public class Dungeon {
      * Get the Item object whose primary name is passed. This has nothing to
      * do with where the Adventurer might be, or what's in his/her inventory,
      * etc.
+     * @Throws NoItemExcpetion if the item does not exist
+     * @param String The primary name of the Item that is to be returned.
      */
     public Item getItem(String primaryItemName) throws Item.NoItemException {
         
