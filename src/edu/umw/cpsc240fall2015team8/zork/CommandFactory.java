@@ -10,6 +10,7 @@ public class CommandFactory {
     public static List<String> MOVEMENT_COMMANDS = 
         Arrays.asList("n","w","e","s","u","d" );
 
+/**returns the one and only instance of the CommandFactory*/
     public static synchronized CommandFactory instance() {
         if (theInstance == null) {
             theInstance = new CommandFactory();
@@ -17,9 +18,12 @@ public class CommandFactory {
         return theInstance;
     }
 
+/**Instantiates a new CommandFactory Object*/
     private CommandFactory() {
     }
 
+/**Returns a different subclass of Command depending on what verb is found in the String passed.
+If the verb can not be parsed from the String or a verb is not recognized returns an UnknownCommand*/
     public Command parse(String command) {
         String parts[] = command.split(" ");
         String verb = parts[0];
@@ -48,6 +52,8 @@ public class CommandFactory {
         return new UnknownCommand(command);
     }
 
+/**converts and returns an array of Strings into one String with words seperated by spaces, skipping the first word in the array.
+If the array is shorter than two returns an empty String*/
     private String pasteSecondAndBeyond(String[] parts) {
         if (parts.length < 2) {
             return "";
