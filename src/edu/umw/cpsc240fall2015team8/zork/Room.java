@@ -6,6 +6,9 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+    Contains Items and Exits, as well as a title, and description. There are also methods used to manipuuluate the stored data.
+*/
 public class Room {
 
     class NoRoomException extends Exception {}
@@ -18,11 +21,17 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
 
+    /**
+	Creates a new room object from a given string. If the string is null, it still works.
+    */
     Room(String title) {
         init();
         this.title = title;
     }
 
+    /**
+	Creates a new room object from a given scanner and dungeon. If the file represented by scanner is not formatted correctly, throws an IllegalDungeonFormatException. If there is no room represented in the scanner, throws a NoRoomException.
+    */
     Room(Scanner s, Dungeon d) throws NoRoomException,
         Dungeon.IllegalDungeonFormatException {
 
@@ -73,20 +82,32 @@ public class Room {
     }
 
     // Common object initialization tasks.
+    /**
+	Initializes basic variables to be used. 
+    */
     private void init() {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
         beenHere = false;
     }
-
+    /**
+	Returns the title of the room.
+    */
     String getTitle() { return title; }
 
+    /**
+	Sets the description for the room to be the given string. If given string is null, it still works the same way.
+    */
     void setDesc(String desc) { this.desc = desc; }
 
     /*
      * Store the current (changeable) state of this room to the writer
      * passed.
      */
+
+    /**
+	Stores the state of the room to the PrintWriter given. Throws IOException if PrintWriter throws an IOException. 
+    */
     void storeState(PrintWriter w) throws IOException {
         w.println(title + ":");
         w.println("beenHere=" + beenHere);
@@ -100,6 +121,9 @@ public class Room {
         w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
 
+    /**
+	Changes the state of the room to reflect the state of the room represented in the given scanner. Uses the given dungeon object to obtain the Items needed. Throws IllegalSaveFromatException if the file represented by the scanner is not properly formatted. 
+    */
     void restoreState(Scanner s, Dungeon d) throws 
         GameState.IllegalSaveFormatException {
 
@@ -125,10 +149,16 @@ public class Room {
         }
     }
 
+    /**
+	Returns the return value from describe(boolean) with an arguement of false.
+    */
     public String describe() {
         return describe(false);
     }
 
+    /**
+	Returns a string containing the exits from this room, the items in this room, and a description of this room. If the room has been visited already, then the description is only the title, else it is the title and the set description. If the player typed look, then this is all overriden and the description is both the title and the set description.
+    */
     public String describe(boolean full) {
         String description;
         if (beenHere && !full) {
@@ -149,6 +179,9 @@ public class Room {
         return description;
     }
     
+    /**
+	Returns the room object that a player would be in if they were to exit in the direction passed. If there is no room in the direction passed, returns null.
+    */
     public Room leaveBy(String dir) {
         for (Exit exit : exits) {
             if (exit.getDir().equals(dir)) {
@@ -158,18 +191,30 @@ public class Room {
         return null;
     }
 
+    /**
+	Adds the passed Exit into this room's collection of exits. If null is passed, it behaves the same way.
+    */
     void addExit(Exit exit) {
         exits.add(exit);
     }
 
+    /**
+	Adds the passed Item to this room's collection of items. If null is passed, it behaves the same way.
+    */
     void add(Item item) {
         contents.add(item);
     }
 
+    /**
+	Removes the passed Item from this room's collection of items. If null is passed, behaves the same way.
+    */
     void remove(Item item) {
         contents.remove(item);
     }
 
+    /**
+	Returns the Item from this room's collection of items whose name matches the given string. If no item matches, throws NoItemException.
+    */
     Item getItemNamed(String name) throws Item.NoItemException {
         for (Item item : contents) {
             if (item.goesBy(name)) {
@@ -179,6 +224,9 @@ public class Room {
         throw new Item.NoItemException();
     }
 
+    /**
+	Reuturns an ArrayList of items that contains all of the items contained in this room. If no items are contained in this room, then an empty ArrayList is returned.
+    */
     ArrayList<Item> getContents() {
         return contents;
     }
