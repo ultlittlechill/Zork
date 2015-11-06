@@ -4,7 +4,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**Acts like an Item, but a durrable Item has a limited number of uses before it is 
 broken or destroyed. Durrable Items that have been broken can be repaired.*/
-public class Item {
+public class DurableItem {
 
 	private int health;
 	private int durablility;
