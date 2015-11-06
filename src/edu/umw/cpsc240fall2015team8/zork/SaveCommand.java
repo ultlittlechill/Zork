@@ -3,6 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**
 Saves the current state of the game to a file in order to be loaded and resumed later.
+@author Austin
 */
 class SaveCommand extends Command {
 

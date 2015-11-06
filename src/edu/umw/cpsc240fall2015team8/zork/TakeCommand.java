@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 /**
 Moves an Item from the current Room and places it into the player's inventory.
+@author Austin
 */
 class TakeCommand extends Command {
 

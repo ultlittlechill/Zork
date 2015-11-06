@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 
 /**
     Contains Items and Exits, as well as a title, and description. There are also methods used to manipuuluate the stored data.
+@author Austin
 */
 public class Room {
 

@@ -3,6 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**
 Gives the description of the current Room.
+@author Austin
 */
 class LookCommand extends Command {
 

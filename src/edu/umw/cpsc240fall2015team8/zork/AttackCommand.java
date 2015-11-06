@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
 Resolves conflict between the player and an NPC. Damage is dealt to the loser.
+@author Austin
 */
 class AttackCommand extends Command {
 

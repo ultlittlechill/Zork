@@ -2,6 +2,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**
 Resolves confilct between the player and an Npc with the player using a heavy attack.
+@author Austin
 */
 class HeavyAttackCommand extends AttackCommanad {
 	
