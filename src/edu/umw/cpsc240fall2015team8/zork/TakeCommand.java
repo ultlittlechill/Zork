@@ -21,7 +21,7 @@ class TakeCommand extends Command {
     /**
 	Trys to move the Item from the current Room into the players inventory, returning a string which claims it was taken.
 	If the item name is either null or an empty string, the returned string asks for clarification. 
-	If the room contains nothing, the returned string relects that. 
+	If the room contains nothing, the returned string reflects that. 
 	If the Room does contain items, but not the specific one, returns a string stating that the item in question is not here. 
 	If the Room does contain the specific item, but the player can not carry the item due to weight restrictions, returns a string informing the player that the item weighs too much.
     */
