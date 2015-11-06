@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.PrintWriter;
 
+/** Contains Rooms and Items; Has methods to create from .zork and .sav files, and save to .sav files.*/
 public class Dungeon {
 
     public static class IllegalDungeonFormatException extends Exception {

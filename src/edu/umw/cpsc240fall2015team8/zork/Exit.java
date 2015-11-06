@@ -2,14 +2,25 @@
 package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.Scanner;
-
+/**Conects two rooms, and allows passage between them. keeps track of this exit's source room,
+ destination room, wether the exit is locked or not the direction from the source room that the exits exist*/
 public class Exit {
+
 
     class NoExitException extends Exception {}
 
+   // private boolean isLocked;
+   // private ArrayList keysNeeded<Item>;
     private String dir;
     private Room src, dest;
+    
+   /**Creates a Exit object given a String for the direction, Room for the source,
+ Room for the Destination, and a boolean of wether the Room is locked or not. */
+    Exit(String dir, Room src, Room dest, boolean locked){
+    }
 
+	/**Creates a Exit object given a String for the dierection, Room for the source,
+and  a room for the destination. If no boolean is given it defaults to false, so that the exit is unlicked.*/
     Exit(String dir, Room src, Room dest) {
         init();
         this.dir = dir;
@@ -51,15 +62,21 @@ public class Exit {
         }
     }
 
-    // Common object initialization tasks.
+    /** Common object initialization tasks.*/
     private void init() {
     }
 
+/** returns a String containig a sentence stating what direction this exit is, and what room it leads to*/
     String describe() {
         return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
 
+/**returns the direction from the source room that this Exit is located*/
     String getDir() { return dir; }
+
+/**returns the room that you can access this Exit from*/
     Room getSrc() { return src; }
+
+/**returns the destination that this Exit leads to*/
     Room getDest() { return dest; }
 }

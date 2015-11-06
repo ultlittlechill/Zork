@@ -4,6 +4,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 import java.util.List;
 import java.util.Arrays;
 
+/**determines what subclasses of Command are needed for different tasks.*/
 public class CommandFactory {
 
     private static CommandFactory theInstance;
