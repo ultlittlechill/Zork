@@ -2,6 +2,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**
 Resolves conflict between the player and an Npc with the player using a light attack.
+@author Austin
 */
 class LightAttackCommand extends AttackCommand {
 

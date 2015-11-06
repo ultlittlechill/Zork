@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 
 /**
 Manages the state of the player and the game, allowing for both saving and loading the sate.
+@author Austin
 */
 public class GameState {
 

@@ -3,6 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**
 Handles any anyknown commands given by the player, informing the caller that the command is unknown.
+@author Austin
 */
 class UnknownCommand extends Command {
 
