@@ -4,7 +4,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 import java.util.List;
 import java.util.Arrays;
 
-/**determines what subclasses of Command are needed for different tasks.
+/**Determines what subclasses of Command are needed for different tasks.
 @author Jeff Wallhermfechtel*/
 public class CommandFactory {
 
@@ -12,7 +12,7 @@ public class CommandFactory {
     public static List<String> MOVEMENT_COMMANDS = 
         Arrays.asList("n","w","e","s","u","d" );
 
-/**returns the one and only instance of the CommandFactory*/
+/**Returns the one and only instance of the CommandFactory.*/
     public static synchronized CommandFactory instance() {
         if (theInstance == null) {
             theInstance = new CommandFactory();

@@ -3,7 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.Scanner;
 /** @author Lucas*/
-/** contains the main */
+/** Contains the main.*/
 public class Interpreter {
 
     private static GameState state; // not strictly necessary; GameState is 
