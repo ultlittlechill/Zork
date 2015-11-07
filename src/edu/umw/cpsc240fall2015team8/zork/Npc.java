@@ -1,5 +1,5 @@
 
-package edu.umw.cpsc240fall2:015team8.zork
+package edu.umw.cpsc240fall2015team8.zork;
 
 /**A non player character, Npcs can be hostile and attack when a player walks in a room, or they can be friendly and
 pass along helpful messages or trade an Item with you. If an Npc is attacked it will fight back. 
@@ -27,7 +27,7 @@ public class Npc{
 	void trade(Item offer){}
 
 	/**kills the Npc. The Npc is removed from the room and their held item is dropped*/
-	die(){}
+	void die(){}
 
 	/**retuns this Npc's script, retuns the first script if the npc has already traded an item
 	should the Npc trade items, and only returns the second script if the npc has already traded.*/
@@ -47,3 +47,4 @@ public class Npc{
 
 	/**returns the Room the Npc is located in*/
 	Room getLocation(){}
+}
