@@ -2,8 +2,8 @@
 package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.Scanner;
-/**Conects two rooms, and allows passage between them. keeps track of this exit's source room,
- destination room, wether the exit is locked or not the direction from the source room that the exits exist
+/**Connects two rooms, and allows passage between them. Keeps track of this exit's source room,
+ destination room, whether the exit is locked or not the direction from the source room that the exits exist
 @author Jeff Wallhermfechtel*/
 public class Exit {
 
@@ -67,17 +67,26 @@ and  a room for the destination. If no boolean is given it defaults to false, so
     private void init() {
     }
 
-/** returns a String containig a sentence stating what direction this exit is, and what room it leads to*/
+/** Returns a String containig a sentence stating what direction this exit is, and what room it leads to, as well as whether or not the exit is locked.*/
     String describe() {
         return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
 
-/**returns the direction from the source room that this Exit is located*/
+/**Returns the direction from the source room that this Exit is located.*/
     String getDir() { return dir; }
 
-/**returns the room that you can access this Exit from*/
+/**Returns the room that you can access this Exit from.*/
     Room getSrc() { return src; }
 
-/**returns the destination that this Exit leads to*/
+/**Returns the destination that this Exit leads to*/
     Room getDest() { return dest; }
+
+    /** Returns true if the exit is locked, or false is the exit is not locked. */
+    boolean getIsLocked(){}
+
+    /** Returns an ArrayList of Strings which are the names of the Items that can unlock this Exit. If no Items can unlock it, returns an empty ArrayList. If the Exit is unlocked, still returns the ArrayList of names. */
+    ArrayList<String> getKeysNeeded(){}
+
+    /** Changes the locked boolean to false, representing that this Exit is now unlocked. If this Exit was already unlocked, nothing changges. */
+    void unlock(){}
 }
