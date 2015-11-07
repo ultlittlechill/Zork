@@ -15,6 +15,7 @@ Manages the state of the player and the game, allowing for both saving and loadi
 */
 public class GameState {
 
+    /** Gets thrown whenever a text file representing a saved GameState is not properly formatted. */
     public static class IllegalSaveFormatException extends Exception {
         public IllegalSaveFormatException(String e) {
             super(e);

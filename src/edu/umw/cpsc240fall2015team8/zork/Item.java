@@ -11,6 +11,7 @@ import java.util.Random;
 @Author Lucas */
 public class Item {
 
+    /** Gets thrown when a text file representing an Item is not properly formatted. */
     static class NoItemException extends Exception {}
     static Random rng = new Random();
 

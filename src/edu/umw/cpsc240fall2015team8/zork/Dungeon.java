@@ -12,8 +12,9 @@ import java.io.PrintWriter;
 @author Jeff Wallhermfechtel*/
 public class Dungeon {
 
+    /** Gets thrown whenever a text file representing a Dungeon object is not properly formatted. */
     public static class IllegalDungeonFormatException extends Exception {
-/**Creates a IllegalDungeonFormatException*/
+/**Creates an IllegalDungeonFormatException*/
         public IllegalDungeonFormatException(String e) {
             super(e);
         }
