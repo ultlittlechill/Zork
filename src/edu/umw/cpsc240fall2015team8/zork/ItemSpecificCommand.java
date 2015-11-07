@@ -2,14 +2,17 @@
 package edu.umw.cpsc240fall2015team8.zork;
 
 class ItemSpecificCommand extends Command {
-
+/** This class will allow certain verb or commands related to specific items be used if they are included in the text file.
+*/
+/** @author Lucas */
     private String command;
                         
-
+/** initializes a new command object */
     ItemSpecificCommand(String command) {
         this.command = command;
     }
-
+/** Moves through the command the player input and checks to see if the verb noun combo makes sense, and then implements whatever command is input. 
+*/
     public String execute() {
         
         String[] words = command.split(" ");

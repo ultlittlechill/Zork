@@ -2,8 +2,8 @@
 package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.Scanner;
-
-
+/** @author Lucas*/
+/** contains the main */
 public class Interpreter {
 
     private static GameState state; // not strictly necessary; GameState is 
@@ -11,7 +11,7 @@ public class Interpreter {
 
     public static String USAGE_MSG = 
         "Usage: Interpreter borkFile.bork|saveFile.sav.";
-
+/** runs through the text file that holds the dungeon, prints the dungeon name, and if the player hits q then it quits the program. */
     public static void main(String args[]) {
 
         if (args.length < 1) {
@@ -56,7 +56,7 @@ public class Interpreter {
             e.printStackTrace(); 
         }
     }
-
+/** prompts user for input, the letter or command that initiates an action */
     private static String promptUser(Scanner commandLine) {
 
         System.out.print("> ");
