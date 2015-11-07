@@ -1,10 +1,11 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
-class ItemSpecificCommand extends Command {
+
 /** This class will allow certain verb or commands related to specific items be used if they are included in the text file.
 
 @author Lucas */
+class ItemSpecificCommand extends Command {
     private String command;
                         
 /** initializes a new command object */

@@ -1,10 +1,10 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
-class MovementCommand extends Command {
 /** Contains the methods for moving an adventurer from one room to the author.
 
 @author Lucas */
+class MovementCommand extends Command {
     private String dir;
                        
 /** intialize a new dir object 
