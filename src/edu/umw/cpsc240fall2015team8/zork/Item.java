@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 /** contains the methods that initialize the item Hashtables and Arraylists, and the methods to get items from the dungeon text file, their descriptions, and weight. 
-*/
-/** @Author Lucas */
+
+@Author Lucas */
 public class Item {
 
     static class NoItemException extends Exception {}
