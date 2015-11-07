@@ -14,6 +14,8 @@ public class Npc{
 	private String name;
 	private String itemWanted;
 	private Room location;
+	private boolean isDead;
+	private ArrayList<Item> inventory;
 
 	/**Creates a Npc object when passed a Scanner.*/
 	Npc(Scanner s){}
@@ -26,8 +28,14 @@ public class Npc{
 	Npc's itemWanted match. If the Items do not match the trade is refused.*/ 
 	void trade(Item offer){}
 
-	/**kills the Npc. The Npc is removed from the room and their held item is dropped*/
+	/**kills the Npc, their items are dropped in the current room.*/
 	void die(){}
+
+	/**drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped*/
+	String dropInventory(){}
+	
+	/**returns a String containing a description of this Npc to describe their health state*/
+	Stirng getFuzzyHealth(){}
 
 	/**retuns this Npc's script, retuns the first script if the npc has already traded an item
 	should the Npc trade items, and only returns the second script if the npc has already traded.*/

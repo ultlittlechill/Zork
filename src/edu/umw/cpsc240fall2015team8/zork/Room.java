@@ -21,6 +21,8 @@ public class Room {
     private boolean beenHere;
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
+    private ArrayList<Npc> characters;
+    private boolean isLit();
 
     /**
 	Creates a new room object from a given string. If the string is null, it still works.
@@ -158,7 +160,11 @@ public class Room {
     }
 
     /**
-	Returns a string containing the exits from this room, the items in this room, and a description of this room. If the room has been visited already, then the description is only the title, else it is the title and the set description. If the player typed look, then this is all overriden and the description is both the title and the set description.
+	Returns a string containing the exits from this room, the items in this room, and a description of this room; If this
+	Room is not lit, the returned String only contains the exits from this room and a statement saying that the Room is dark.
+	 If the room has been visited already, then the description is only the title, else it is the title and the set
+	 description. If the player typed look, then this is all overriden and the description is both the title and the
+	 set description.
     */
     public String describe(boolean full) {
         String description;
@@ -213,6 +219,21 @@ public class Room {
         contents.remove(item);
     }
 
+    /**Lights up this room if it was dark, and returns a String containing what is now visible in the lit room. If the
+	room was already lit, does nothing.*/
+    String illuminate(){}
+
+    /**Darkens this room if it was lit, and retuns a String saying that the room is now dark. If this room was already dark
+	does nothing.*/
+    String darken(){}
+
+    /** returns an ArrayList of Npcs that are in this room*/
+    ArrayList<Npc> getCharacters(){}
+
+
+    /**returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
+	and the player can not see what is in this room.*/
+    boolean isLit(){}
     /**
 	Returns the Item from this room's collection of items whose name matches the given string. If no item matches, throws NoItemException.
     */
