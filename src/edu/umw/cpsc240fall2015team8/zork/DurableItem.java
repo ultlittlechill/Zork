@@ -24,7 +24,7 @@ public class DurableItem {
 	void rupture(){}
 
 	/**Destroys this Item if this item is destroyable, this item cannont be repaired and is removed from existence.*/
-	void destory(){}
+	void destroy(){}
 
 	/**Repairs this item to its original state. This Item's health is reset to its origonal durability, and
 	if the item was broken it is transformed back into the original not-broken item. repair() cannont be called
