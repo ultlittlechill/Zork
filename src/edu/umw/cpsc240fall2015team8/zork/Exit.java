@@ -3,7 +3,8 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.Scanner;
 /**Conects two rooms, and allows passage between them. keeps track of this exit's source room,
- destination room, wether the exit is locked or not the direction from the source room that the exits exist*/
+ destination room, wether the exit is locked or not the direction from the source room that the exits exist
+@author Jeff Wallhermfechtel*/
 public class Exit {
 
 

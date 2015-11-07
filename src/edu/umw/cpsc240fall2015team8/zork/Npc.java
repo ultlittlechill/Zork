@@ -2,7 +2,8 @@
 package edu.umw.cpsc240fall2:015team8.zork
 
 /**A non player character, Npcs can be hostile and attack when a player walks in a room, or they can be friendly and
-pass along helpful messages or trade an Item with you. If an Npc is attacked it will fight back. */
+pass along helpful messages or trade an Item with you. If an Npc is attacked it will fight back. 
+@author Jeff Wallhermfechtel*/
 public class Npc{
 
 	private boolean hostile;

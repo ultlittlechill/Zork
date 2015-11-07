@@ -1,7 +1,8 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
-/**Gives a response from a Npc in the current Room*/
+/**Gives a response from a Npc in the current Room.
+@author Jeff Wallhermfechtel*/
 class TalkCommand{
 
 	/**Creates a new TalkCommand*/

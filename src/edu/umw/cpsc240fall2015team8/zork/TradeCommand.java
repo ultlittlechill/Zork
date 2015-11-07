@@ -3,7 +3,9 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**
 Moves an item from the player's inventory and places it in an Npc's hand, and
-Moves the item that was in the Npc's hand to the Players inventory*/
+moves the item that was in the Npc's hand to the Players inventory.
+@author Jeff Wallhermfechtel
+*/
 
 class TradeCommand extends Command{
 

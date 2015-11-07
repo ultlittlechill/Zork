@@ -3,7 +3,8 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.ArrayList;
 
-/**Leaves an item from the player's inventory in the current Room*/
+/**Leaves an item from the player's inventory in the current Room
+@Jeff Wallhermfechtel*/
 class DropCommand extends Command {
 
     private String itemName;
