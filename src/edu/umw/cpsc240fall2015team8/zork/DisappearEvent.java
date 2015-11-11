@@ -22,5 +22,7 @@ class DisappearEvent extends Event{
 		If the held item is null, does nothing.
 	*/
 	public void execute(){
+		Dungeon d = GameState.instance().getDungeon();
+		d.remove(item);
 	}
 }

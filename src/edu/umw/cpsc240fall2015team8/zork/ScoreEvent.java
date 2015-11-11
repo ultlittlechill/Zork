@@ -6,10 +6,13 @@ Adds a given integer to the player's score. If a negative number is added, then 
 */
 class ScoreEvent extends Event{
 
+	int score;
+
 	/**
 		Creates a new ScoreEvent. Works the same way for all values of i.
 	*/
 	ScoreEvent(int i){
+		score = i;
 	}
 
 	/**
@@ -18,5 +21,6 @@ class ScoreEvent extends Event{
 		If null, the score remains unchanged. 
 	*/
 	public void execute(){
+		GameState.instance().setScore(GameState.instance().getScore() + score);
 	}
 }

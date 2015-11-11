@@ -189,6 +189,9 @@ public class Dungeon {
 /**adds the item passed to this Dungeon's collection of Items*/
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
+/** Removes a passed Item from the collection of Items held by this Dungeon. */
+    public void remove(Item item) { items.remove(item.getPrimaryName()); }
+
 /**returns the room in this dungeon who's name that matches the String passed*/
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
