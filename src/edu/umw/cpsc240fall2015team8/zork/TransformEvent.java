@@ -7,11 +7,16 @@ Replaces one item with another item.
 */
 class TransformEvent extends Event{
 
+	Item item;
+	String sitem;
+
 	/**
 		Creates a new TransformEvent.
 		Works the same regardless of String values.
 	*/
-	TransformEvent(String a, String b){
+	TransformEvent(Item i, String s){
+		item = i;
+		sitem = s;
 	}
 
 	/**

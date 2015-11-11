@@ -7,11 +7,14 @@ Removes the specific item from the game in its entirety.
 */
 class DisappearEvent extends Event{
 
+	Item item;
+
 	/**
 		Creates a new DisappearEvent.
 		Works the same way for all values of i.
 	*/
 	DisappearEvent(Item i){
+		item = i;
 	}
 
 	/**
