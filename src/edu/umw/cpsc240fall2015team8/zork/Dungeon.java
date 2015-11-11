@@ -197,6 +197,11 @@ public class Dungeon {
         return rooms.get(roomTitle);
     }
 
+/**Returns an array of all of the Room objects contianed in this Dungeon. If there are no Room objects in this Dungeon, then the array is empty.*/
+    public Room[] getRooms(){
+	return rooms.values().toArray();
+    }
+
     /**
      * Get the Item object whose primary name is passed. This has nothing to
      * do with where the Adventurer might be, or what's in his/her inventory,
