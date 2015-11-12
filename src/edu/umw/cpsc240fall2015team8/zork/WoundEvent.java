@@ -8,11 +8,14 @@ If a negative number is added, then the player is healed by that many points.
 */
 class WoundEvent extends Event{
 
+	int damage;
+
 	/**
 		Creates a new WoundEvent. 
 		Works the same way for all values of i.
 	*/
 	WoundEvent(int i){
+		damage = i;
 	}
 
 	/**
@@ -21,5 +24,6 @@ class WoundEvent extends Event{
 		If null, the health remains unchanged. 
 	*/
 	public void execute(){
+		GameState.instance().setHealth(GameState.instance.getHealth() - damage);
 	}
 }

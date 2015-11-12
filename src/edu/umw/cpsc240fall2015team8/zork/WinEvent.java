@@ -17,5 +17,7 @@ class WinEvent extends Event{
 		Declares that the player has won the game, and then ends the game.		 
 	*/
 	public void execute(){
+		System.out.println("You have won!");
+		System.exit(0);
 	}
 }

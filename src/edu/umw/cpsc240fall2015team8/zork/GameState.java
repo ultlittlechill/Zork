@@ -154,7 +154,7 @@ public class GameState {
     }
 
     /**
-	Removes the given item from the player's inventory. If null is passed, nbothing changes.
+	Removes the given item from the player's inventory. If null is passed, nothing changes.
     */
     void removeFromInventory(Item item) {
         inventory.remove(item);
