@@ -36,7 +36,9 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-
+    private int health = 100;
+    private int score = 0;
+    private int scoreWin = 10;
     /**
 	Returns the GameState. If no GameState exists, it creates one and the returns it.
     */
@@ -228,5 +230,27 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+    
+    /**Returns the player's current health*/
+    int getHealth(){return health;}
+   
+    /**Subtracts the player's health by the number passed in the argument. If the player's health is lower than 1, the player dies.
+	 Passing a negative number willincrease the player's health.*/
+    void setHealth(int h){
+	health-=h;
+	if(health<=0){
+		EventFactory.instance().parse("Die",null);
+	}
+    }
 
+    /**Returns the player's current score*/
+    int getScore(){return score;}
+
+    /**Addes the value passed to the player's score. If the player's score is greater than or equal to the 
+	number of points needed to win, the player wins the game.*/
+    void setScore(int s){
+	score+=s;
+	if(score>=scoreWin){
+		EventFactory.instance().parse("Win",null);
+	}
 }
