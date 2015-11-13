@@ -32,12 +32,12 @@ public class EventFactory{
 		String pass = "";
 		if(event.contains("Score")){
 			pass = event.substring(6,event.length());
-			pass = pass.split(")")[0];
+			pass = pass.split("\\)")[0];
 			return new ScoreEvent(Integer.parseInt(pass));
 		}
 		if(event.contains("Wound")){
 			pass = event.substring(6, event.length());
-			pass = pass.split(")")[0];
+			pass = pass.split("\\)")[0];
 			return new WoundEvent(Integer.parseInt(pass));
 		}
 		if(event.contains("Die")){
@@ -54,7 +54,7 @@ public class EventFactory{
 		}
 		if(event.contains("Transform")){
 			pass = event.substring(10, event.length());
-			pass = pass.split(")")[0];
+			pass = pass.split("\\)")[0];
 			return new TransformEvent(item, pass);
 		}
 		return null;	

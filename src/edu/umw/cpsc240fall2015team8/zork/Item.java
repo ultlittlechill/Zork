@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+//import java.util.regex.*;
 /** Contains the methods that initialize the item Hashtables and Arraylists, and the methods to get items from the dungeon text file, their descriptions, and weight. 
 
 @Author Lucas */
@@ -62,9 +63,14 @@ public class Item {
             String[] messageTexts = verbParts[1].split("\\|");
 	    //Check for events
 	    if(verbAliases[verbAliases.length - 1].contains("[")){
-		String es = verbAliases[verbAliases.length - 1].split("[")[1];
-		verbAliases[verbAliases.length - 1] = verbAliases[verbAliases.length - 1].split("[")[0];
-	    	es = es.substring(0,es.length()-1);
+		//String[] es1 = verbAliases[verbAliases.length - 1].split("\\[");
+		//System.out.println(es1[0]);
+		//String es = es1[1];
+		int thisguy = verbAliases[verbAliases.length-1].indexOf("[");
+		String thatguy = verbAliases[verbAliases.length - 1];
+		String es = thatguy.substring(thisguy+1, thatguy.length()-1);
+		verbAliases[verbAliases.length - 1] = thatguy.substring(0,thisguy);//verbAliases[verbAliases.length - 1].split("[")[0];
+	    	//es = es.substring(0,es.length()-1);
 		String[] ess = es.split(",");
 		ArrayList<Event> evprm = new ArrayList<Event>();
 		for(int i = 0; i < ess.length; i++){
