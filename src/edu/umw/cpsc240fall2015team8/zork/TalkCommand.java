@@ -9,5 +9,5 @@ class TalkCommand{
 	TalkCommand(){}
 
 	/**Returns a String containing what a Npc will say when they are talked to*/
-	public String execute(String npcName){}
+	public String execute(String npcName){return "hello";}
 }

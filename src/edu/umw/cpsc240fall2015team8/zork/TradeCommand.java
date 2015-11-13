@@ -22,5 +22,5 @@ class TradeCommand extends Command{
 	If the Player does not have the offer Item, the returned String states such.
 	If the player can not carry the item because of weight restrictions, returns a String informing
 	the player that the Item weighs too much. */
-	public String execute(){}
+	public String execute(){return "hello";}
 }
