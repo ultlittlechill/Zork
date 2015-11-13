@@ -64,7 +64,7 @@ public class Item {
 	    if(verbAliases[verbAliases.length - 1].contains("[")){
 		String es = verbAliases[verbAliases.length - 1].split("[")[1];
 		verbAliases[verbAliases.length - 1] = verbAliases[verbAliases.length - 1].split("[")[0];
-	    	es = es.substring[0,es.length()-1];
+	    	es = es.substring(0,es.length()-1);
 		String[] ess = es.split(",");
 		ArrayList<Event> evprm = new ArrayList<Event>();
 		for(int i = 0; i < ess.length; i++){
@@ -73,7 +73,7 @@ public class Item {
 		}
 		
 		for(String verbAlias : verbAliases) {
-			events.put(verbAlias, evprm.toArray(new Room[0]);
+			events.put(verbAlias, evprm.toArray(new Room[0]));
 		}
 	    }
             for (String verbAlias : verbAliases) {
