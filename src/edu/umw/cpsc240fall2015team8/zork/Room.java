@@ -221,19 +221,19 @@ public class Room {
 
     /**Lights up this room if it was dark, and returns a String containing what is now visible in the lit room. If the
 	room was already lit, does nothing.*/
-    String illuminate(){}
+    String illuminate(){return "hello";}
 
     /**Darkens this room if it was lit, and retuns a String saying that the room is now dark. If this room was already dark
 	does nothing.*/
-    String darken(){}
+    String darken(){return "hello";}
 
     /** returns an ArrayList of Npcs that are in this room*/
-    ArrayList<Npc> getCharacters(){}
+    ArrayList<Npc> getCharacters(){return null;}
 
 
     /**returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
 	and the player can not see what is in this room.*/
-    boolean getIsLit(){}
+    boolean getIsLit(){return true;}
     /**
 	Returns the Item from this room's collection of items whose name matches the given string. If no item matches, throws NoItemException.
     */

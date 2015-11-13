@@ -20,5 +20,6 @@ class AttackCommand extends Command {
 		If the item doesn't exist, returns a string saying so, deals no damage.
 	*/
 	public String execute(){
+		return "Hello";
 	}
 }

@@ -68,12 +68,12 @@ public class Item {
 		String[] ess = es.split(",");
 		ArrayList<Event> evprm = new ArrayList<Event>();
 		for(int i = 0; i < ess.length; i++){
-			Event evtmp = EventFactory.parse(ess[i]);
+			Event evtmp = EventFactory.instance().parse(ess[i],this);
 			evprm.add(evtmp);
 		}
 		
 		for(String verbAlias : verbAliases) {
-			events.put(verbAlias, evprm.toArray(new Room[0]));
+			events.put(verbAlias, evprm.toArray(new Event[0]));
 		}
 	    }
             for (String verbAlias : verbAliases) {
@@ -96,7 +96,7 @@ public class Item {
     }
 
     public Event[] getEventsForVerb(String verb) {
-	return events.values().toArray();
+	return events.values().toArray(new Event[0]);
     }
 
 /** return primary name; */
