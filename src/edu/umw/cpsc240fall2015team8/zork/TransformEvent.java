@@ -28,8 +28,8 @@ class TransformEvent extends Event{
 	public void execute(){
 		GameState g = GameState.instance();
 		Dungeon d = g.getDungeon();
-		ArrayList<String> al = g.getInventory();
-		if(al.contains(item.getPrimaryName)){	
+		ArrayList<String> al = g.getInventoryNames();
+		if(al.contains(item.getPrimaryName())){	
 			try{
 				g.addToInventory(d.getItem(sitem));
 				g.removeFromInventory(item);

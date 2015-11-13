@@ -18,5 +18,6 @@ class LightAttackCommand extends AttackCommand {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
+		return "";
 	}
 }
