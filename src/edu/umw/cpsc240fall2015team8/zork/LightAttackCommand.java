@@ -10,6 +10,7 @@ class LightAttackCommand extends AttackCommand {
 		Creates a new LightAttackCommand.
 	*/
 	LightAttackCommand(Npc n, Item i){
+		super(n,i);
 	}
 
 	/**

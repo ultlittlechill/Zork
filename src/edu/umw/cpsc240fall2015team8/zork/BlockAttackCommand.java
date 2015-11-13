@@ -11,6 +11,7 @@ class BlockAttackCommand extends AttackCommand {
 		Creates a new BlockAttackCommand.
 	*/
 	BlockAttackCommand(Npc n, Item i){
+		super(n,i);
 	}
 
 	/**

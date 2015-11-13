@@ -10,6 +10,7 @@ class HeavyAttackCommand extends AttackCommand {
 		Creates a new HeavyAttackCommand.
 	*/
 	HeavyAttackCommand(Npc n, Item i){
+		super(n,i);
 	}
 
 	/**
@@ -18,6 +19,6 @@ class HeavyAttackCommand extends AttackCommand {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
-
+		return "hello";
 	}
 }

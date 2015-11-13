@@ -34,6 +34,6 @@ public class DurableItem {
 	void repair(){}
 
 	/**Returns how much health this Item has left, as in how many more times this item can be used before it breaks*/
-	int getHealth(){}
+	int getHealth(){return 0;}
 }
 
