@@ -24,5 +24,7 @@ class DisappearEvent extends Event{
 	public void execute(){
 		Dungeon d = GameState.instance().getDungeon();
 		d.remove(item);
+		GameState.instance().removeFromInventory(item);
+		GameState.instance().getAdventurersCurrentRoom().remove(item);
 	}
 }

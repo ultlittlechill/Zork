@@ -59,17 +59,25 @@ public class Item {
                     Dungeon.SECOND_LEVEL_DELIM + "' after item.");
             }
             String[] verbParts = verbLine.split(":");
-            String[] verbAliases = verbParts[0].split(",");
+            String[] verbAliases;// = verbParts[0].split(",");
             String[] messageTexts = verbParts[1].split("\\|");
 	    //Check for events
-	    if(verbAliases[verbAliases.length - 1].contains("[")){
+	    if(verbParts[0].contains("[")){
 		//String[] es1 = verbAliases[verbAliases.length - 1].split("\\[");
 		//System.out.println(es1[0]);
 		//String es = es1[1];
-		int thisguy = verbAliases[verbAliases.length-1].indexOf("[");
-		String thatguy = verbAliases[verbAliases.length - 1];
+		int thisguy = verbParts[0].indexOf("[");
+		String thatguy = verbParts[0];
 		String es = thatguy.substring(thisguy+1, thatguy.length()-1);
-		verbAliases[verbAliases.length - 1] = thatguy.substring(0,thisguy);//verbAliases[verbAliases.length - 1].split("[")[0];
+		//System.out.println(thatguy);
+		//System.out.println(thatguy.substring(0,thisguy));
+		//System.out.println(verbAliases[0]);
+		verbAliases = thatguy.substring(0,thisguy).split(",");
+		//for(int i = 0; i < verbAliases.length; i++){
+		//	System.out.println(verbAliases[i]);
+		//}
+		//System.out.println(verbAliases[0]);
+		//verbAliases[verbAliases.length - 1].split("[")[0];
 	    	//es = es.substring(0,es.length()-1);
 		String[] ess = es.split(",");
 		ArrayList<Event> evprm = new ArrayList<Event>();
@@ -81,9 +89,12 @@ public class Item {
 		for(String verbAlias : verbAliases) {
 			events.put(verbAlias, evprm.toArray(new Event[0]));
 		}
+	    }else{
+		verbAliases = verbParts[0].split(",");
 	    }
             for (String verbAlias : verbAliases) {
                 messages.put(verbAlias, messageTexts);
+		System.out.println(verbAlias);
             }
             
             verbLine = s.nextLine();
@@ -98,11 +109,18 @@ public class Item {
 /** returns the verb message for the indicated item */
     public String getMessageForVerb(String verb) {
         String[] possibleMessages = messages.get(verb);
-        return possibleMessages[rng.nextInt(possibleMessages.length)];
+	//System.out.println(possibleMessages.length);
+        if(possibleMessages == null){
+		//System.out.println("Im here");
+		return null;
+	}
+	return possibleMessages[rng.nextInt(possibleMessages.length)];
     }
 
     public Event[] getEventsForVerb(String verb) {
-	return events.values().toArray(new Event[0]);
+	//Event a[] = new Event[0];
+	//return events.values().toArray(a);
+	return events.get(verb);
     }
 
 /** return primary name; */

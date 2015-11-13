@@ -45,8 +45,7 @@ quaff[Wound(-5),Transform(emptyFlagon)]:OH that tastes so good.
 milkOfThePoppy
 2
 apply[Wound(-10),Score(10)]:*Whew*, that's better.
-drop[Disappear]:D'oh!! The precious liquid slips out of your hand and onto the floor.
-spill[Disappear]:The liquid spills out onto the floor.
+spill[Disappear]:D'oh!! The precious liquid slips out of your hand and onto the floor.
 ---
 emptyFlagon
 1

@@ -14,17 +14,17 @@ class HealthCommand extends Command {
     String execute(){
 	int health = GameState.instance().getHealth();
 	if(health>=70)
-		return "You stand tall and strong";
+		return "You stand tall and strong.\n";
 	else if(health>=50)
-		return "You feel weak, but are still putting up a fight";
+		return "You feel weak, but are still putting up a fight.\n";
 	else if(health>=25)
-		return "You are exhausted and bleeding";
+		return "You are exhausted and bleeding.\n";
 	else if(health>=10)
-		return "You are leaving a blood trail everywhere you walk.";
+		return "You are leaving a blood trail everywhere you walk.\n";
 	else if(health>=0)
-		return "You have lost a lot of blood. You may be missing a limb or two, but you're too disoriented to know for sure. You're about to die.";
+		return "You have lost a lot of blood. You may be missing a limb or two, but you're too disoriented to know for sure. You're about to die.\n";
 	else
-		return "You are dead. You shouldn't be able to read this."; 
+		return "You are dead. You shouldn't be able to read this.\n"; 
     }
 
 }

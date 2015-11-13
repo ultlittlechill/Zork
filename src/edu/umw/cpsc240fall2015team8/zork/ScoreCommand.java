@@ -12,7 +12,7 @@ class ScoreCommand extends Command {
 	}
 	/** When the player inputs a score command the player's current score is displayed on the screen along with a corresponding message. */
 	public String execute() {
-	return "Your score is: " + GameState.instance().getScore();
+	return "Your score is: " + GameState.instance().getScore() + "\n";
 	}
 
 }
