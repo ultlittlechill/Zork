@@ -42,7 +42,11 @@ class ItemSpecificCommand extends Command {
             }
 
             String msg = itemReferredTo.getMessageForVerb(verb);
-            return (msg == null ? 
+            Event[] events = itemReferredTo.getEventsForVerb(verb);
+	    for(int i = 0; i < events.length; i++){
+		events[i].execute();
+	    }
+	    return (msg == null ? 
                 "Sorry, you can't " + verb + " the " + noun + "." : msg) +
                 "\n";
         }

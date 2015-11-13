@@ -19,12 +19,14 @@ public class Item {
     private ArrayList<String> aliases;
     private int weight;
     private Hashtable<String,String[]> messages;
+    private Hashtable<String,Event[]> events;
 
 /** Initializes a new Hashtable to hold the item descriptions and an array list for the aliases
 */
     private void init() {
         messages = new Hashtable<String,String[]>();
         aliases = new ArrayList<String>();
+	events = new Hashtable<String,Event[]>();
     }
 /** Call init and then parses through the dungeon text file, adding any items to the Array list and their descriptions to the Hashtable, also gets their weight and checks for verb lines. */
     Item(Scanner s) throws NoItemException,
@@ -58,6 +60,22 @@ public class Item {
             String[] verbParts = verbLine.split(":");
             String[] verbAliases = verbParts[0].split(",");
             String[] messageTexts = verbParts[1].split("\\|");
+	    //Check for events
+	    if(verbAliases[verbAliases.length - 1].contains("[")){
+		String es = verbAliases[verbAliases.length - 1].split("[")[1];
+		verbAliases[verbAliases.length - 1] = verbAliases[verbAliases.length - 1].split("[")[0];
+	    	es = es.substring[0,es.length()-1];
+		String[] ess = es.split(",");
+		ArrayList<Event> evprm = new ArrayList<Event>();
+		for(int i = 0; i < ess.length; i++){
+			Event evtmp = EventFactory.parse(ess[i]);
+			evprm.add(evtmp);
+		}
+		
+		for(String verbAlias : verbAliases) {
+			events.put(verbAlias, evprm.toArray(new Room[0]);
+		}
+	    }
             for (String verbAlias : verbAliases) {
                 messages.put(verbAlias, messageTexts);
             }
@@ -76,6 +94,11 @@ public class Item {
         String[] possibleMessages = messages.get(verb);
         return possibleMessages[rng.nextInt(possibleMessages.length)];
     }
+
+    public Event[] getEventsForVerb(String verb) {
+	return events.values().toArray();
+    }
+
 /** return primary name; */
     public String toString() {
         return primaryName;

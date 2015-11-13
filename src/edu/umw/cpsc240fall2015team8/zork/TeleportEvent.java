@@ -25,7 +25,7 @@ class TeleportEvent extends Event{
 		Room[] rs = d.getRooms();
 		Room nr = rs[r.nextInt(rs.length)];
 		GameState.instance().setAdventurersCurrentRoom(nr);
-		System.out.println(nr.describe());
+		//System.out.println(nr.describe());
 		//Add a method to Dungeon that gives rooms in an ArrayList
 	}
 }
