@@ -199,7 +199,8 @@ public class Dungeon {
 
 /**Returns an array of all of the Room objects contianed in this Dungeon. If there are no Room objects in this Dungeon, then the array is empty.*/
     public Room[] getRooms(){
-	return rooms.values().toArray();
+	Room[] rms = new Room[0];
+	return rooms.values().toArray(rms);
     }
 
     /**

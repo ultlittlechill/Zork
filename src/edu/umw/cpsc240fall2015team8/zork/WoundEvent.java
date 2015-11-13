@@ -24,6 +24,6 @@ class WoundEvent extends Event{
 		If null, the health remains unchanged. 
 	*/
 	public void execute(){
-		GameState.instance().setHealth(GameState.instance.getHealth() - damage);
+		GameState.instance().setHealth(GameState.instance().getHealth() - damage);
 	}
 }

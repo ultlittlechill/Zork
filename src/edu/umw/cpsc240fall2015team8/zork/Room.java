@@ -22,7 +22,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private ArrayList<Npc> characters;
-    private boolean isLit();
+    private boolean isLit;
 
     /**
 	Creates a new room object from a given string. If the string is null, it still works.
@@ -233,7 +233,7 @@ public class Room {
 
     /**returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
 	and the player can not see what is in this room.*/
-    boolean isLit(){}
+    boolean getIsLit(){}
     /**
 	Returns the Item from this room's collection of items whose name matches the given string. If no item matches, throws NoItemException.
     */

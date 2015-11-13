@@ -2,6 +2,8 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
+import java.util.Scanner;
+
 /**Acts like an Item, but a durrable Item has a limited number of uses before it is 
 broken or destroyed. Durrable Items that have been broken can be repaired.*/
 public class DurableItem {
