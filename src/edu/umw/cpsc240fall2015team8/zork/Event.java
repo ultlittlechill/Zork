@@ -9,5 +9,5 @@ abstract class Event{
 	/**
 		Executes the event. If null, works the exact same way.
 	*/
-	abstract String execute();
+	abstract void execute();
 }

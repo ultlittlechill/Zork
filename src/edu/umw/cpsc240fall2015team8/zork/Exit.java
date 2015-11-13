@@ -1,6 +1,7 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 /**Connects two rooms, and allows passage between them. Keeps track of this exit's source room,
  destination room, whether the exit is locked or not the direction from the source room that the exits exist

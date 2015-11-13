@@ -12,7 +12,7 @@ class HealthCommand extends Command {
 
     /** Returns a string that describes the player's health level.*/
     String execute(){
-	health = GameState.instance().getHealth();
+	int health = GameState.instance().getHealth();
 	if(health>=70)
 		return "You stand tall and strong";
 	else if(health>=50)
