@@ -47,7 +47,15 @@ public class Interpreter {
                 System.out.print(
                     CommandFactory.instance().parse(command).execute());
 
-                command = promptUser(commandLine);
+                if(GameState.instance().getHealth <= 0){
+			System.out.println("You have died. Get good, noob.");
+			break;
+		}
+		if(GameState.instance().getScore() >= GameState.instance().getScoreWin()){
+			System.out.println("You win!!!");
+			break;
+		}
+		command = promptUser(commandLine);
             }
 
             System.out.println("Bye!");

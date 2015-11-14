@@ -21,6 +21,6 @@ class ScoreEvent extends Event{
 		If null, the score remains unchanged. 
 	*/
 	public void execute(){
-		GameState.instance().setScore(GameState.instance().getScore() + score);
+		GameState.instance().changeScore(score);
 	}
 }
