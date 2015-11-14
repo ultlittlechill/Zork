@@ -7,7 +7,7 @@ Saves the current state of the game to a file in order to be loaded and resumed 
 */
 class SaveCommand extends Command {
 
-    private static String DEFAULT_SAVE_FILENAME = "bork";
+    private static String DEFAULT_SAVE_FILENAME = "zork";
 
     private String saveFilename;
 

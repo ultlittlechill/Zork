@@ -248,17 +248,17 @@ public class GameState {
 	 Passing a negative number willincrease the player's health.*/
     void changeHealth(int h){
 	health-=h;
-	if(health<=0){
-		EventFactory.instance().parse("Die",null).execute();
-	}
+	//if(health<=0){
+	//	EventFactory.instance().parse("Die",null).execute();
+	//}
     }
 
 /**Sets the value passed to the player's health. If the player's health falls below 1, the player will die*/
     void setHealth(int h){
 	health = h;
-	if(health<=0){
-		EventFactory.instance().parse("Die", null).execute();
-	}
+	//if(health<=0){
+	//	EventFactory.instance().parse("Die", null).execute();
+	//}
     }
 
     /**Returns the player's current score*/
@@ -270,16 +270,16 @@ public class GameState {
 	number of points needed to win, the player wins the game.*/
     void changeScore(int s){
 	score+=s;
-	if(score>=scoreWin){
-		EventFactory.instance().parse("Win",null).execute();
-	}
+	//if(score>=scoreWin){
+	//	EventFactory.instance().parse("Win",null).execute();
+	//}
     }
 
 /**Sets the value passed to the player's score. If the player's score is at least the score needed to win, The player will win the game.*/
     void setScore(int s){
 	score = s;
-	if(score>=scoreWin)
-		EventFactory.instance().parse("Win",null).execute();
+	//if(score>=scoreWin)
+	//	EventFactory.instance().parse("Win",null).execute();
     }
 
 /**Returns the score needed to win the game.*/
