@@ -47,7 +47,7 @@ public class Interpreter {
                 System.out.print(
                     CommandFactory.instance().parse(command).execute());
 
-                if(GameState.instance().getHealth <= 0){
+                if(GameState.instance().getHealth() <= 0){
 			System.out.println("You have died. Get good, noob.");
 			break;
 		}

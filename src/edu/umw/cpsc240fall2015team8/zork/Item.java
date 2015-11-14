@@ -94,7 +94,7 @@ public class Item {
 	    }
             for (String verbAlias : verbAliases) {
                 messages.put(verbAlias, messageTexts);
-		System.out.println(verbAlias);
+	//	System.out.println(verbAlias);
             }
             
             verbLine = s.nextLine();

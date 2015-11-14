@@ -278,8 +278,9 @@ public class GameState {
 /**Sets the value passed to the player's score. If the player's score is at least the score needed to win, The player will win the game.*/
     void setScore(int s){
 	score = s;
-	if(score>=scoreWin){
+	if(score>=scoreWin)
 		EventFactory.instance().parse("Win",null).execute();
+    }
 
 /**Returns the score needed to win the game.*/
    int getScoreWin(){
