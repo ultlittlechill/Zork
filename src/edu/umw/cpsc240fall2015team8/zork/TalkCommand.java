@@ -5,7 +5,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 @author Jeff Wallhermfechtel*/
 class TalkCommand{
 
-	/**Creates a new TalkCommand.*/
+	/**Creates a new TalkCommand which allows the player to talk to the Npc represented by the String passed.*/
 	TalkCommand(String npcName){}
 
 	/**Returns a String containing what an Npc will say when they are talked to.

@@ -17,12 +17,12 @@ public class Exit {
     private Room src, dest;
     
    /**Creates a Exit object given a String for the direction, Room for the source,
- Room for the Destination, and a boolean of wether the Room is locked or not. */
+ Room for the Destination, and a boolean of whether the Room is locked or not. */
     Exit(String dir, Room src, Room dest, boolean locked){
     }
 
-	/**Creates a Exit object given a String for the dierection, Room for the source,
-and  a room for the destination. If no boolean is given it defaults to false, so that the exit is unlicked.*/
+	/**Creates a Exit object given a String for the direction, Room for the source,
+and a room for the destination. If no boolean is given it defaults to false, so that the exit is unlicked.*/
     Exit(String dir, Room src, Room dest) {
         init();
         this.dir = dir;
@@ -68,7 +68,7 @@ and  a room for the destination. If no boolean is given it defaults to false, so
     private void init() {
     }
 
-/** Returns a String containig a sentence stating what direction this exit is, and what room it leads to, as well as whether or not the exit is locked.*/
+/** Returns a String containing a sentence stating what direction this exit is, and what room it leads to, as well as whether or not the exit is locked.*/
     String describe() {
         return "You can go " + dir + " to " + dest.getTitle() + ".";
     }
@@ -79,7 +79,7 @@ and  a room for the destination. If no boolean is given it defaults to false, so
 /**Returns the room that you can access this Exit from.*/
     Room getSrc() { return src; }
 
-/**Returns the destination that this Exit leads to*/
+/**Returns the destination that this Exit leads to.*/
     Room getDest() { return dest; }
 
     /** Returns true if the exit is locked, or false is the exit is not locked. */

@@ -3,7 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.ArrayList;
 
-/**Leaves an item from the player's inventory in the current Room
+/**Leaves an item from the player's inventory in the current Room.
 @Jeff Wallhermfechtel*/
 class DropCommand extends Command {
 
@@ -45,8 +45,8 @@ is "all" the returned String expresses that the player is not carrying anything.
 /**
 Removes the item in the player's inventory with the name passed in the argument,
  and places the item in the current room.
-If the Item naemd in the argument is not in the player's inventory returns a
-String expressing that they do not have that item.
+If the Item named in the argument is not in the player's inventory returns a
+String stating that they do not have that item.
 */
     private String dropItemNamed(String name) {
         try {
