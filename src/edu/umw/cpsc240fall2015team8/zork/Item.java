@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 //import java.util.regex.*;
-/** Contains the methods that initialize the item Hashtables and Arraylists, and the methods to get items from the dungeon text file, their descriptions, and weight. 
+/** Represents an interacive object that is placed in the dungeon. Each item can have a name, weight, and varias commands specic to it.  
 
 @Author Lucas */
 public class Item {
@@ -22,14 +22,14 @@ public class Item {
     private Hashtable<String,String[]> messages;
     private Hashtable<String,Event[]> events;
 
-/** Initializes a new Hashtable to hold the item descriptions and an array list for the aliases
+/** Initializes all Hashtables and ArrayLists used for holding specific commands, name aliases, and events.
 */
     private void init() {
         messages = new Hashtable<String,String[]>();
         aliases = new ArrayList<String>();
 	events = new Hashtable<String,Event[]>();
     }
-/** Call init and then parses through the dungeon text file, adding any items to the Array list and their descriptions to the Hashtable, also gets their weight and checks for verb lines. */
+/** Creates the Item by initilaizing all variables and then itterating through the passed scanner to get the information which represents the item. */
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
@@ -100,13 +100,14 @@ public class Item {
             verbLine = s.nextLine();
         }
     }
-/** checks to see if the string entered matches the name of  that of the item */
+
+/** Returns true if the passed String equals any of the stored names for this Item, and returns false if it does not. */
     boolean goesBy(String name) {
         return primaryName.equals(name) || aliases.contains(name);
     }
-/** returns the primary name variable */
+/** Returns the primary name of this Item. */
     String getPrimaryName() { return primaryName; }
-/** returns the verb message for the indicated item */
+/** Returns the message stored for the specifc string passed.*/
     public String getMessageForVerb(String verb) {
         String[] possibleMessages = messages.get(verb);
 	//System.out.println(possibleMessages.length);
@@ -117,17 +118,18 @@ public class Item {
 	return possibleMessages[rng.nextInt(possibleMessages.length)];
     }
 
+    /** Returns an array of events stored for the passed String. */
     public Event[] getEventsForVerb(String verb) {
 	//Event a[] = new Event[0];
 	//return events.values().toArray(a);
 	return events.get(verb);
     }
 
-/** return primary name; */
+/** Returns the primary name of this Item. */
     public String toString() {
         return primaryName;
     }
-/** returns the weight variable for an item */
+/** Returns the weight of this Item. */
     public int getWeight() {
         return weight;
     }

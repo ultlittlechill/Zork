@@ -227,11 +227,11 @@ public class Room {
 	does nothing.*/
     String darken(){return "hello";}
 
-    /** returns an ArrayList of Npcs that are in this room*/
+    /** Returns an ArrayList of Npcs that are in this room.*/
     ArrayList<Npc> getCharacters(){return null;}
 
 
-    /**returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
+    /**Returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
 	and the player can not see what is in this room.*/
     boolean getIsLit(){return true;}
     /**

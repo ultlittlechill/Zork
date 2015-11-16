@@ -3,7 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 import java.util.ArrayList;
 
 /**
-Resolves conflict between the player and an NPC. Damage is dealt to the loser.
+Resolves conflict between the player and an NPC. Damage is dealt to the loser. For actual use, please use BlockAttackCommand, LightAttackCommand, or HeavyAttackCommand.
 @author Austin
 */
 class AttackCommand extends Command {

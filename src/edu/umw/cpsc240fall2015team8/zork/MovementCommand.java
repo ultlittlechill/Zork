@@ -1,18 +1,19 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
-/** Contains the methods for moving an adventurer from one room to the author.
+/** Moves an adventurer to another Room.
 
 @author Lucas */
 class MovementCommand extends Command {
     private String dir;
                        
-/** intialize a new dir object 
+/** Creates a new MovementCommand, which can be executed to move the adventurer in the direction represented by the String passed. 
 */
     MovementCommand(String dir) {
         this.dir = dir;
     }
-/** when the player inputs a move command then this method will check with GameState to get the room the adventurer currently is in then and then moves them to the next one. */
+/** Moves the adventurer from their current room to the room in the direction that was passed into the constructor; returns a String containing the desciption of the new Room.
+If the direction that was passed into the constructor is not 'u','d', 'n', 's', 'e', or 'w', or is a direciton in which there is no Exit (and therefore no Room), then returns a String informing the player that they can not go in that direction. */
     public String execute() {
         Room currentRoom = GameState.instance().getAdventurersCurrentRoom();
         Room nextRoom = currentRoom.leaveBy(dir);

@@ -1,7 +1,8 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
-/**Completes an action that the user entered.
+/**Completes an action in the Dungeon that the user entered. 
+This class is purely abstract, so please refer to one of the many subclasses for specific uses.
 @author Jeff Wallhermfechtel*/
 abstract class Command {
 
