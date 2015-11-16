@@ -7,7 +7,7 @@ Handles different events triggered by item specific commands. Since this is an a
 abstract class Event{
 
 	/**
-		Executes the event. If null, works the exact same way.
+	Executes what this Event is meant to do. This is an abstract meathod, sub classes of Event will have more specific descriptions.	
 	*/
 	abstract void execute();
 }

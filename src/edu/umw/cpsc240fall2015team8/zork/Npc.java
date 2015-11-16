@@ -12,8 +12,8 @@ public class Npc{
 	private boolean hostile;
 	private int health;
 	private Item heldItem;
-	private String script;
-	private String script2;
+	private String scriptBt;
+	private String scriptAt
 	private String name;
 	private String itemWanted;
 	private Room location;
@@ -28,7 +28,7 @@ public class Npc{
 	void attack(){}
 
 	/**Trades the Item offered in the argument with the Npc's heldItem if the offered item and the
-	Npc's itemWanted match. If the Items do not match the trade is refused.*/ 
+	Npc's itemWanted have the same name. If the Items do not have the same name the trade is refused.*/ 
 	void trade(Item offer){}
 
 	/**kills the Npc, their items are dropped in the current room.*/
@@ -42,6 +42,9 @@ public class Npc{
 
 	/**retuns this Npc's script, retuns the first script if the npc has already traded an item
 	should the Npc trade items, and only returns the second script if the npc has already traded.*/
+
+	/**Returns one of this Npc's scripts, if this Npc wants to make a trade the sriptBt is returned, if
+	this Npc doesn't want to make a trade or has already made a trade the scriptAt si returned.*/
 	String getScript(){return "";}
 
 	/**returns how much health the Npc has left*/
