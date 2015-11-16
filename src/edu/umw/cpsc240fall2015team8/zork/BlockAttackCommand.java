@@ -5,12 +5,13 @@ package edu.umw.cpsc240fall2015team8.zork;
 Resolves confilct between the player and an Npc with the player using a block attack.
 @author Austin
 */
-class BlockAttackCommand extends AttackCommanad {
+class BlockAttackCommand extends AttackCommand {
 	
 	/**
 		Creates a new BlockAttackCommand.
 	*/
 	BlockAttackCommand(Npc n, Item i){
+		super(n,i);
 	}
 
 	/**
@@ -19,6 +20,6 @@ class BlockAttackCommand extends AttackCommanad {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
-
+		return "Hello";
 	}
 }

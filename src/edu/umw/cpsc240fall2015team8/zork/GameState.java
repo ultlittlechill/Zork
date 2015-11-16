@@ -24,9 +24,9 @@ public class GameState {
 
     static int MAX_CARRY_WEIGHT = 40;
 
-    static String DEFAULT_SAVE_FILE = "bork_save";
+    static String DEFAULT_SAVE_FILE = "zork_save";
     static String SAVE_FILE_EXTENSION = ".sav";
-    static String SAVE_FILE_VERSION = "Bork v3.0 save data";
+    static String SAVE_FILE_VERSION = "Zork v1.0 save data";
 
     static String ADVENTURER_MARKER = "Adventurer:";
     static String CURRENT_ROOM_LEADER = "Current room: ";
@@ -36,7 +36,9 @@ public class GameState {
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
     private Room adventurersCurrentRoom;
-
+    private int health = 100;
+    private int score = 0;
+    private int scoreWin = 10;
     /**
 	Returns the GameState. If no GameState exists, it creates one and the returns it.
     */
@@ -84,6 +86,12 @@ public class GameState {
         String currentRoomLine = s.nextLine();
         adventurersCurrentRoom = dungeon.getRoom(
             currentRoomLine.substring(CURRENT_ROOM_LEADER.length()));
+	s.next(); //throw away "health:"
+	setHealth(s.nextInt());
+	s.nextLine(); //move to the next line
+	s.next(); //throw away "score: "
+	setScore(s.nextInt());
+	s.nextLine(); //move to the next line.
         if (s.hasNext()) {
             String inventoryList = s.nextLine().substring(
                 INVENTORY_LEADER.length());
@@ -117,6 +125,8 @@ public class GameState {
         dungeon.storeState(w);
         w.println(ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
+	w.println("Health: " + getHealth());
+	w.println("Score: " + getScore());
         if (inventory.size() > 0) {
             w.print(INVENTORY_LEADER);
             for (int i=0; i<inventory.size()-1; i++) {
@@ -154,7 +164,7 @@ public class GameState {
     }
 
     /**
-	Removes the given item from the player's inventory. If null is passed, nbothing changes.
+	Removes the given item from the player's inventory. If null is passed, nothing changes.
     */
     void removeFromInventory(Item item) {
         inventory.remove(item);
@@ -228,5 +238,52 @@ public class GameState {
     Dungeon getDungeon() {
         return dungeon;
     }
+    
+    /**Returns the player's current health*/
+    int getHealth(){
+	return health;
+    }
+   
+    /**Subtracts the player's health by the number passed in the argument. If the player's health is lower than 1, the player dies.
+	 Passing a negative number willincrease the player's health.*/
+    void changeHealth(int h){
+	health-=h;
+	//if(health<=0){
+	//	EventFactory.instance().parse("Die",null).execute();
+	//}
+    }
 
+/**Sets the value passed to the player's health. If the player's health falls below 1, the player will die*/
+    void setHealth(int h){
+	health = h;
+	//if(health<=0){
+	//	EventFactory.instance().parse("Die", null).execute();
+	//}
+    }
+
+    /**Returns the player's current score*/
+    int getScore(){
+	return score;
+    }
+
+    /**Addes the value passed to the player's score. If the player's score is greater than or equal to the 
+	number of points needed to win, the player wins the game.*/
+    void changeScore(int s){
+	score+=s;
+	//if(score>=scoreWin){
+	//	EventFactory.instance().parse("Win",null).execute();
+	//}
+    }
+
+/**Sets the value passed to the player's score. If the player's score is at least the score needed to win, The player will win the game.*/
+    void setScore(int s){
+	score = s;
+	//if(score>=scoreWin)
+	//	EventFactory.instance().parse("Win",null).execute();
+    }
+
+/**Returns the score needed to win the game.*/
+   int getScoreWin(){
+	return scoreWin;
+    }
 }

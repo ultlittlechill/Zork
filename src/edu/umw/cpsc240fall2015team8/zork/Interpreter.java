@@ -10,7 +10,7 @@ public class Interpreter {
                                     // singleton
 
     public static String USAGE_MSG = 
-        "Usage: Interpreter borkFile.bork|saveFile.sav.";
+        "Usage: Interpreter zorkFile.zork|saveFile.sav.";
 /** runs through the text file that holds the dungeon, prints the dungeon name, and if the player hits q then it quits the program. */
     public static void main(String args[]) {
 
@@ -24,7 +24,7 @@ public class Interpreter {
 
         try {
             state = GameState.instance();
-            if (args[0].endsWith(".bork")) {
+            if (args[0].endsWith(".zork")) {
                 state.initialize(new Dungeon(args[0]));
                 System.out.println("\nWelcome to " + 
                     state.getDungeon().getName() + "!");
@@ -47,7 +47,15 @@ public class Interpreter {
                 System.out.print(
                     CommandFactory.instance().parse(command).execute());
 
-                command = promptUser(commandLine);
+                if(GameState.instance().getHealth() <= 0){
+			System.out.println("You have died. Get good, noob.");
+			break;
+		}
+		if(GameState.instance().getScore() >= GameState.instance().getScoreWin()){
+			System.out.println("You win!!!");
+			break;
+		}
+		command = promptUser(commandLine);
             }
 
             System.out.println("Bye!");

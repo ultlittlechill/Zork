@@ -45,6 +45,12 @@ If the verb can not be parsed from the String or a verb is not recognized return
         if (verb.equals("i") || verb.equals("inventory")) {
             return new InventoryCommand();
         }
+	if (verb.equals("health")){
+	    return new HealthCommand();
+	}
+	if (verb.equals("score")){
+	    return new ScoreCommand();
+	}
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }

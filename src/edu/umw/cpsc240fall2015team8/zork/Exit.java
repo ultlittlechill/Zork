@@ -1,6 +1,7 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 /**Connects two rooms, and allows passage between them. Keeps track of this exit's source room,
  destination room, whether the exit is locked or not the direction from the source room that the exits exist
@@ -82,10 +83,10 @@ and  a room for the destination. If no boolean is given it defaults to false, so
     Room getDest() { return dest; }
 
     /** Returns true if the exit is locked, or false is the exit is not locked. */
-    boolean getIsLocked(){}
+    boolean getIsLocked(){return false;}
 
     /** Returns an ArrayList of Strings which are the names of the Items that can unlock this Exit. If no Items can unlock it, returns an empty ArrayList. If the Exit is unlocked, still returns the ArrayList of names. */
-    ArrayList<String> getKeysNeeded(){}
+    ArrayList<String> getKeysNeeded(){return null;}
 
     /** Changes the locked boolean to false, representing that this Exit is now unlocked. If this Exit was already unlocked, nothing changges. */
     void unlock(){}

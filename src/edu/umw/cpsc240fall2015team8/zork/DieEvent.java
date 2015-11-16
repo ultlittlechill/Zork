@@ -17,5 +17,8 @@ class DieEvent extends Event{
 		Kills the player and ends the game.
 	*/
 	public void execute(){
+		//System.out.println("You have died. Next time, get good.");
+		//System.exit(0);
+		GameState.instance().setHealth(0);
 	}
 }

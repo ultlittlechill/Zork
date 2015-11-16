@@ -10,6 +10,7 @@ class LightAttackCommand extends AttackCommand {
 		Creates a new LightAttackCommand.
 	*/
 	LightAttackCommand(Npc n, Item i){
+		super(n,i);
 	}
 
 	/**
@@ -18,5 +19,6 @@ class LightAttackCommand extends AttackCommand {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
+		return "";
 	}
 }

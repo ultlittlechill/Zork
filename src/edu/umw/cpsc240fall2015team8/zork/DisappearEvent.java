@@ -7,11 +7,14 @@ Removes the specific item from the game in its entirety.
 */
 class DisappearEvent extends Event{
 
+	Item item;
+
 	/**
 		Creates a new DisappearEvent.
 		Works the same way for all values of i.
 	*/
 	DisappearEvent(Item i){
+		item = i;
 	}
 
 	/**
@@ -19,5 +22,9 @@ class DisappearEvent extends Event{
 		If the held item is null, does nothing.
 	*/
 	public void execute(){
+		Dungeon d = GameState.instance().getDungeon();
+		d.remove(item);
+		GameState.instance().removeFromInventory(item);
+		GameState.instance().getAdventurersCurrentRoom().remove(item);
 	}
 }

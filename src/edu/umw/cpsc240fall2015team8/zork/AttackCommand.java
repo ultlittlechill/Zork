@@ -22,5 +22,6 @@ class AttackCommand extends Command {
 	*/
 
 	public String execute(){
+		return "Hello";
 	}
 }

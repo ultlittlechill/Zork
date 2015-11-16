@@ -1,6 +1,9 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**A non player character, Npcs can be hostile and attack when a player walks in a room, or they can be friendly and
 pass along helpful messages or trade an Item with you. If an Npc is attacked it will fight back. 
 @author Jeff Wallhermfechtel*/
@@ -32,27 +35,27 @@ public class Npc{
 	void die(){}
 
 	/**drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped*/
-	String dropInventory(){}
+	String dropInventory(){return "";}
 	
 	/**returns a String containing a description of this Npc to describe their health state*/
-	Stirng getFuzzyHealth(){}
+	String getFuzzyHealth(){return "";}
 
 	/**retuns this Npc's script, retuns the first script if the npc has already traded an item
 	should the Npc trade items, and only returns the second script if the npc has already traded.*/
-	String getScript(){}
+	String getScript(){return "";}
 
 	/**returns how much health the Npc has left*/
-	int getHealth(){}
+	int getHealth(){return 0;}
 
 	/**returns the item the Npc is holding*/
-	Item getHeldItem(){}
+	Item getHeldItem(){return null;}
 
 	/**retuns the name of the Npc*/
-	String getName(){}
+	String getName(){return "";}
 
 	/**returns the Item the Npc wants as an outcome of a trade, returns null if the npc does not want to trade*/
-	Item getItemWanted(){}
+	Item getItemWanted(){return null;}
 
 	/**returns the Room the Npc is located in*/
-	Room getLocation(){}
+	Room getLocation(){return null;}
 }
