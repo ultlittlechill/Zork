@@ -9,7 +9,7 @@ Resolves conflict between the player and an NPC. Damage is dealt to the loser.
 class AttackCommand extends Command {
 
 	/**
-		Creates a new AttackCommand.
+		Creates a new AttackCommand when passed a npc to target and an item to attack with.
 	*/
 	AttackCommand(Npc n, Item i) {
 	}

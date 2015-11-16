@@ -24,8 +24,8 @@ public class CommandFactory {
     private CommandFactory() {
     }
 
-/**Returns a different subclass of Command depending on what verb is found in the String passed.
-If the verb can not be parsed from the String or a verb is not recognized returns an UnknownCommand*/
+/**Returns a different subclass of Command depending on what verb is found in the String passed. The verb of the sentence indicates
+what action is being done. If the verb can not be parsed from the String or a verb is not recognized returns an UnknownCommand*/
     public Command parse(String command) {
         String parts[] = command.split(" ");
         String verb = parts[0];

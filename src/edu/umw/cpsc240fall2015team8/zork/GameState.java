@@ -108,7 +108,7 @@ public class GameState {
     }
 
     /**
-	Calls the other store method with the default save file as an arguement.
+	Calls the other store method with the default save file as an arguement. The default save file is "zork_save".
     */
     void store() throws IOException {
         store(DEFAULT_SAVE_FILE);
