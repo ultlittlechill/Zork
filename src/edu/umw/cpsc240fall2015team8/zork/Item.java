@@ -9,7 +9,7 @@ import java.util.Random;
 //import java.util.regex.*;
 /** Represents an interacive object that is placed in the dungeon. Each item can have a name, weight, and varias commands specic to it.  
 
-@Author Lucas */
+@author Lucas */
 public class Item {
 
     /** Gets thrown when a text file representing an Item is not properly formatted. */
