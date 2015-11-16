@@ -2,7 +2,7 @@
 package edu.umw.cpsc240fall2015team8.zork;
 
 
-/** This class will allow certain verb or commands related to specific items be used if they are included in the text file.
+/** Allows the player to interact with an Item by giving a command specific to that Item. Items keep track of their own specific commands.
 
 @author Lucas */
 class ItemSpecificCommand extends Command {

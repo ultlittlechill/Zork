@@ -3,6 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 /**
 Resolves confilct between the player and an Npc with the player using a block attack.
+Block attacks beat light attacks, and lose to heavy attacks.
 @author Austin
 */
 class BlockAttackCommand extends AttackCommand {

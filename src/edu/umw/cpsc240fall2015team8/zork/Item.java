@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 //import java.util.regex.*;
-/** Contains the methods that initialize the item Hashtables and Arraylists, and the methods to get items from the dungeon text file, their descriptions, and weight. 
+/** Represents an interacive object that is placed in the dungeon. Each item can have a name, weight, and varias commands specic to it.  
 
 @Author Lucas */
 public class Item {

@@ -3,7 +3,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.Scanner;
 /** @author Lucas*/
-/** Contains the main.*/
+/** Contains the main for entire program, which interacts with the user via commands to do things in the dungeon. The main continuosly loops until the player decides to quit, wins, or dies.*/
 public class Interpreter {
 
     private static GameState state; // not strictly necessary; GameState is 
