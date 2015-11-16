@@ -5,7 +5,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 import java.util.Scanner;
 
 /**Acts like an Item, but a durable Item has a limited number of uses before it is 
-broken or destroyed. Durrable Items that have been broken can be repaired.Throws a no item exception if the Scanner does not represent a durable item. Returns an illegalDungeonFormat exception if the Scanner is not properly formatted.*/
+broken or destroyed. Durable Items that have been broken can be repaired.Throws a no item exception if the Scanner does not represent a durable item. Returns an illegalDungeonFormat exception if the Scanner is not properly formatted.*/
 public class DurableItem {
 
 	private int health;
