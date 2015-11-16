@@ -6,7 +6,7 @@ package edu.umw.cpsc240fall2015team8.zork;
 abstract class Command {
 
 /**Executes what this Command is intended to do, and returns a String 
-that tells what was done*/
+that tells what was done.*/
     abstract String execute();
 
 }
