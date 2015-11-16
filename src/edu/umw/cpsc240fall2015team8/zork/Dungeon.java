@@ -62,7 +62,7 @@ public class Dungeon {
     }
 
     /**
-	Creates a Dungeon object from the filename passed, and can place its items in thier origonal locations if
+	Creates a Dungeon object from the filename passed, and can place its items in thier original locations if
 	a true boolean is passed in the constructor.
 	@Throws FileNotFoundException if it can not find the file from the filename passed
 	@Throws IllegalDungeonFormatException if the zork file does not meet the proper requirements
@@ -152,9 +152,9 @@ public class Dungeon {
     }
 
     /**
-     * Restore the (changeable) state of this dungeon to that reflected in the
+     * Restores the (changeable) state of this dungeon to that reflected in the
      * reader passed.
-     * @param Scanner of the save file of the dungeon.
+     * @param Scanner A scanner holding the save file of the dungeon.
      * @Throws IllegalSaveFormatException if there is no "Room states:" marker after the dungeon file name
      */
     void restoreState(Scanner s) throws GameState.IllegalSaveFormatException {
@@ -174,26 +174,26 @@ public class Dungeon {
         }
     }
 
-/**returns the entry room this dungeon
-   @return The entry room of te dungeon*/
+/**Returns the entry room for this dungeon.
+   @return The entry room of this dungeon */
     public Room getEntry() { return entry; }
 
-/**returns the name of this dungeon as a String.*/
+/**Returns the name of this dungeon as a String.*/
     public String getName() { return name; }
 
-/**returns the String of the file's name the dungeon is built from with path information.*/
+/**Returns a String containing the file's name that the dungeon is built from with path information.*/
    public String getFilename() { return filename; }
 
-/**adds the room passed to this Dugeon's collection of rooms.*/
+/**Adds the room passed to this Dugeon's collection of rooms.*/
     public void add(Room room) { rooms.put(room.getTitle(),room); }
 
-/**adds the item passed to this Dungeon's collection of Items.*/
+/**Adds the item passed to this Dungeon's collection of Items.*/
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
 /** Removes a passed Item from the collection of Items held by this Dungeon. */
     public void remove(Item item) { items.remove(item.getPrimaryName()); }
 
-/**returns the room in this dungeon who's name that matches the String passed.*/
+/**Returns the room in this dungeon whose name equals the String passed. If no room exists with such name, returns null.*/
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
@@ -205,8 +205,8 @@ public class Dungeon {
     }
 
     /**
-     * returns the  Item object whose primary name is passed.
-     * @Throws NoItemExcpetion if the item does not exist
+     * Returns the Item object whose primary name is passed.
+     * If the Item does not exist, throws a NoItemException.
      * @param String The primary name of the Item that is to be returned.
      */
     public Item getItem(String primaryItemName) throws Item.NoItemException {

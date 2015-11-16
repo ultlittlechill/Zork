@@ -29,7 +29,7 @@ public class Item {
         aliases = new ArrayList<String>();
 	events = new Hashtable<String,Event[]>();
     }
-/** Creates the Item by initilaizing all variables and then itterating through the passed scanner to get the information which represents the item. */
+/** Creates the Item by initilaizing all variables and then itterating through the passed scanner to get the information which represents the item. Throws a NoItemException if the scanner does not represent an Item. Throws an IllegalDungeonFormatException if the file held in the scanner is not properly formatted.*/
     Item(Scanner s) throws NoItemException,
         Dungeon.IllegalDungeonFormatException {
 
