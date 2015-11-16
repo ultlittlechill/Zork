@@ -13,7 +13,7 @@ public class Npc{
 	private int health;
 	private Item heldItem;
 	private String scriptBt;
-	private String scriptAt
+	private String scriptAt;
 	private String name;
 	private String itemWanted;
 	private Room location;
