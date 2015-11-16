@@ -100,6 +100,7 @@ public class Item {
             verbLine = s.nextLine();
         }
     }
+
 /** Returns true if the passed String equals any of the stored names for this Item, and returns false if it does not. */
     boolean goesBy(String name) {
         return primaryName.equals(name) || aliases.contains(name);

@@ -12,8 +12,10 @@ class ItemSpecificCommand extends Command {
     ItemSpecificCommand(String command) {
         this.command = command;
     }
-/** Moves through the command the player input and checks to see if the verb noun combo makes sense, and then implements whatever command is input. 
-*/
+
+/**Breaks down command given in this object's constructor into a verb and an Item, and attempts to match the verb with
+one of the item's actions; returns the message that is associated with the Item's action as a String. If the verb does not match
+ any of the item's actions a String is returned stating that action cannont be done to that item.*/
     public String execute() {
         
         String[] words = command.split(" ");

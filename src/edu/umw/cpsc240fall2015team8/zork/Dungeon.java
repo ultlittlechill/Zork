@@ -62,7 +62,8 @@ public class Dungeon {
     }
 
     /**
-	Creates a Dungeon object from the filename passed, and can place its items in thier origonal locations.
+	Creates a Dungeon object from the filename passed, and can place its items in thier origonal locations if
+	a true boolean is passed in the constructor.
 	@Throws FileNotFoundException if it can not find the file from the filename passed
 	@Throws IllegalDungeonFormatException if the zork file does not meet the proper requirements
      */
@@ -177,22 +178,22 @@ public class Dungeon {
    @return The entry room of te dungeon*/
     public Room getEntry() { return entry; }
 
-/**returns the name of this dungeon as a String*/
+/**returns the name of this dungeon as a String.*/
     public String getName() { return name; }
 
-/**returns the String of the file's name the dungeon is built from*/
-    public String getFilename() { return filename; }
+/**returns the String of the file's name the dungeon is built from with path information.*/
+   public String getFilename() { return filename; }
 
-/**adds the room passed to this Dugeon's collection of rooms*/
+/**adds the room passed to this Dugeon's collection of rooms.*/
     public void add(Room room) { rooms.put(room.getTitle(),room); }
 
-/**adds the item passed to this Dungeon's collection of Items*/
+/**adds the item passed to this Dungeon's collection of Items.*/
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
 /** Removes a passed Item from the collection of Items held by this Dungeon. */
     public void remove(Item item) { items.remove(item.getPrimaryName()); }
 
-/**returns the room in this dungeon who's name that matches the String passed*/
+/**returns the room in this dungeon who's name that matches the String passed.*/
     public Room getRoom(String roomTitle) {
         return rooms.get(roomTitle);
     }
@@ -204,9 +205,7 @@ public class Dungeon {
     }
 
     /**
-     * Get the Item object whose primary name is passed. This has nothing to
-     * do with where the Adventurer might be, or what's in his/her inventory,
-     * etc.
+     * returns the  Item object whose primary name is passed.
      * @Throws NoItemExcpetion if the item does not exist
      * @param String The primary name of the Item that is to be returned.
      */

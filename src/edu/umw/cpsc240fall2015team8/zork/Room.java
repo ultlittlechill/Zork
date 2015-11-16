@@ -199,7 +199,7 @@ public class Room {
     }
 
     /**
-	Adds the passed Exit into this room's collection of exits. If null is passed, it behaves the same way.
+	Adds the passed Exit into this room's collection of exits. If null is passed there is no exit from the room from that direction.
     */
     void addExit(Exit exit) {
         exits.add(exit);

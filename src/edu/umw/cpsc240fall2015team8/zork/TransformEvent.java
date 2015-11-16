@@ -14,7 +14,7 @@ class TransformEvent extends Event{
 
 	/**
 		Creates a new TransformEvent.
-		Works the same regardless of String values.
+		The method works the same regardless of the name of the item, it does not depend on the item the orignal item is being transformed into.
 	*/
 	TransformEvent(Item i, String s){
 		item = i;

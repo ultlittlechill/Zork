@@ -21,6 +21,6 @@ class TradeCommand extends Command{
 	If the product String is null or an empty string, the returned String asks for clarification.
 	If the Player does not have the offer Item, the returned String states such.
 	If the player can not carry the item because of weight restrictions, returns a String informing
-	the player that the Item weighs too much. */
+	the player that the Item weighs too much. It cancels the trade and outputs a string asking them if they would like to drop an item */
 	public String execute(){return "hello";}
 }
