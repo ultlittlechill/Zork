@@ -100,7 +100,7 @@ public class Item {
             verbLine = s.nextLine();
         }
     }
-/** checks to see if the name matches that of the item */
+/** checks to see if the string entered matches the name of  that of the item */
     boolean goesBy(String name) {
         return primaryName.equals(name) || aliases.contains(name);
     }
