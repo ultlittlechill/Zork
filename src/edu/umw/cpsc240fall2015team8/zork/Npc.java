@@ -31,34 +31,34 @@ public class Npc{
 	Npc's itemWanted have the same name. If the Items do not have the same name the trade is refused.*/ 
 	void trade(Item offer){}
 
-	/**kills the Npc, their items are dropped in the current room.*/
+	/**Kills the Npc, thier items are dropped in the current room.*/
 	void die(){}
 
-	/**drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped*/
+	/**Drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped.*/
 	String dropInventory(){return "";}
 	
-	/**returns a String containing a description of this Npc to describe their health state*/
+	/**Returns a String containing a description of this Npc to describe their health state.*/
 	String getFuzzyHealth(){return "";}
 
-	/**retuns this Npc's script, retuns the first script if the npc has already traded an item
+	/**Retuns this Npc's script, retuns the first script if the npc has already traded an item
 	should the Npc trade items, and only returns the second script if the npc has already traded.*/
 
 	/**Returns one of this Npc's scripts, if this Npc wants to make a trade the sriptBt is returned, if
 	this Npc doesn't want to make a trade or has already made a trade the scriptAt si returned.*/
 	String getScript(){return "";}
 
-	/**returns how much health the Npc has left*/
+	/**Returns how much health the Npc has left.*/
 	int getHealth(){return 0;}
 
-	/**returns the item the Npc is holding*/
+	/**Returns the item the Npc is holding.*/
 	Item getHeldItem(){return null;}
 
-	/**retuns the name of the Npc*/
+	/**Retuns the name of the Npc.*/
 	String getName(){return "";}
 
-	/**returns the Item the Npc wants as an outcome of a trade, returns null if the npc does not want to trade*/
+	/**Returns the Item the Npc wants as an outcome of a trade, returns null if the npc does not want to trade.*/
 	Item getItemWanted(){return null;}
 
-	/**returns the Room the Npc is located in*/
+	/**Returns the Room the Npc is located in.*/
 	Room getLocation(){return null;}
 }

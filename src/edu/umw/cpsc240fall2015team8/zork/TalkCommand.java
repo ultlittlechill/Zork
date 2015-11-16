@@ -5,9 +5,9 @@ package edu.umw.cpsc240fall2015team8.zork;
 @author Jeff Wallhermfechtel*/
 class TalkCommand{
 
-	/**Creates a new TalkCommand*/
+	/**Creates a new TalkCommand.*/
 	TalkCommand(){}
 
-	/**Returns a String containing what a Npc will say when they are talked to*/
+	/**Returns a String containing what a Npc will say when they are talked to.*/
 	public String execute(String npcName){return "hello";}
 }
