@@ -17,22 +17,84 @@ public class Npc{
 	private String name;
 	private String itemWanted;
 	private Room location;
+	private String favAttack;
 	private boolean isDead;
+	private boolean wantsTrade;
 	private ArrayList<Item> inventory;
 
 	/**Creates a Npc object when passed a Scanner.*/
-	Npc(Scanner s){}
+	Npc(Scanner s){
+		this.name = s.nextLine();
+		this.health = s.nextLine();
+		this.heldItem = GameState.instance().getDungeon().getItem(s.nextLine());
+		this.scriptBt = s.nextLine();
 
-	/**Randomly selects an attack command to be used in combat against a player,
-	also determines how much damage this Npc takes in combat and applies it to its health.*/
-	void attack(){}
+		if(scriptBt.equals(""))
+			wantsTrade = false;
+		else
+			wantsTrade = true;
+
+		this.scriptAt = s.nextLine();
+		this.itemWanted = s.nextLine();
+		this.hostile = s.nextLine();
+		this.location = s.nextLine();
+		s.nextLine();//throw away "Inventory:"
+		String temp = s.nextLine();
+		while(!temp.equals("===")){
+			this.inventory.add(temp);
+			temp = s.nextLine();
+		}
+	}
+
+	/**Initializes basic variables to be used.*/
+	private void init(){
+		isDead = false;
+	}
+
+	/**Randomly selects an attack command to be used in combat against a player, this Npc's favorite Attack is 50% more likely to be returned.*/
+	String  attack(){
+		int rand = (int)(Math.random()*5)+1;//hopefuly makes a number between 1 and 5 inclusive
+		if(rand == 1)
+			return "block";
+		else if(rand == 2)
+			return "light";
+		else if(rand == 3)
+			return "heavy";
+		else
+			return this.favAttack;
+	}
 
 	/**Trades the Item offered in the argument with the Npc's heldItem if the offered item and the
 	Npc's itemWanted have the same name. If the Items do not have the same name the trade is refused.*/ 
-	void trade(Item offer){}
+	String trade(Item offer){
+		if(getItemWanted().equals(offer.getPrimaryName()) && wantsTrade){
+			GameState.instance().addToInventory(heldItem);
+			GameState.instance().removeFromInventory(offer);
+			this.heldItem = offer;
+			this.wantsTrade = false;
+			return this.getScript();
+		}
+
+		else if(wantsTrade)
+			return "The Npc refused your offer";
+		
+		else
+			return "The Npc does not want to trade with you";
+	}
+
 
 	/**Kills the Npc, thier items are dropped in the current room.*/
-	void die(){}
+	void die(){
+		for(int j = 0; j<inventory.size(); j++){
+			location.add(inventory.get(j))
+		}
+		inventory.clear();
+		location.add(heldItem);
+		health = 0;
+		heldItem = null;
+		location.remove(this);
+	}
+
 
 	/**Drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped.*/
 	String dropInventory(){return "";}
@@ -57,7 +119,7 @@ public class Npc{
 	String getName(){return "";}
 
 	/**Returns the Item the Npc wants as an outcome of a trade, returns null if the npc does not want to trade.*/
-	Item getItemWanted(){return null;}
+	String getItemWanted(){return null;}
 
 	/**Returns the Room the Npc is located in.*/
 	Room getLocation(){return null;}
