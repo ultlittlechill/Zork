@@ -11,6 +11,7 @@ public class Npc{
 
 	private boolean hostile;
 	private int health;
+	private int maxHealth;
 	private Item heldItem;
 	private String scriptBt;
 	private String scriptAt;
@@ -44,11 +45,13 @@ public class Npc{
 			this.inventory.add(temp);
 			temp = s.nextLine();
 		}
+		this.init();
 	}
 
 	/**Initializes basic variables to be used.*/
 	private void init(){
 		isDead = false;
+		maxHealth = health;
 	}
 
 	/**Randomly selects an attack command to be used in combat against a player, this Npc's favorite Attack is 50% more likely to be returned.*/
@@ -85,11 +88,7 @@ public class Npc{
 
 	/**Kills the Npc, thier items are dropped in the current room.*/
 	void die(){
-		for(int j = 0; j<inventory.size(); j++){
-			location.add(inventory.get(j))
-		}
-		inventory.clear();
-		location.add(heldItem);
+		this.dropInventory();
 		health = 0;
 		heldItem = null;
 		location.remove(this);
@@ -97,30 +96,61 @@ public class Npc{
 
 
 	/**Drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped.*/
-	String dropInventory(){return "";}
+	private void dropInventory(){
+		for(int j = 0; j<inventory.size(); j++){
+			location.add(inventory.get(0));
+		}
+		inventory.clear();
+		location.add(heldItem);
+	}
 	
 	/**Returns a String containing a description of this Npc to describe their health state.*/
-	String getFuzzyHealth(){return "";}
+	String getFuzzyHealth(){
+		if(health == maxHealth)
+			return this.name + " doesn't even have a scratch on it";
+		else if(health> (maxHealth*.75))
+			return  this.name + " stands tall and Strong";
+		else if(health> (maxHealth*.5))
+			return  this.name + " is starting to show some weakness";
+		else if(health> (maxHealth*.35))
+			return  this.name + " is looking a little wobbly";
+		else if (health> (maxHealth*.25))
+			return this.name + "is looking a little slower, but still putting up a fight";
+		else if (health> (maxHealth*.10))
+			return "A pool of blood is starting to form around " + this.name;
+		else if(health>0)
+			return this.name + " is down on a knee";
+		else
+			return this.name + " appears to be dead";
+	}
+
+
+	
 
 	/**Retuns this Npc's script, retuns the first script if the npc has already traded an item
 	should the Npc trade items, and only returns the second script if the npc has already traded.*/
 
 	/**Returns one of this Npc's scripts, if this Npc wants to make a trade the sriptBt is returned, if
 	this Npc doesn't want to make a trade or has already made a trade the scriptAt si returned.*/
-	String getScript(){return "";}
+	String getScript(){
+	if(wantsTrade)
+		return scriptBt;
+	else
+		return scriptAt;
+	}
 
 	/**Returns how much health the Npc has left.*/
-	int getHealth(){return 0;}
+	int getHealth(){return health;}
 
 	/**Returns the item the Npc is holding.*/
-	Item getHeldItem(){return null;}
+	Item getHeldItem(){return heldItem;}
 
 	/**Retuns the name of the Npc.*/
-	String getName(){return "";}
+	String getName(){return name;}
 
 	/**Returns the Item the Npc wants as an outcome of a trade, returns null if the npc does not want to trade.*/
-	String getItemWanted(){return null;}
+	String getItemWanted(){return itemWanted;}
 
 	/**Returns the Room the Npc is located in.*/
-	Room getLocation(){return null;}
+	Room getLocation(){return location;}
 }
