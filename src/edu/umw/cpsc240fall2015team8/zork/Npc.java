@@ -153,4 +153,10 @@ public class Npc{
 
 	/**Returns the Room the Npc is located in.*/
 	Room getLocation(){return location;}
+
+	/**Returns the boolean for if this Npc is dead or not.*/
+	Boolean getIsDead(){return isDead;}
+
+	/**Returns the boolean for if this Npc wants to trade or not.*/
+	Boolean getWantsTrade(){return wantsTrade;}
 }
