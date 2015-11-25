@@ -28,7 +28,7 @@ public class Npc{
 	Npc(Scanner s){
 		this.name = s.nextLine();
 		this.health = s.nextInt();
-		s.nextLine()//skip to the next line
+		s.nextLine();//skip to the next line
 		this.heldItem = GameState.instance().getDungeon().getItem(s.nextLine());
 		this.scriptBt = s.nextLine();
 
