@@ -9,7 +9,7 @@ import java.util.Scanner;
 broken or destroyed. Durable Items that have been broken can be repaired.Throws a no
  item exception if the Scanner does not represent a durable item. Returns an illegalDungeonFormat
  exception if the Scanner is not properly formatted.*/
-public class DurableItem {
+public class DurableItem extends Item{
 
 	private int health;//how  much recoil the item can take before it breaks
 	private int durability;//The maximum ammount of health this item can have

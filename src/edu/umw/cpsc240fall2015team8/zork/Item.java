@@ -16,7 +16,7 @@ public class Item {
     static class NoItemException extends Exception {}
     static Random rng = new Random();
 
-    private String primaryName;
+    protected String primaryName;
     private ArrayList<String> aliases;
     private int weight;
     private Hashtable<String,String[]> messages;
