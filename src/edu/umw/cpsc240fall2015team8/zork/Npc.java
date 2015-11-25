@@ -12,7 +12,7 @@ public class Npc{
 	private boolean hostile;
 	private int health;
 	private int maxHealth;
-	private Item heldItem;
+	private DurableItem heldItem;
 	private String scriptBt;
 	private String scriptAt;
 	private String scriptHostile;
@@ -161,7 +161,7 @@ public class Npc{
 	int getHealth(){return health;}
 
 	/**Returns the item the Npc is holding.*/
-	Item getHeldItem(){return heldItem;}
+       	DurableItem getHeldItem(){return heldItem;}
 
 	/**Retuns the name of the Npc.*/
 	String getName(){return name;}

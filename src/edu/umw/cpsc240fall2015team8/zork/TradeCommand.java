@@ -28,9 +28,9 @@ class TradeCommand extends Command{
 	public String execute(){
 		GameState state = GameState.instance();
 		try{/*something with offer*/}
-		catch(NoItemException e){}
+		catch(Item.NoItemException e){}
 		try{/*Scomething with product*/}
-		catch(NoItemException e){}
+		catch(Item.NoItemException e){}
 		//^^Checks to make sure Items are actually Items.
 	}
 }

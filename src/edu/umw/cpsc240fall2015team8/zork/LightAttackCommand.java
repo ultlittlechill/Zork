@@ -14,7 +14,7 @@ class LightAttackCommand extends AttackCommand {
 		Creates a new LightAttackCommand.
 	*/
 	LightAttackCommand(Npc n, DurableItem i){
-		//super(n,i);
+		super(n,i);
 		person = n;
 		item = i;
 	}
@@ -25,7 +25,7 @@ class LightAttackCommand extends AttackCommand {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
-		string attack = person.attack();
+		String attack = person.attack();
 		
 		if(attack.equals("light")){
 			return "Your attacks were evenly matched!\n";

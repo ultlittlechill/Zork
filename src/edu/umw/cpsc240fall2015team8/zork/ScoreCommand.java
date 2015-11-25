@@ -14,7 +14,7 @@ class ScoreCommand extends Command {
 	public String execute() {
 		//return "Your score is: " + GameState.instance().getScore() + "\n";
 		int score = GameState.instance().getScore();
-		Stirng r = "Your rank is: ";	
+		String r = "Your rank is: ";	
 
 		if(score == 0)
 			return r + "n00b\n";
