@@ -22,8 +22,7 @@ public class Item {
     private Hashtable<String,String[]> messages;
     private Hashtable<String,Event[]> events;
 
-/** Initializes all Hashtables and ArrayLists used for holding specific commands, name aliases, and events.
-*/
+/** Initializes all Hashtables and ArrayLists used for holding specific commands, name aliases, and events.*/
     private void init() {
         messages = new Hashtable<String,String[]>();
         aliases = new ArrayList<String>();

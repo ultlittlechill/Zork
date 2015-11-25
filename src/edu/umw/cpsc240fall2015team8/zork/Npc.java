@@ -15,13 +15,14 @@ public class Npc{
 	private Item heldItem;
 	private String scriptBt;
 	private String scriptAt;
+	private String scriptHostile;
 	private String name;
 	private String itemWanted;
 	private Room location;
 	private String favAttack;
 	private boolean isDead;
 	private boolean wantsTrade;
-	private ArrayList<Item> inventory;
+	private ArrayList<DurableItem> inventory;
 
 	/**Creates a Npc object when passed a Scanner.*/
 	Npc(Scanner s){
@@ -36,6 +37,7 @@ public class Npc{
 			wantsTrade = true;
 
 		this.scriptAt = s.nextLine();
+		this.scriptHostile = s.nextLine();
 		this.itemWanted = s.nextLine();
 		this.hostile = s.nextLine();
 		this.location = s.nextLine();
@@ -56,6 +58,8 @@ public class Npc{
 
 	/**Randomly selects an attack command to be used in combat against a player, this Npc's favorite Attack is 50% more likely to be returned.*/
 	String  attack(){
+		wantsTrade = false;
+		hostile = true;
 		int rand = (int)(Math.random()*5)+1;//hopefuly makes a number between 1 and 5 inclusive
 		if(rand == 1)
 			return "block";
@@ -90,7 +94,6 @@ public class Npc{
 	void die(){
 		this.dropInventory();
 		health = 0;
-		heldItem = null;
 		location.remove(this);
 	}
 
@@ -102,6 +105,7 @@ public class Npc{
 		}
 		inventory.clear();
 		location.add(heldItem);
+		heldItem = null;
 	}
 	
 	/**Returns a String containing a description of this Npc to describe their health state.*/
@@ -124,19 +128,27 @@ public class Npc{
 			return this.name + " appears to be dead";
 	}
 
+	/**Deals the damage passed in the argument to this Npc. If this Npc's health falls below 1, calls {@link die()}.*/
+	void wound(int dam){
+		health-=dam;
+		if(health<1)
+			this.die();
+	}
 
-	
-
-	/**Retuns this Npc's script, retuns the first script if the npc has already traded an item
-	should the Npc trade items, and only returns the second script if the npc has already traded.*/
+	///**Retuns this Npc's script, retuns the first script if the npc has already traded an item
+	//should the Npc trade items, and only returns the second script if the npc has already traded.*/
 
 	/**Returns one of this Npc's scripts, if this Npc wants to make a trade the sriptBt is returned, if
 	this Npc doesn't want to make a trade or has already made a trade the scriptAt si returned.*/
 	String getScript(){
-	if(wantsTrade)
-		return scriptBt;
-	else
-		return scriptAt;
+		if(wantsTrade && (hostile == false))
+			return scriptBt;
+		else if(hostile){
+			return scriptHostile;
+		}
+		else{
+			return scriptAt;
+		}
 	}
 
 	/**Returns how much health the Npc has left.*/
