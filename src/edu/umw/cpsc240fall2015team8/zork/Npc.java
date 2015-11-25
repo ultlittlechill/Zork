@@ -25,11 +25,11 @@ public class Npc{
 	private ArrayList<DurableItem> inventory;
 
 	/**Creates a Npc object when passed a Scanner.*/
-	Npc(Scanner s){
+	Npc(Scanner s) throws Item.NoItemException{
 		this.name = s.nextLine();
 		this.health = s.nextInt();
 		s.nextLine();//skip to the next line
-		this.heldItem = GameState.instance().getDungeon().getItem(s.nextLine());
+		this.heldItem = (DurableItem)(GameState.instance().getDungeon().getItem(s.nextLine()));
 		this.scriptBt = s.nextLine();
 
 		if(scriptBt.equals(""))
@@ -49,7 +49,7 @@ public class Npc{
 		s.nextLine();//throw away "Inventory:"
 		String temp = s.nextLine();
 		while(!temp.equals("===")){
-			this.inventory.add(GameState.getDungeon.getItem(temp));
+			this.inventory.add((DurableItem)GameState.instance().getDungeon().getItem(temp));
 			temp = s.nextLine();
 		}
 		this.init();
@@ -78,7 +78,7 @@ public class Npc{
 
 	/**Trades the Item offered in the argument with the Npc's heldItem if the offered item and the
 	Npc's itemWanted have the same name. If the Items do not have the same name the trade is refused.*/ 
-	String trade(Item offer){
+	String trade(DurableItem offer){
 		if(getItemWanted().equals(offer.getPrimaryName()) && wantsTrade){
 			GameState.instance().addToInventory(heldItem);
 			GameState.instance().removeFromInventory(offer);

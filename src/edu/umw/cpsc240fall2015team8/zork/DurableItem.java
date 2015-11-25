@@ -19,7 +19,7 @@ public class DurableItem extends Item{
 	private boolean broken;//keeps track of if this item is broken or not
 
 	/**Creates a Durable Item from the Scanner passed in the arguments.*/
-	DurableItem(Scanner s){
+	DurableItem(Scanner s) throws Item.NoItemException, Dungeon.IllegalDungeonFormatException{
 		super(s);
 		this.init();
 		//...
