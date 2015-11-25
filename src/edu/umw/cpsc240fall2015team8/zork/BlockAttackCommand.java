@@ -15,9 +15,9 @@ class BlockAttackCommand extends AttackCommand {
 		Creates a new BlockAttackCommand.
 	*/
 	BlockAttackCommand(Npc n, DurableItem i){
+		super(n,i);
 		person = n;
 		item = i;
-		//super(n,i);
 	}
 
 	/**
@@ -26,7 +26,7 @@ class BlockAttackCommand extends AttackCommand {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
-		string attack = person.attack();
+		String attack = person.attack();
 
 		if(attack.equals("block")){
 			return "You both took a defensive stance!\n";
