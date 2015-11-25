@@ -22,6 +22,6 @@ class AttackCommand extends Command {
 	*/
 
 	public String execute(){
-		return "Please choose LightAttack, HeavyAttack, or BlockAttack.";
+		return "Please choose lightAttack, heavyAttack, or blockAttack.";
 	}
 }

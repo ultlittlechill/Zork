@@ -51,6 +51,18 @@ what action is being done. If the verb can not be parsed from the String or a ve
 	if (verb.equals("score")){
 	    return new ScoreCommand();
 	}
+	if (verb.equals("attack")){
+	    return new AttackCommand(null,null);
+	}
+	if (verb.equals("lightAttack")){
+	    return new LightAttackCommand(GameState.instance().getDungeon.getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	}
+	if (verb.equals("heavyAttack")){
+	    return new HeavyAttackCommand(GameState.instance().getDungeon.getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	}
+	if (verb.equals("blockAttack")){
+	    return new BlockAttackCommand(GameState.instance().getDungeon.getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	}
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
         }

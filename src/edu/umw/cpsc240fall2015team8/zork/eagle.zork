@@ -1,0 +1,54 @@
+Eagle Landing
+Zork v2.0
+===
+DurableItems:
+sword
+10
+5
+20
+examine:This is a sword yo.
+---
+dagger
+5
+3
+10
+---
+gold
+2
+1
+1000
+---
+===
+NPCs:
+Goblin
+10
+dagger
+
+
+Grableableable!
+
+true
+inventory:
+gold
+---
+===
+Rooms:
+Rotunda
+People: Goblin
+This is the rotunda dawg.
+---
+Lobby
+Contents: sword
+You are in the lobby home slice.
+---
+===
+Exits:
+Lobby
+w
+Rotunda
+---
+Rotunda
+e
+Lobby
+---
+===
