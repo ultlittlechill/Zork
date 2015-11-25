@@ -23,7 +23,7 @@ public class Room {
     private ArrayList<Exit> exits;
     private ArrayList<Npc> characters;
     private boolean isLit;
-
+    
     /**
 	Creates a new room object from a given string. If the string is null, it still works.
     */
@@ -212,6 +212,19 @@ public class Room {
         contents.add(item);
     }
 
+    /**
+	Adds the passed Npc to this room's collection of Npcs.
+    */
+    void add(Npc npc){
+	characters.add(npc);
+    }
+
+    /**
+	Removes the passed Npc from this room's collection of Npcs.
+    */
+    void remove(Npc npc){
+	characters.remove(npc);
+    }
     /**
 	Removes the passed Item from this room's collection of items. If null is passed, behaves the same way.
     */

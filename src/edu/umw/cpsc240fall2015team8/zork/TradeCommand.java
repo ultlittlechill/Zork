@@ -13,7 +13,10 @@ class TradeCommand extends Command{
 	private String product;
 
 	/**Creates a new TradeCommand that is specific to the two items passed in the argument.*/
-	TradeCommand(String o, String p){}
+	TradeCommand(String o, String p){
+		this.offer = o;
+		this.product = p;
+	}
 
 	/**Moves the offer item from the player's inventory to the Npc's, and moves the product
 	item from the Npc's inventory to the player's. @return String claiming that the trade was made.
@@ -22,5 +25,12 @@ class TradeCommand extends Command{
 	If the Player does not have the offer Item, the returned String states such.
 	If the player can not carry the item because of weight restrictions, returns a String informing
 	the player that the Item weighs too much. It cancels the trade and outputs a string asking them if they would like to drop an item.*/
-	public String execute(){return "hello";}
+	public String execute(){
+		GameState state = GameState.instance();
+		try{/*something with offer*/}
+		catch(NoItemException e){}
+		try{/*Scomething with product*/}
+		catch(NoItemException e){}
+		//^^Checks to make sure Items are actually Items.
+	}
 }
