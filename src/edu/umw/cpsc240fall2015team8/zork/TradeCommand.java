@@ -26,11 +26,12 @@ class TradeCommand extends Command{
 	If the player can not carry the item because of weight restrictions, returns a String informing
 	the player that the Item weighs too much. It cancels the trade and outputs a string asking them if they would like to drop an item.*/
 	public String execute(){
-		GameState state = GameState.instance();
-		try{/*something with offer*/}
-		catch(Item.NoItemException e){}
-		try{/*Scomething with product*/}
-		catch(Item.NoItemException e){}
-		//^^Checks to make sure Items are actually Items.
+	//	GameState state = GameState.instance();
+	//	try{/*something with offer*/}
+	//	catch(Item.NoItemException e){}
+	//	try{/*Scomething with product*/}
+	//	catch(Item.NoItemException e){}
+	//	//^^Checks to make sure Items are actually Items.
+		return "I don't know -Jeff";
 	}
 }

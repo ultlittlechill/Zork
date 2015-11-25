@@ -25,11 +25,11 @@ public class Npc{
 	private ArrayList<DurableItem> inventory;
 
 	/**Creates a Npc object when passed a Scanner.*/
-	Npc(Scanner s){
+	Npc(Scanner s) throws Item.NoItemException{
 		this.name = s.nextLine();
 		this.health = s.nextInt();
 		s.nextLine();//skip to the next line
-		this.heldItem = GameState.instance().getDungeon().getItem(s.nextLine());
+		this.heldItem = (DurableItem)(GameState.instance().getDungeon().getItem(s.nextLine()));
 		this.scriptBt = s.nextLine();
 
 		if(scriptBt.equals(""))
@@ -46,11 +46,10 @@ public class Npc{
 		else
 			hostile = false;	
 
-		this.location = s.nextLine();
 		s.nextLine();//throw away "Inventory:"
 		String temp = s.nextLine();
 		while(!temp.equals("===")){
-			this.inventory.add(temp);
+			this.inventory.add((DurableItem)GameState.instance().getDungeon().getItem(temp));
 			temp = s.nextLine();
 		}
 		this.init();
@@ -79,7 +78,7 @@ public class Npc{
 
 	/**Trades the Item offered in the argument with the Npc's heldItem if the offered item and the
 	Npc's itemWanted have the same name. If the Items do not have the same name the trade is refused.*/ 
-	String trade(Item offer){
+	String trade(DurableItem offer){
 		if(getItemWanted().equals(offer.getPrimaryName()) && wantsTrade){
 			GameState.instance().addToInventory(heldItem);
 			GameState.instance().removeFromInventory(offer);
@@ -100,12 +99,13 @@ public class Npc{
 	void die(){
 		this.dropInventory();
 		health = 0;
-		location.remove(this);
+		GameState.instance().getAdventurersCurrentRoom().remove(this);
 	}
 
 
 	/**Drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped.*/
 	private void dropInventory(){
+		Room location = GameState.instance().getAdventurersCurrentRoom();
 		for(int j = 0; j<inventory.size(); j++){
 			location.add(inventory.get(0));
 		}
@@ -131,7 +131,7 @@ public class Npc{
 		else if(health>0)
 			return this.name + " is down on a knee";
 		else
-			return this.name + " appears to be dead";
+			return this.name + " is dead";
 	}
 
 	/**Deals the damage passed in the argument to this Npc. If this Npc's health falls below 1, calls {@link die()}.*/
@@ -168,9 +168,6 @@ public class Npc{
 
 	/**Returns the Item the Npc wants as an outcome of a trade, returns null if the npc does not want to trade.*/
 	String getItemWanted(){return itemWanted;}
-
-	/**Returns the Room the Npc is located in.*/
-	Room getLocation(){return location;}
 
 	/**Returns the boolean for if this Npc is dead or not.*/
 	Boolean getIsDead(){return isDead;}
