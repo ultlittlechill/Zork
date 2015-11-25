@@ -43,6 +43,10 @@ public class DurableItem {
 		this.takeDamage(this.getRecoil(verb));
 	}
 
+	/**Returns the damaging amount for the DurableItem.*/
+	int getDamage(){
+		return damage;
+	}
 
 	/**Returns the int value of the recoil of the verb passed in the argument.*/
 	int getRecoil(String v){

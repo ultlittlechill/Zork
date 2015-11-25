@@ -6,12 +6,17 @@ Heavy attacks beat block attacks, and lose to light attacks.
 @author Austin
 */
 class HeavyAttackCommand extends AttackCommand {
+
+	Npc person;
+	DurableItem item;
 	
 	/**
 		Creates a new HeavyAttackCommand.
 	*/
-	HeavyAttackCommand(Npc n, Item i){
-		super(n,i);
+	HeavyAttackCommand(Npc n, DurableItem i){
+		//super(n,i);
+		person = n;
+		item = i;
 	}
 
 	/**
@@ -20,6 +25,20 @@ class HeavyAttackCommand extends AttackCommand {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
-		return "hello";
+		string attack = person.attack();
+
+		if(attack.equals("heavy")){
+			return "Your attacks were evenly matched!\n";
+		}
+		else if(attack.equals("block")){
+			person.wound(item.getDamage());
+			item.takeDamage(1);
+			return "Your attack overpowered " + person.getName() + ".\n";
+		}else{
+			GameState.instance().changeHealth(person.getHeldItem().getDamage());
+			item.takeDamage(1);
+			return "Your attack was slower than " + person.getName() + "'s.\n";
+		}
+		//return "hello";
 	}
 }
