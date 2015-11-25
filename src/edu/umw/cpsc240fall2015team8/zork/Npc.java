@@ -46,11 +46,10 @@ public class Npc{
 		else
 			hostile = false;	
 
-		this.location = s.nextLine();
 		s.nextLine();//throw away "Inventory:"
 		String temp = s.nextLine();
 		while(!temp.equals("===")){
-			this.inventory.add(temp);
+			this.inventory.add(GameState.getDungeon.getItem(temp));
 			temp = s.nextLine();
 		}
 		this.init();
@@ -100,12 +99,13 @@ public class Npc{
 	void die(){
 		this.dropInventory();
 		health = 0;
-		location.remove(this);
+		GameState.instance().getAdventurersCurrentRoom().remove(this);
 	}
 
 
 	/**Drops all the Items in the Npc's inventory, and returns a String containing what Items were dropped.*/
 	private void dropInventory(){
+		Room location = GameState.instance().getAdventurersCurrentRoom();
 		for(int j = 0; j<inventory.size(); j++){
 			location.add(inventory.get(0));
 		}
@@ -131,7 +131,7 @@ public class Npc{
 		else if(health>0)
 			return this.name + " is down on a knee";
 		else
-			return this.name + " appears to be dead";
+			return this.name + " is dead";
 	}
 
 	/**Deals the damage passed in the argument to this Npc. If this Npc's health falls below 1, calls {@link die()}.*/
@@ -168,9 +168,6 @@ public class Npc{
 
 	/**Returns the Item the Npc wants as an outcome of a trade, returns null if the npc does not want to trade.*/
 	String getItemWanted(){return itemWanted;}
-
-	/**Returns the Room the Npc is located in.*/
-	Room getLocation(){return location;}
 
 	/**Returns the boolean for if this Npc is dead or not.*/
 	Boolean getIsDead(){return isDead;}

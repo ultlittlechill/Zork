@@ -27,7 +27,7 @@ public class DurableItem extends Item{
 
 	/**Some basic initialization tasks*/
 	private void init(){
-		recoil = new Hashtable<String,int>();
+		recoil = new Hashtable<String,Integer>();
 	}
 
 	/** Deals damage to this item's health based on the int pased in the argument. If this item's health is below 0 calls {@link rupture()} or {@link destroy()}
