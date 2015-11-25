@@ -27,7 +27,8 @@ public class Npc{
 	/**Creates a Npc object when passed a Scanner.*/
 	Npc(Scanner s){
 		this.name = s.nextLine();
-		this.health = s.nextLine();
+		this.health = s.nextInt();
+		s.nextLine()//skip to the next line
 		this.heldItem = GameState.instance().getDungeon().getItem(s.nextLine());
 		this.scriptBt = s.nextLine();
 
@@ -39,7 +40,12 @@ public class Npc{
 		this.scriptAt = s.nextLine();
 		this.scriptHostile = s.nextLine();
 		this.itemWanted = s.nextLine();
-		this.hostile = s.nextLine();
+		
+		if(s.nextLine().toLowerCase().equals("true"))
+			hostile = true;
+		else
+			hostile = false;	
+
 		this.location = s.nextLine();
 		s.nextLine();//throw away "Inventory:"
 		String temp = s.nextLine();

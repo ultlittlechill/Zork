@@ -16,7 +16,7 @@ class ScoreCommand extends Command {
 		int score = GameState.instance().getScore();
 		Stirng r = "Your rank is: ";	
 
-		if(score = 0)
+		if(score == 0)
 			return r + "n00b\n";
 		else if(score ==1)
 			return r + "Looser\n";

@@ -2,6 +2,7 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
+import java.util.Hashtable;
 import java.util.Scanner;
 
 /**Acts like an Item, but a durable Item has a limited number of uses before it is 
@@ -14,7 +15,7 @@ public class DurableItem {
 	private int durability;//The maximum ammount of health this item can have
 	private int damage;//the ammount of damage this item will inflict on other players
 	private int origDamage;
-	private Hashtable<String,int>  recoil;//the ammount of damage this item takes when it is used. String = the command used; int = the recoil to be taken.
+	private Hashtable<String,Integer>  recoil;//the ammount of damage this item takes when it is used. String = the command used; int = the recoil to be taken.
 	private boolean broken;//keeps track of if this item is broken or not
 
 	/**Creates a Durable Item from the Scanner passed in the arguments.*/
