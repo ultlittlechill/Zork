@@ -216,4 +216,6 @@ public class Dungeon {
         }
         return items.get(primaryItemName);
     }
+
+    public Npc getNpc(String name){ return null; }
 }

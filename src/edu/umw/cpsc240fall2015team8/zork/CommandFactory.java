@@ -55,13 +55,19 @@ what action is being done. If the verb can not be parsed from the String or a ve
 	    return new AttackCommand(null,null);
 	}
 	if (verb.equals("lightAttack")){
-	    return new LightAttackCommand(GameState.instance().getDungeon.getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	    try{
+	        return new LightAttackCommand(GameState.instance().getDungeon().getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+    	    }catch(Item.NoItemException e){}
 	}
 	if (verb.equals("heavyAttack")){
-	    return new HeavyAttackCommand(GameState.instance().getDungeon.getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	    try{
+		return new HeavyAttackCommand(GameState.instance().getDungeon().getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	    }catch(Item.NoItemException e){}
 	}
 	if (verb.equals("blockAttack")){
-	    return new BlockAttackCommand(GameState.instance().getDungeon.getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	    try{
+		return new BlockAttackCommand(GameState.instance().getDungeon().getNpc(parts[1]), (DurableItem)GameState.instance().getDungeon().getItem(parts[3]));
+	    }catch(Item.NoItemException e){}
 	}
         if (MOVEMENT_COMMANDS.contains(verb)) {
             return new MovementCommand(verb);
