@@ -7,16 +7,16 @@ Heavy attacks beat block attacks, and lose to light attacks.
 */
 class HeavyAttackCommand extends AttackCommand {
 
-	Npc person;
-	DurableItem item;
+	String person1;
+	String item1;
 	
 	/**
 		Creates a new HeavyAttackCommand.
 	*/
-	HeavyAttackCommand(Npc n, DurableItem i){
+	HeavyAttackCommand(String n, String i){
 		super(n,i);
-		person = n;
-		item = i;
+		person1 = n;
+		item1 = i;
 	}
 
 	/**
@@ -25,6 +25,20 @@ class HeavyAttackCommand extends AttackCommand {
 		If the item doesn't exist, returns a string saying so, dealing no damage.
 	*/
 	public String execute(){
+		Npc person;
+		DurableItem item;
+		//Get all of the objects
+		try{
+			person = GameState.instance().getAdventurersCurrentRoom().getNpcNamed(person1);
+			item = (DurableItem)GameState.instance().getItemFromInventoryNamed(item1);
+		}catch(Item.NoItemException e){
+			return "You don't have a " + item1 + ".\n";
+		}
+		if(person == null){
+			return "There is no " + person1 + " in this room.\n";
+		}	
+	
+		//Do the attacks
 		String attack = person.attack();
 
 		if(attack.equals("heavy")){

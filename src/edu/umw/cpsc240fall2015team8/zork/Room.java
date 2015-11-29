@@ -242,7 +242,15 @@ public class Room {
 
     /** Returns an ArrayList of Npcs that are in this room.*/
     ArrayList<Npc> getCharacters(){return null;}
-
+    
+    Npc getNpcNamed(String name){
+	for(int i = 0; i < characters.size(); i++){
+		if(characters.get(i).getName().equals(name)){
+			return characters.get(i);
+		}
+	}
+	return null;
+    }
 
     /**Returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
 	and the player can not see what is in this room.*/

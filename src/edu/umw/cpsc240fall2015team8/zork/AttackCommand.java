@@ -11,7 +11,7 @@ class AttackCommand extends Command {
 	/**
 		Creates a new AttackCommand when passed an npc to target, and an item to attack with.
 	*/
-	AttackCommand(Npc n, DurableItem i) {
+	AttackCommand(String n, String i) {
 	}
 
 	/**
@@ -22,6 +22,6 @@ class AttackCommand extends Command {
 	*/
 
 	public String execute(){
-		return "Please choose lightAttack, heavyAttack, or blockAttack.";
+		return "Please choose lightAttack, heavyAttack, or blockAttack. Format it as, for example, 'lightAttack Goblin with sword'.\n";
 	}
 }
