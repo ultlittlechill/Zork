@@ -256,7 +256,7 @@ public class Dungeon {
 
     public Npc getNpc(String name){
 	for(int i = 0; i < npcs.size(); i++){
-		if(npcs.get(i).getName().equals(name)){
+		if(npcs.get(i).getName().toLowerCase().equals(name.toLowerCase())){
 			return npcs.get(i);
 		}
 	}

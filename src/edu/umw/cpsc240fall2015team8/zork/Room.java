@@ -278,7 +278,7 @@ public class Room {
     Npc getNpcNamed(String name){
 	for(int i = 0; i < characters.size(); i++){
 		//System.out.println(characters.get(0).getName());
-		if(characters.get(i).getName().equals(name)){
+		if(characters.get(i).getName().toLowerCase().equals(name.toLowerCase())){
 			return characters.get(i);
 		}
 	}
