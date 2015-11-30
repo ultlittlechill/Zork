@@ -39,6 +39,7 @@ public class GameState {
     private int health = 100;
     private int score = 0;
     private int scoreWin = 10;
+	private boolean isLit = false;
     /**
 	Returns the GameState. If no GameState exists, it creates one and the returns it.
     */
@@ -297,4 +298,7 @@ public class GameState {
    int getScoreWin(){
 	return scoreWin;
     }
+
+/**Returns if the adventurer is lit or not*/
+   boolean getIsLit(){return isLit;}
 }

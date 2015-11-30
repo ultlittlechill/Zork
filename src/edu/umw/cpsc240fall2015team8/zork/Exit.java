@@ -11,11 +11,10 @@ public class Exit {
 
     class NoExitException extends Exception {}
 
-   // private boolean isLocked;
-   // private ArrayList keysNeeded<Item>;
     private String dir;
     private Room src, dest;
-    
+    private ArrayList<String> keysNeeded;
+
    /**Creates a Exit object given a String for the direction, Room for the source,
  Room for the Destination, and a boolean of whether the Room is locked or not. */
     Exit(String dir, Room src, Room dest, boolean locked){
@@ -66,6 +65,7 @@ and a room for the destination. If no boolean is given it defaults to false, so 
 
     /** Common object initialization tasks.*/
     private void init() {
+		keysNeeded = new ArrayList<String>();
     }
 
 /** Returns a String containing a sentence stating what direction this exit is, and what room it leads to, as well as whether or not the exit is locked.*/
@@ -88,6 +88,20 @@ and a room for the destination. If no boolean is given it defaults to false, so 
     /** Returns an ArrayList of Strings which are the names of any of the  Items that can unlock this Exit. If no Items can unlock it, returns an empty ArrayList. If the Exit is unlocked, still returns the ArrayList of names. */
     ArrayList<String> getKeysNeeded(){return null;}
 
-    /** Changes the locked boolean to false, representing that this Exit is now unlocked. If this Exit was already unlocked, nothing changges. */
-    void unlock(){}
+	/**Returns true if the adventurer is allowed passage through this exit, otherwise false.*/
+    boolean allowPassage(){
+		if(keysNeeded.size()==0)
+				return true;
+		else{
+			ArrayList<String> inv = GameState.instance().getInventoryNames();
+			for(int j = 0; j<keysNeeded.size(); j++){
+				for(int k = 0; k<inv.size();k++){
+					if(keysNeeded.get(j).equals(inv.get(k))){
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 }

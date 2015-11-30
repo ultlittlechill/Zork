@@ -22,7 +22,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private ArrayList<Npc> characters;
-    private boolean isLit;
+ //   private boolean isLit;
     
     /**
 	Creates a new room object from a given string. If the string is null, it still works.
@@ -196,7 +196,10 @@ public class Room {
         if (beenHere && !full) {
             description = title;
         } else {
-            description = title + "\n" + desc;
+			if(GameState.instance().getIsLit())
+        		description = title + "\n" + desc;
+			else
+				description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
         }
 	for (Npc npc : characters){
 		description += "\nThere is a " + npc.getName() + " here!";
@@ -261,13 +264,13 @@ public class Room {
         contents.remove(item);
     }
 
-    /**Lights up this room if it was dark, and returns a String containing what is now visible in the lit room. If the
-	room was already lit, does nothing.*/
-    String illuminate(){return "hello";}
+ //   /**Lights up this room if it was dark, and returns a String containing what is now visible in the lit room. If the
+//	room was already lit, does nothing.*/
+//    String illuminate(){return "hello";}
 
-    /**Darkens this room if it was lit, and retuns a String saying that the room is now dark. If this room was already dark
-	does nothing.*/
-    String darken(){return "hello";}
+ //   /**Darkens this room if it was lit, and retuns a String saying that the room is now dark. If this room was already dark
+//	does nothing.*/
+//    String darken(){return "hello";}
 
     /** Returns an ArrayList of Npcs that are in this room.*/
     ArrayList<Npc> getCharacters(){return null;}
@@ -282,9 +285,9 @@ public class Room {
 	return null;
     }
 
-    /**Returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
-	and the player can not see what is in this room.*/
-    boolean getIsLit(){return true;}
+   // /**Returns true if this room is lit, and the Player can see what is in this room, returns false if the room is dark
+//	and the player can not see what is in this room.*/
+//    boolean getIsLit(){return true;}
     /**
 	Returns the Item from this room's collection of items whose name matches the given string. If no item matches, throws NoItemException.
     */
@@ -303,4 +306,13 @@ public class Room {
     ArrayList<Item> getContents() {
         return contents;
     }
+
+	/**Returns the Exit in the direction passed.*/
+	Exit getExit(String dir){
+		for(int j = 0; j<exits.size();j++){
+			if(dir.equals(exits.get(j).getDir()))
+				return exits.get(j);
+		}
+			return null;
+	}
 }
