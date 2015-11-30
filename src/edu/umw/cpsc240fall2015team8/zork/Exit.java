@@ -51,16 +51,31 @@ and a room for the destination. If no boolean is given it defaults to false, so 
         src = d.getRoom(srcTitle);
         dir = s.nextLine();
         dest = d.getRoom(s.nextLine());
-        
-        // I'm an Exit object. Great. Add me as an exit to my source Room too,
-        // though.
-        src.addExit(this);
+	String keyLine = s.nextLine();
+	if(keyLine.startsWith("Keys:")){
+		keyLine = keyLine.substring(6);
+		String[] keys = keyLine.split(",");
+		for(String key : keys){
+			keysNeeded.add(key);
+		}
+	
 
-        // throw away delimiter
-        if (!s.nextLine().equals(Dungeon.SECOND_LEVEL_DELIM)) {
-            throw new Dungeon.IllegalDungeonFormatException("No '" +
-                Dungeon.SECOND_LEVEL_DELIM + "' after exit.");
-        }
+        	// I'm an Exit object. Great. Add me as an exit to my source Room too,
+       	 	// though.
+        	src.addExit(this);
+
+        	// throw away delimiter
+        	if (!s.nextLine().equals(Dungeon.SECOND_LEVEL_DELIM)) {
+            		throw new Dungeon.IllegalDungeonFormatException("No '" +
+                	    Dungeon.SECOND_LEVEL_DELIM + "' after exit.");
+        	}
+	}else{	
+		src.addExit(this);
+        	if (!keyLine.equals(Dungeon.SECOND_LEVEL_DELIM)) {
+            		throw new Dungeon.IllegalDungeonFormatException("No '" +
+                	    Dungeon.SECOND_LEVEL_DELIM + "' after exit.");
+        	}
+	}
     }
 
     /** Common object initialization tasks.*/
