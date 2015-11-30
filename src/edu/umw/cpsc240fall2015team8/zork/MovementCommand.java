@@ -1,6 +1,8 @@
 
 package edu.umw.cpsc240fall2015team8.zork;
 
+import java.util.ArrayList;
+
 /** Moves an adventurer to another Room.
 
 @author Lucas */
@@ -20,10 +22,15 @@ If the direction that was passed into the constructor is not 'u','d', 'n', 's', 
 		if(nextRoom != null && !currentRoom.getExit(dir).allowPassage())
 			return "You do not have the key needed to go " + dir + ".\n";
 		else if (nextRoom != null) {  // could try/catch here.
-            GameState.instance().setAdventurersCurrentRoom(nextRoom);
-            return "\n" + nextRoom.describe() + "\n";
-        } else {
-            return "You can't go " + dir + ".\n";
-        }
+            		GameState.instance().setAdventurersCurrentRoom(nextRoom);
+            		ArrayList<String> keys = currentRoom.getExit(dir).getKeysNeeded();
+			if(keys.size() > 0){
+				return "\nYou temporarily unlocked this exit!\n\n" + nextRoom.describe() + "\n";
+			}else{
+	    			return "\n" + nextRoom.describe() + "\n";
+			}
+        	} else {
+            		return "You can't go " + dir + ".\n";
+        	}
     }
 }

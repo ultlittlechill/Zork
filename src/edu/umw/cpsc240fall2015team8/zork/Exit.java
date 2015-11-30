@@ -101,7 +101,7 @@ and a room for the destination. If no boolean is given it defaults to false, so 
     boolean getIsLocked(){return false;}
 
     /** Returns an ArrayList of Strings which are the names of any of the  Items that can unlock this Exit. If no Items can unlock it, returns an empty ArrayList. If the Exit is unlocked, still returns the ArrayList of names. */
-    ArrayList<String> getKeysNeeded(){return null;}
+    ArrayList<String> getKeysNeeded(){return keysNeeded;}
 
 	/**Returns true if the adventurer is allowed passage through this exit, otherwise false.*/
     boolean allowPassage(){
