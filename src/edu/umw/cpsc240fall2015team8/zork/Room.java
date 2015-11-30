@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
-    Contains Items and Exits, as well as a title, and description. There are also methods used to manipuuluate the stored data.
+    Contains Items and Exits, as well as a title, and description. There are also methods used to manipulate the stored data.
 @author Austin
 */
 public class Room {
@@ -165,8 +165,16 @@ public class Room {
                         "No such item '" + itemName + "'");
                 }
             }
-            s.nextLine();  // Consume "---".
+            s.nextLine();  // Consume "---" or grab Npcs.
         }
+	if(line.startsWith("Npcs:")){
+		String npcList = line.substring(6);
+		String[] npcNames = npcList.split(",");
+		for(String npcName : npcNames){
+			add(d.getNpc(npcName));
+		}
+		s.nextLine(); // Consume "---".
+	}
     }
 
     /**

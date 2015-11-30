@@ -47,7 +47,7 @@ class HeavyAttackCommand extends AttackCommand {
 		else if(attack.equals("block")){
 			person.wound(item.getDamage());
 			item.takeDamage(1);
-			return "Your attack overpowered " + person.getName() + ".\n";
+			return "Your attack overpowered " + person.getName() + ".\n" + person.getFuzzyHealth() + ".\n";
 		}else{
 			GameState.instance().changeHealth(person.getHeldItem().getDamage());
 			item.takeDamage(1);

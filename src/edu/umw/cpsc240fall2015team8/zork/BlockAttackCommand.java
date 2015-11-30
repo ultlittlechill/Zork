@@ -48,7 +48,7 @@ class BlockAttackCommand extends AttackCommand {
 		else if(attack.equals("light")){
 			person.wound(item.getDamage());
 			item.takeDamage(1);
-			return "You blocked and countered " + person.getName() + "'s attack!\n";
+			return "You blocked and countered " + person.getName() + "'s attack!\n" + person.getFuzzyHealth() + ".\n";
 		}else{
 			GameState.instance().changeHealth(person.getHeldItem().getDamage());
 			item.takeDamage(1);

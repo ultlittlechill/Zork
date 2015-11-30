@@ -66,7 +66,12 @@ public class GameState {
 
         Scanner s = new Scanner(new FileReader(filename));
 
-        if (!s.nextLine().equals(SAVE_FILE_VERSION)) {
+        String version = s.nextLine();
+	if(version.equals(SAVE_FILE_VERSION)){
+	
+	}else if(version.equals("Zork v2.0 save data")){
+
+	}else{
             throw new IllegalSaveFormatException("Save file not compatible.");
         }
 

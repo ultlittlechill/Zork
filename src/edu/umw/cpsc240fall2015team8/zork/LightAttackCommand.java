@@ -47,7 +47,7 @@ class LightAttackCommand extends AttackCommand {
 		else if(attack.equals("heavy")){
 			person.wound(item.getDamage());
 			item.takeDamage(1);
-			return "Your attack was quicker than  " + person.getName() + "'s.\n";
+			return "Your attack was quicker than " + person.getName() + "'s.\n" + person.getFuzzyHealth() + ".\n";
 		}else{
 			GameState.instance().changeHealth(person.getHeldItem().getDamage());
 			item.takeDamage(1);
