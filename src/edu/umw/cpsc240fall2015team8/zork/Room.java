@@ -22,7 +22,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private ArrayList<Npc> characters;
- //   private boolean isLit;
+    private boolean isLit;
     
     /**
 	Creates a new room object from a given string. If the string is null, it still works.
@@ -80,7 +80,12 @@ public class Room {
 				add(d.getNpc(person));
 			}
 		}
-            } else {
+            }
+			else if(lineOfDesc.startsWith("Lit:")){
+				isLit = Boolean.parseBoolean(lineOfDesc.substring(4,lineOfDesc.length()).trim());
+			}
+
+		 	else {
                 desc += lineOfDesc + "\n";
             }
             lineOfDesc = s.nextLine();
@@ -100,8 +105,9 @@ public class Room {
     private void init() {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
-	characters = new ArrayList<Npc>();
+		characters = new ArrayList<Npc>();
         beenHere = false;
+		isLit = true;
     }
     /**
 	Returns the title of the room.
@@ -196,25 +202,29 @@ public class Room {
         if (beenHere && !full) {
             description = title;
         } else {
-			if(GameState.instance().getIsLit())
+			if(GameState.instance().getIsLit() || this.isLit){
         		description = title + "\n" + desc;
-			else
-				description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
-        }
-	for (Npc npc : characters){
-		description += "\nThere is a " + npc.getName() + " here!";
-	}
-	if(characters.size() > 0) { description += "\n";}
-        for (Item item : contents) {
-            description += "\nThere is a " + item.getPrimaryName() + " here.";
-        }
-        if (contents.size() > 0) { description += "\n"; }
-        if (!beenHere || full) {
-            for (Exit exit : exits) {
-                description += "\n" + exit.describe();
-            }
-        }
-        beenHere = true;
+//			else
+//				description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
+        
+				for (Npc npc : characters){
+					description += "\nThere is a " + npc.getName() + " here!";
+				}
+				if(characters.size() > 0) { description += "\n";}
+					for (Item item : contents) {
+						description += "\nThere is a " + item.getPrimaryName() + " here.";
+						}
+						if (contents.size() > 0) { description += "\n"; }
+						if (!beenHere || full) {
+							for (Exit exit : exits) {
+								description += "\n" + exit.describe();
+							}
+						}
+						beenHere = true;
+					}
+				else
+					description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
+			}
         return description;
     }
     
