@@ -50,7 +50,13 @@ public class EventFactory{
 			return new DisappearEvent(item);
 		}
 		if(event.contains("Teleport")){
-			return new TeleportEvent();
+			if(event.contains("(")){
+				pass = event.substring(9,event.length());
+				pass = pass.split("\\)")[0];
+				return new TeleportEvent(pass);
+			}else{
+				return new TeleportEvent();
+			}
 		}
 		if(event.contains("Transform")){
 			pass = event.substring(10, event.length());
