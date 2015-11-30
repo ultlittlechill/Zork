@@ -5,6 +5,8 @@ DurableItems:
 sword
 5
 examine:This is a sword yo.
+fall on[Wound(100)]: That was a bad idea.
+dip in fairy dust[Light]: Your sword now glows in a manly fashon.
 ---
 10
 20
