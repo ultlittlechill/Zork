@@ -54,6 +54,10 @@ String stating that they do not have that item.
                 name);
             GameState.instance().removeFromInventory(theItem);
             GameState.instance().getAdventurersCurrentRoom().add(theItem);
+	    if(GameState.instance().getLitItems().contains(theItem)){
+		GameState.instance().removeLitItem(theItem);
+	        GameState.instance().getAdventurersCurrentRoom().addLitItem(theItem);
+	    }
             return TakeCommand.capitalize(name) + " dropped.\n";
         } catch (Item.NoItemException e) {
             return "You don't have a " + name + ".\n";

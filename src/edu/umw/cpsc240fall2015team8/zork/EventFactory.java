@@ -63,6 +63,9 @@ public class EventFactory{
 			pass = pass.split("\\)")[0];
 			return new TransformEvent(item, pass);
 		}
+		if(event.contains("Light")){
+			return new LightEvent(item);
+		}
 		return null;	
 	}
 }

@@ -19,7 +19,13 @@ dagger
 ---
 gold
 1
-eat[Teleport(Lobby),Wound(5),Disappear]:That was really weird. Why would you eat gold?!?
+eat[Disappear,Teleport(Lobby),Wound(5)]:That was really weird. Why would you eat gold?!?
+---
+1
+1000
+---
+key
+0
 ---
 1
 1000
@@ -41,7 +47,7 @@ gold
 ===
 Rooms:
 Lobby
-Contents: sword
+Contents: sword,key
 You are in the lobby homeslice.
 ---
 Rotunda
@@ -54,7 +60,7 @@ Exits:
 Lobby
 w
 Rotunda
-Keys: sword
+Keys: sword,key
 ---
 Rotunda
 e

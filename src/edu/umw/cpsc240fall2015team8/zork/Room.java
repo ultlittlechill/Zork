@@ -109,6 +109,7 @@ public class Room {
 		characters = new ArrayList<Npc>();
         beenHere = false;
 		isLit = true;
+    	litItems = new ArrayList<Item>();
     }
     /**
 	Returns the title of the room.
@@ -203,7 +204,7 @@ public class Room {
         if (beenHere && !full) {
             description = title;
         } else {
-			if(GameState.instance().getIsLit() || this.isLit || (this.litItems.size>0)){
+			if(GameState.instance().getIsLit() || this.isLit || (this.litItems.size()>0)){
         		description = title + "\n" + desc;
 //			else
 //				description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
@@ -273,9 +274,10 @@ public class Room {
     */
     void remove(Item item) {
         contents.remove(item);
-		for(int j=0;j<litItems.size();j++){
-			if(item.getPrimaryName().equals(litItems.get(j).getPrimaryName()))
-				litItems.remove(j);
+	//	for(int j=0;j<litItems.size();j++){
+	//		if(item.getPrimaryName().equals(litItems.get(j).getPrimaryName()))
+	//			litItems.remove(j);
+    	//	}
     }
 
  //   /**Lights up this room if it was dark, and returns a String containing what is now visible in the lit room. If the
@@ -339,4 +341,6 @@ public class Room {
 	void removeLitItem(Item it){
 		litItems.remove(it);
 	}
+
+	public ArrayList<Item> getLitItems() { return litItems; }
 }

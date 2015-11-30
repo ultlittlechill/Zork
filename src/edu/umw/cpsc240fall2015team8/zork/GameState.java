@@ -306,7 +306,16 @@ public class GameState {
 
    public void setIsLit(boolean b){isLit = b;}
 
-   public void addLitItem(Item item){litItems.add(item);}
+   public void addLitItem(Item item){
+	litItems.add(item);
+	setIsLit(true);
+   }
 
-   public void removeLitItem(Item item){litItems.remove(item); }
+   public void removeLitItem(Item item){
+	litItems.remove(item); 
+   	if(litItems.size() == 0)
+		setIsLit(false);
+   }
+
+   public ArrayList<Item> getLitItems(){return litItems;}
 }

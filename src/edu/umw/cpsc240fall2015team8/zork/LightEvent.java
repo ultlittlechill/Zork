@@ -4,8 +4,8 @@ class LightEvent extends Event{
 
 	String item;
 
-	LightEvent(String i){
-		item = i;
+	LightEvent(Item i){
+		item = i.getPrimaryName();
 	}
 
 	public void execute(){

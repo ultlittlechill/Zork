@@ -64,6 +64,10 @@ class TakeCommand extends Command {
 
             GameState.instance().addToInventory(theItem);
             currentRoom.remove(theItem);
+	    if(currentRoom.getLitItems().contains(theItem)){
+		currentRoom.removeLitItem(theItem);
+		GameState.instance().addLitItem(theItem);
+	    }
             return capitalize(name) + " taken.\n";
 
         } catch (Item.NoItemException e) {
