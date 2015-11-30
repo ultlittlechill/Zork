@@ -35,6 +35,7 @@ public class GameState {
     private static GameState theInstance;
     private Dungeon dungeon;
     private ArrayList<Item> inventory;
+    private ArrayList<Item> litItems;
     private Room adventurersCurrentRoom;
     private int health = 100;
     private int score = 0;
@@ -55,6 +56,7 @@ public class GameState {
     */
     private GameState() {
         inventory = new ArrayList<Item>();
+	litItems = new ArrayList<Item>();
     }
 
     /**
@@ -301,4 +303,10 @@ public class GameState {
 
 /**Returns if the adventurer is lit or not*/
    boolean getIsLit(){return isLit;}
+
+   public void setIsLit(boolean b){isLit = b;}
+
+   public void addLitItem(Item item){litItems.add(item);}
+
+   public void removeLitItem(Item item){litItems.remove(item); }
 }
