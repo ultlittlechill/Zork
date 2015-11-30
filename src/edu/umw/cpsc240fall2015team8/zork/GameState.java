@@ -119,21 +119,27 @@ public class GameState {
 	Throws an IOException if PrintWriter throws an IOException
     */
     void store(String saveName) throws IOException {
-        String filename = saveName + SAVE_FILE_EXTENSION;
+        int version = dungeon.getVersion();
+	String filename = saveName + SAVE_FILE_EXTENSION;
         PrintWriter w = new PrintWriter(new FileWriter(filename));
-        w.println(SAVE_FILE_VERSION);
+	if(version == 1){
+        	w.println(SAVE_FILE_VERSION);
+	}else{
+		w.println("Zork v2.0 save data");
+	}
         dungeon.storeState(w);
         w.println(ADVENTURER_MARKER);
         w.println(CURRENT_ROOM_LEADER + adventurersCurrentRoom.getTitle());
 	w.println("Health: " + getHealth());
 	w.println("Score: " + getScore());
         if (inventory.size() > 0) {
-            w.print(INVENTORY_LEADER);
-            for (int i=0; i<inventory.size()-1; i++) {
-                w.print(inventory.get(i).getPrimaryName() + ",");
-            }
-            w.println(inventory.get(inventory.size()-1).getPrimaryName());
+            	w.print(INVENTORY_LEADER);
+            	for (int i=0; i<inventory.size()-1; i++) {
+                	w.print(inventory.get(i).getPrimaryName() + ",");
+           	}
+           	w.println(inventory.get(inventory.size()-1).getPrimaryName());
         }
+	
         w.close();
     }
 

@@ -40,6 +40,7 @@ public class Dungeon {
     private Hashtable<String,Item> items;
     private ArrayList<Npc> npcs;
     private String filename;
+    private int version;
 
     /**
     Creates a Dungeon object when passed a String for the name and a Room for the entry.
@@ -79,7 +80,8 @@ public class Dungeon {
         name = s.nextLine();
 
         if(s.nextLine().equals("Zork v1.0")){   // Throw away version indicator.
-
+		version = 1;
+	
         	// Throw away delimiter.
         	if (!s.nextLine().equals(TOP_LEVEL_DELIM)) {
             		throw new IllegalDungeonFormatException("No '" +
@@ -129,6 +131,7 @@ public class Dungeon {
             		}
         	} catch (Exit.NoExitException e) {  /* end of exits */ }
 	}else{
+		version = 2;
 		s.nextLine(); // delimiter
 		s.nextLine(); // DurableItems
 		try{
@@ -259,4 +262,6 @@ public class Dungeon {
 	}
 	return null;
     }
+
+    public int getVersion(){ return version; }
 }

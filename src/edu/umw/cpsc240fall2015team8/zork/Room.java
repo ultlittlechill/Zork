@@ -131,7 +131,14 @@ public class Room {
             }
             w.println(contents.get(contents.size()-1).getPrimaryName());
         }
-        w.println(Dungeon.SECOND_LEVEL_DELIM);
+        if (characters.size() > 0) {
+		w.print("Npcs: ");
+		for (int i = 0; i < characters.size()-1; i++) {
+			w.print(characters.get(i).getName() + ",");
+		}
+		w.println(characters.get(characters.size()-1).getName());
+	}
+	w.println(Dungeon.SECOND_LEVEL_DELIM);
     }
 
     /**
