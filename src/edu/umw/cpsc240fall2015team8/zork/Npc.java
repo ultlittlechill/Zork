@@ -9,6 +9,8 @@ pass along helpful messages or trade an Item with you. If an Npc is attacked it 
 @author Jeff Wallhermfechtel*/
 public class Npc{
 
+	static class NoNpcException extends Exception{}
+	
 	private boolean hostile;
 	private int health;
 	private int maxHealth;
@@ -25,11 +27,19 @@ public class Npc{
 	private ArrayList<DurableItem> inventory;
 
 	/**Creates a Npc object when passed a Scanner.*/
-	Npc(Scanner s) throws Item.NoItemException{
+	Npc(Scanner s, Dungeon d) throws NoNpcException{  //Item.NoItemException{
+		init();
 		this.name = s.nextLine();
-		this.health = s.nextInt();
+		if(this.name.equals("===")){
+			throw new NoNpcException();
+		}
+		//System.out.println(name);
+		this.maxHealth = s.nextInt();
+		health = maxHealth;
 		s.nextLine();//skip to the next line
-		this.heldItem = (DurableItem)(GameState.instance().getDungeon().getItem(s.nextLine()));
+		try{
+			this.heldItem = (DurableItem)d.getItem(s.nextLine());
+		}catch(Item.NoItemException e){ this.heldItem = null; } 
 		this.scriptBt = s.nextLine();
 
 		if(scriptBt.equals(""))
@@ -45,20 +55,26 @@ public class Npc{
 			hostile = true;
 		else
 			hostile = false;	
-
+		
+		favAttack = s.nextLine();
 		s.nextLine();//throw away "Inventory:"
 		String temp = s.nextLine();
-		while(!temp.equals("===")){
-			this.inventory.add((DurableItem)GameState.instance().getDungeon().getItem(temp));
+		while(!temp.equals("---")){
+			try{
+				DurableItem thangymcjangy = (DurableItem)d.getItem(temp);
+				this.inventory.add(thangymcjangy);
+			}catch(Item.NoItemException e){}
 			temp = s.nextLine();
 		}
-		this.init();
+		//this.init();
 	}
 
 	/**Initializes basic variables to be used.*/
 	private void init(){
+		name = " ";
 		isDead = false;
-		maxHealth = health;
+		//maxHealth = health;
+		inventory = new ArrayList<DurableItem>();
 	}
 
 	/**Randomly selects an attack command to be used in combat against a player, this Npc's favorite Attack is 50% more likely to be returned.*/

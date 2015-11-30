@@ -21,8 +21,22 @@ public class DurableItem extends Item{
 	/**Creates a Durable Item from the Scanner passed in the arguments.*/
 	DurableItem(Scanner s) throws Item.NoItemException, Dungeon.IllegalDungeonFormatException{
 		super(s);
+		//name, weight, verbs, delimeter, damage, durability
+		//this.init();
+		//try{
+		//	super(s);
+		//}catch(Item.NoItemException e){throw e;}
 		this.init();
-		//...
+		damage = s.nextInt();
+		durability = s.nextInt();
+		health = durability;
+		//System.out.println(damage);
+		//System.out.println(durability);
+		//System.out.println(s.nextLine());
+		//System.out.println(s.nextLine());
+		s.nextLine();
+		s.nextLine();
+		//...		
 	}
 
 	/**Some basic initialization tasks*/
@@ -33,8 +47,9 @@ public class DurableItem extends Item{
 	/** Deals damage to this item's health based on the int pased in the argument. If this item's health is below 0 calls {@link rupture()} or {@link destroy()}
 	on this Item, whichever is aplicable.*/
 	void takeDamage(int r){
-		health-=r;
-
+		//System.out.println(health);
+		health = health-r;
+		//System.out.println(health);
 		if(health<1)
 			this.rupture();
 	}

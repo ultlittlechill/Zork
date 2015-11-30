@@ -71,6 +71,15 @@ public class Room {
                             "No such item '" + itemName + "'");
                     }
                 }
+	    } else if(lineOfDesc.startsWith("People:")){
+		lineOfDesc = lineOfDesc.substring(8,lineOfDesc.length());
+		String[] people = lineOfDesc.split(",");
+		for (String person : people) {
+			//System.out.println(person);
+			if(initState){
+				add(d.getNpc(person));
+			}
+		}
             } else {
                 desc += lineOfDesc + "\n";
             }
@@ -91,6 +100,7 @@ public class Room {
     private void init() {
         contents = new ArrayList<Item>();
         exits = new ArrayList<Exit>();
+	characters = new ArrayList<Npc>();
         beenHere = false;
     }
     /**
@@ -173,6 +183,10 @@ public class Room {
         } else {
             description = title + "\n" + desc;
         }
+	for (Npc npc : characters){
+		description += "\nThere is a " + npc.getName() + " here!";
+	}
+	if(characters.size() > 0) { description += "\n";}
         for (Item item : contents) {
             description += "\nThere is a " + item.getPrimaryName() + " here.";
         }
@@ -245,6 +259,7 @@ public class Room {
     
     Npc getNpcNamed(String name){
 	for(int i = 0; i < characters.size(); i++){
+		//System.out.println(characters.get(0).getName());
 		if(characters.get(i).getName().equals(name)){
 			return characters.get(i);
 		}

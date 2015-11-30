@@ -2,6 +2,7 @@
 package edu.umw.cpsc240fall2015team8.zork;
 
 import java.util.Hashtable;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileNotFoundException;
@@ -37,6 +38,7 @@ public class Dungeon {
     private Room entry;
     private Hashtable<String,Room> rooms;
     private Hashtable<String,Item> items;
+    private ArrayList<Npc> npcs;
     private String filename;
 
     /**
@@ -76,57 +78,85 @@ public class Dungeon {
         Scanner s = new Scanner(new FileReader(filename));
         name = s.nextLine();
 
-        s.nextLine();   // Throw away version indicator.
+        if(s.nextLine().equals("Zork v1.0")){   // Throw away version indicator.
 
-        // Throw away delimiter.
-        if (!s.nextLine().equals(TOP_LEVEL_DELIM)) {
-            throw new IllegalDungeonFormatException("No '" +
-                TOP_LEVEL_DELIM + "' after version indicator.");
-        }
+        	// Throw away delimiter.
+        	if (!s.nextLine().equals(TOP_LEVEL_DELIM)) {
+            		throw new IllegalDungeonFormatException("No '" +
+                	    TOP_LEVEL_DELIM + "' after version indicator.");
+        	}
 
-        // Throw away Items starter.
-        if (!s.nextLine().equals(ITEMS_MARKER)) {
-            throw new IllegalDungeonFormatException("No '" +
-                ITEMS_MARKER + "' line where expected.");
-        }
+        	// Throw away Items starter.
+        	if (!s.nextLine().equals(ITEMS_MARKER)) {
+            		throw new IllegalDungeonFormatException("No '" +
+                	    ITEMS_MARKER + "' line where expected.");
+        	}
 
-        try {
-            // Instantiate items.
-            while (true) {
-                add(new Item(s));
-            }
-        } catch (Item.NoItemException e) {  /* end of items */ }
+        	try {
+            		// Instantiate items.
+            		while (true) {
+                		add(new Item(s));
+            		}
+       	 	} catch (Item.NoItemException e) {  /* end of items */ }
 
-        // Throw away Rooms starter.
-        if (!s.nextLine().equals(ROOMS_MARKER)) {
-            throw new IllegalDungeonFormatException("No '" +
-                ROOMS_MARKER + "' line where expected.");
-        }
+        	// Throw away Rooms starter.
+        	if (!s.nextLine().equals(ROOMS_MARKER)) {
+            		throw new IllegalDungeonFormatException("No '" +
+                	    ROOMS_MARKER + "' line where expected.");
+        	}
 
-        try {
-            // Instantiate and add first room (the entry).
-            entry = new Room(s, this, initState);
-            add(entry);
+        	try {
+            		// Instantiate and add first room (the entry).
+            		entry = new Room(s, this, initState);
+            		add(entry);
 
-            // Instantiate and add other rooms.
-            while (true) {
-                add(new Room(s, this, initState));
-            }
-        } catch (Room.NoRoomException e) {  /* end of rooms */ }
+            		// Instantiate and add other rooms.
+            		while (true) {
+                		add(new Room(s, this, initState));
+            		}
+        	} catch (Room.NoRoomException e) {  /* end of rooms */ }
 
-        // Throw away Exits starter.
-        if (!s.nextLine().equals(EXITS_MARKER)) {
-            throw new IllegalDungeonFormatException("No '" +
-                EXITS_MARKER + "' line where expected.");
-        }
+        	// Throw away Exits starter.
+        	if (!s.nextLine().equals(EXITS_MARKER)) {
+            		throw new IllegalDungeonFormatException("No '" +
+                	    EXITS_MARKER + "' line where expected.");
+        	}
 
-        try {
-            // Instantiate exits.
-            while (true) {
-                Exit exit = new Exit(s, this);
-            }
-        } catch (Exit.NoExitException e) {  /* end of exits */ }
-
+        	try {
+            		// Instantiate exits.
+            		while (true) {
+                		Exit exit = new Exit(s, this);
+            		}
+        	} catch (Exit.NoExitException e) {  /* end of exits */ }
+	}else{
+		s.nextLine(); // delimiter
+		s.nextLine(); // DurableItems
+		try{
+			while(true){
+				add(new DurableItem(s));
+			}
+		}catch(Item.NoItemException e){} // Done with items
+		s.nextLine(); // NPCs:
+		try{
+			while(true){
+				add(new Npc(s, this));
+			}
+		}catch(Npc.NoNpcException e){} // Done with NPCs
+		s.nextLine(); // Rooms:
+		try{
+			entry = new Room(s, this, initState);
+			add(entry);
+			while(true){
+				add(new Room(s, this, initState));
+			}
+		}catch(Room.NoRoomException e){} // Done with Rooms
+		s.nextLine(); // Exits:
+		try{
+			while(true){
+				Exit exit = new Exit(s, this);
+			}
+		}catch(Exit.NoExitException e){} // Done with Exits
+	}
         s.close();
     }
     
@@ -135,6 +165,7 @@ public class Dungeon {
     private void init() {
         rooms = new Hashtable<String,Room>();
         items = new Hashtable<String,Item>();
+	npcs = new ArrayList<Npc>();
     }
 
     /**
@@ -190,6 +221,9 @@ public class Dungeon {
 /**Adds the item passed to this Dungeon's collection of Items.*/
     public void add(Item item) { items.put(item.getPrimaryName(),item); }
 
+/**Adds the Npc passed to this Dungeon's collection of Npcs. */
+    public void add(Npc npc) { npcs.add(npc); }
+
 /** Removes a passed Item from the collection of Items held by this Dungeon. */
     public void remove(Item item) { items.remove(item.getPrimaryName()); }
 
@@ -217,5 +251,12 @@ public class Dungeon {
         return items.get(primaryItemName);
     }
 
-    public Npc getNpc(String name){ return null; }
+    public Npc getNpc(String name){
+	for(int i = 0; i < npcs.size(); i++){
+		if(npcs.get(i).getName().equals(name)){
+			return npcs.get(i);
+		}
+	}
+	return null;
+    }
 }
