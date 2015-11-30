@@ -22,6 +22,7 @@ public class Room {
     private ArrayList<Item> contents;
     private ArrayList<Exit> exits;
     private ArrayList<Npc> characters;
+	private ArrayList<Item> litItems;
     private boolean isLit;
     
     /**
@@ -202,7 +203,7 @@ public class Room {
         if (beenHere && !full) {
             description = title;
         } else {
-			if(GameState.instance().getIsLit() || this.isLit){
+			if(GameState.instance().getIsLit() || this.isLit || (this.litItems.size>0)){
         		description = title + "\n" + desc;
 //			else
 //				description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
@@ -272,6 +273,9 @@ public class Room {
     */
     void remove(Item item) {
         contents.remove(item);
+		for(int j=0;j<litItems.size();j++){
+			if(item.getPrimaryName().equals(litItems.get(j).getPrimaryName()))
+				litItems.remove(j);
     }
 
  //   /**Lights up this room if it was dark, and returns a String containing what is now visible in the lit room. If the
@@ -324,5 +328,15 @@ public class Room {
 				return exits.get(j);
 		}
 			return null;
+	}
+
+	/**Adds the Item passed to this room's collection of lit Items.*/
+	void addLitItem(Item it){
+		litItems.add(it);
+	}
+
+	/**Removes the Item passed from this room's collection of lit Items*/
+	void removeLitItem(Item it){
+		litItems.remove(it);
 	}
 }
