@@ -15,11 +15,13 @@ class TalkCommand extends Command{
 	/**Returns a String containing what an Npc will say when they are talked to.
 	If no Npc exists with the name passed in the constructor, returns a String which tells the player that the npc does not exist.*/
 	public String execute(){
-		String script = GameState.instance().getAdventurersCurrentRoom().getNpcNamed(npc).getScript();
-		if(script!=null)
+		try{
+			String script = GameState.instance().getAdventurersCurrentRoom().getNpcNamed(npc).getScript();
 			return script +"\n";
-		else
+		}
+		catch(java.lang.NullPointerException e){
 			return "Theres no " + npc + " here.\n";
+		}
 	}
 		
 }
