@@ -28,6 +28,7 @@ public class Interpreter {
                 state.initialize(new Dungeon(args[0]));
                 System.out.println("\nWelcome to " + 
                     state.getDungeon().getName() + "!");
+		System.out.println();
 				if(GameState.instance().getDungeon().getVersion() == 2){
 					System.out.println("A few things about our game engine:\n When an item is used too much it will break\n" +
 							"this is represented with a 'x~' in front of that item. If you try to use a broken item it will do\n" +

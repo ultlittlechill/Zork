@@ -1,25 +1,33 @@
-supplemental
+Supplemental
 Zork v2.0
 ===
 DurableItems:
-Blade
+blade
 5
 examine: Its a really long knife, what do you think?
-Seppuku[Wound(100)]: Not your best plan.
-bless with holy light[Light]: Your blade is now glowing with holy power, also glowing, the important part.
+seppuku[Wound(100)]: Not your best plan.
+bless[Light]: Your blade is now glowing with holy power, also glowing, the important part.
 ---
 10
 20
 ---
-Knife of Cthulu
+knifeOfCthulu
 2
+curse[Teleport(Basement),Wound(20)]:You feel light headed and weak.
 ---
 5
 10
 ---
+goldenApple
+2
+eat[Score(20)]:Wow this is good! You feel the awesome power!
+---
+1
+1000
+---
 gold
 1
-eat[Disappear,Teleport(Entrance),Wound(5)]:That was a weird choice, why would you eat a metal, bad for your teeth?!?
+eat[Disappear,Wound(5)]:That was a weird choice, why would you eat a metal, bad for your teeth?!?
 ---
 1
 1000
@@ -34,20 +42,20 @@ key
 NPCs:
 Hobo
 12
-Knife of Cthulu
-Do you wannna trade 5 gold for a sacrficial knife?
+knifeOfCthulu
+Do you wannna trade gold for a cool knife?
 Good choice, now I can ride the rails in style!
 blahblahblah
 gold
 false
 light
 inventory:
-gold
+goldenApple
 ---
 ===
 Rooms:
 1st Floor
-Contents:Blade,key
+Contents: blade,key
 You see an ornate lobby, directly contrasted against the horrible conditiond of the dungeon.
 ---
 Basement
@@ -56,6 +64,7 @@ Lit:false
 You are in an empty basement, the only thing that you can see are emtpy barrels and old rolls of duct tape.
 ---
 2nd Floor
+Contents: gold
 Lit: true
 You see a broken down hallway that shows the damaged history of the building.
 ---
