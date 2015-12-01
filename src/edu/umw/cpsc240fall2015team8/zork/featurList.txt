@@ -1,0 +1,11 @@
+Light (+10XP) Some rooms are dark and the adventurer is unable to see what is in the room. There are light sources that the adventurer can find and use to light up the room. However, every light source has a limited number of uses before it is no longer functional. 
+
+NPC (+30XP) Throughout the dungeon there are non player characters that can be interacted with. Possible interactions include talking, trading, and even fighting with those characters.
+
+Combat(+25XP) Dungeons include a turn based, rock paper scissors combat system that allows the adventurer to encounter and defeat hostile creatures or characters. It checks the damage of the adventurers weapon and takes that into account.
+
+Locked Exits(+15XP) Some exits in the dungeon are closed off and require a key to access them. This key can be found elsewhere in the dungeon and can then unlock the door.
+
+Teleport Modification (+5XP) We modified the teleport event to allow for the teleportation to a specific room instead of a randomly selected room
+
+Item Durability(+25XP) Items have a limited number of uses, for example if a sword is used often it will eventually break. This feature also applies to light sources and the weapons in the game. 
