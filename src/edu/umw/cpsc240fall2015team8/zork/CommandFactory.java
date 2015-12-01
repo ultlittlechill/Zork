@@ -55,6 +55,12 @@ what action is being done. If the verb can not be parsed from the String or a ve
 	if (verb.equals("score")){
 	    return new ScoreCommand();
 	}
+	if (verb.equals("trade")){
+		if(parts.length >= 4){
+			return new TradeCommand(parts[1],parts[parts.length - 1]);
+		}
+		return new UnknownCommand(command);
+	}
 	if (verb.equals("attack")){
 	    return new AttackCommand(null,null);
 	}
