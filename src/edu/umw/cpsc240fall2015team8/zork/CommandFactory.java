@@ -36,6 +36,9 @@ what action is being done. If the verb can not be parsed from the String or a ve
         if (verb.equals("take")) {
             return new TakeCommand(pasteSecondAndBeyond(parts));
         }
+		if (verb.equals("talk")){
+			return new TalkCommand(parts[2]);
+		}
         if (verb.equals("drop")) {
             return new DropCommand(pasteSecondAndBeyond(parts));
         }
