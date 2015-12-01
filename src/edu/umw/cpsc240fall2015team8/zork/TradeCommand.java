@@ -10,12 +10,12 @@ moves the item that was in the Npc's hand to the Players inventory.
 class TradeCommand extends Command{
 
 	private String offer;
-	private String product;
+	private String merchant;
 
 	/**Creates a new TradeCommand that is specific to the two items passed in the argument.*/
-	TradeCommand(String o, String p){
+	TradeCommand(String o, String m){
 		this.offer = o;
-		this.product = p;
+		this.merchant = m;
 	}
 
 	/**Moves the offer item from the player's inventory to the Npc's, and moves the product
@@ -26,12 +26,20 @@ class TradeCommand extends Command{
 	If the player can not carry the item because of weight restrictions, returns a String informing
 	the player that the Item weighs too much. It cancels the trade and outputs a string asking them if they would like to drop an item.*/
 	public String execute(){
+		Npc Jorge = GameState.instance().getAdventurersCurrentRoom().getNpcNamed(merchant);
+		try{
+			DurableItem i = (DurableItem)GameState.instance().getItemInVicinityNamed(offer);
+			return Jorge.trade(i) + "\n";
+		}catch(Item.NoItemException e){return "You don't have a " + offer + ".\n";}
+		//Jorge.trade(
+
+
 	//	GameState state = GameState.instance();
 	//	try{/*something with offer*/}
 	//	catch(Item.NoItemException e){}
 	//	try{/*Scomething with product*/}
 	//	catch(Item.NoItemException e){}
 	//	//^^Checks to make sure Items are actually Items.
-		return "I don't know -Jeff";
+	//	return "I don't know -Jeff";
 	}
 }

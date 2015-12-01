@@ -289,7 +289,7 @@ System.out.println("got here 1");
 //    String darken(){return "hello";}
 
     /** Returns an ArrayList of Npcs that are in this room.*/
-    ArrayList<Npc> getCharacters(){return null;}
+    ArrayList<Npc> getCharacters(){return characters;}
     
     Npc getNpcNamed(String name){
 	for(int i = 0; i < characters.size(); i++){
