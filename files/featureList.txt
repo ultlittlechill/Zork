@@ -1,11 +1,11 @@
-Light (+10XP) Some rooms are dark and the adventurer is unable to see what is in the room. There are light sources that the adventurer can find and use to light up the room. However, every light source has a limited number of uses before it is no longer functional. 
+Light (+20XP) Some rooms are dark and the adventurer is unable to see what is in the room. There are light sources that the adventurer can find and use to light up the room. If the adventurers drops their light source in a room that room will stay lit. You can do this with the "blade" by saying "bless blade". 
 
-NPC (+30XP) Throughout the dungeon there are non player characters that can be interacted with. Possible interactions include talking, trading, and even fighting with those characters.
+NPC (+30XP) Throughout the dungeon there are non player characters that can be interacted with. Possible interactions include talking, trading, and even fighting with those characters. To talk to Npcs you can say "talk to hobo". If you want to trade with the hobo you can type "trade gold with hobo". To fight with an Npc you can choose a type of attack you would like to use (heavyAttack, lightAttack, or blockAttack). The combat system uses a rock paper, scissors system to decide who hurst who. You can do this by saying "lightAttack hobo with sword".
 
 Combat(+25XP) Dungeons include a turn based, rock paper scissors combat system that allows the adventurer to encounter and defeat hostile creatures or characters. It checks the damage of the adventurers weapon and takes that into account.
 
-Locked Exits(+15XP) Some exits in the dungeon are closed off and require a key to access them. This key can be found elsewhere in the dungeon and can then unlock the door.
+Locked Exits(+15XP) Some exits in the dungeon are closed off and require a key to access them. This key can be found elsewhere in the dungeon and can then unlock the door. A key is needed to go from the first floor to the seccond floor. You can find the key named "key" in the first room. You don't need to do anyting to unlock the door, simply having it will unlock the door for you. 
 
-Teleport Modification (+5XP) We modified the teleport event to allow for the teleportation to a specific room instead of a randomly selected room
+Teleport Modification (+5XP) We modified the teleport event to allow for the teleportation to a specific room instead of a randomly selected room. You can do this by cursing the knife of cthulu wich will always teleport you to the basement.
 
-Item Durability(+25XP) Items have a limited number of uses, for example if a sword is used often it will eventually break. This feature also applies to light sources and the weapons in the game. 
+Item Durability(+25XP) Items have a limited number of uses, for example if a sword is used often it will eventually break. This will happen when you use the blade atleast 20 times for example.
