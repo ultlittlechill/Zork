@@ -203,32 +203,32 @@ public class Room {
         String description;
         if (beenHere && !full) {
             description = title;
-        } else {
-			if(GameState.instance().getIsLit() || this.isLit || (this.litItems.size()>0)){
-        		description = title + "\n" + desc;
-//			else
-//				description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
-        
-				for (Npc npc : characters){
-					description += "\nThere is a " + npc.getName() + " here!";
-				}
-				if(characters.size() > 0) { description += "\n";}
-					for (Item item : contents) {
-						description += "\nThere is a " + item.getPrimaryName() + " here.";
-						}
-						if (contents.size() > 0) { description += "\n"; }
-						if (!beenHere || full) {
-							for (Exit exit : exits) {
-								description += "\n" + exit.describe();
-							}
-						}
-						beenHere = true;
-					}
-				else
-					description = title + "\nIt is pitch black. You are likely to be eaten by a grue.";
+        } 
+		
+		else{
+			description = title + "\n" + desc;
+		}
+		
+		if((!GameState.instance().getIsLit()) && (!this.isLit) && (this.litItems.size()<1)){
+				return title + "\nIt is pitch black. You are likely to be eaten by a grue.";
+		}
+System.out.println("got here 1");
+		for (Npc npc : characters){
+			description += "\nThere is a " + npc.getName() + " here!";
+		}
+		if(characters.size() > 0) { description += "\n";}
+		for (Item item : contents) {
+			description += "\nThere is a " + item.getPrimaryName() + " here.";
+		}
+		if (contents.size() > 0) { description += "\n"; }
+	//	if (!beenHere || full) {
+			for (Exit exit : exits) {
+				description += "\n" + exit.describe();
 			}
-        return description;
-    }
+	//	}
+		beenHere = true;
+		return description;
+	}
     
     /**
 	Returns the room object that a player would be in if they were to exit in the direction passed. If there is no room in the direction passed, returns null.
