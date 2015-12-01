@@ -3,6 +3,7 @@ Zork v2.0
 ===
 DurableItems:
 Blade
+5
 examine: Its a really long knife, what do you think?
 Seppuku[Wound(100)]: Not your best plan.
 bless with holy light[Light]: Your blade is now glowing with holy power, also glowing, the important part.
@@ -18,7 +19,7 @@ Knife of Cthulu
 ---
 gold
 1
-eat[Disappear,Teleport (Entrance), Wound(5))]:That was a weird choice, why would you eat a metal, bad for your teeth?!?
+eat[Disappear,Teleport(Entrance),Wound(5)]:That was a weird choice, why would you eat a metal, bad for your teeth?!?
 ---
 1
 1000
@@ -43,14 +44,16 @@ light
 inventory:
 gold
 ---
+===
+Rooms:
+1st Floor
+Contents:Blade,key
+You see an ornate lobby, directly contrasted against the horrible conditiond of the dungeon.
+---
 Basement
 People: Hobo
 Lit:false
 You are in an empty basement, the only thing that you can see are emtpy barrels and old rolls of duct tape.
----
-1st Floor
-Contents:Blade,key
-You see an ornate lobby, directly contrasted against the horrible conditions of the dungeon.
 ---
 2nd Floor
 Lit: true
@@ -67,5 +70,12 @@ n
 2nd Floor
 Keys: key
 ---
+1st Floor
+s
+Basement
+---
+2nd Floor
+s
+1st Floor
+---
 ===
-
