@@ -28,6 +28,12 @@ public class Interpreter {
                 state.initialize(new Dungeon(args[0]));
                 System.out.println("\nWelcome to " + 
                     state.getDungeon().getName() + "!");
+				if(GameState.instance().getDungeon.getVersion() == 2){
+					System.out.println("A few things about our game engine:\n When an item is used too much it will break\n
+							"this is represented with a 'x~' in front of that item. If you try to use a broken item it will do\n
+							" about a quarter of it's original damage. You can trade with some Npcs, an example of how to do this is\n '
+							"trade sword with merchant'. You can also choose to attack Npcs, an example of how to do that is \n
+							"'attack goblin with sword' Which will print further instructions.\n");
             } else if (args[0].endsWith(".sav")) {
                 state.restore(args[0]);
                 System.out.println("\nWelcome back to " + 

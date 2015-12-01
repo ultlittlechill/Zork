@@ -212,7 +212,6 @@ public class Room {
 		if((!GameState.instance().getIsLit()) && (!this.isLit) && (this.litItems.size()<1)){
 				return title + "\nIt is pitch black. You are likely to be eaten by a grue.";
 		}
-System.out.println("got here 1");
 		for (Npc npc : characters){
 			description += "\nThere is a " + npc.getName() + " here!";
 		}
