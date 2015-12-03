@@ -1,0 +1,123 @@
+University of Mary Washington
+Zork v2.0
+===
+DurableItems:
+acorn
+1
+examine: It looks like your average acorn.
+---
+1
+5
+---
+pizza
+1
+examine: A mouth watering, delicious, cheesey slice of pizza.
+smell: It smells like deliciousness and love.
+eat[Score(1),Wound(-20),Disappear]:That was the single greatest slice of pizza you have ever had.
+---
+1
+1
+---
+light saber
+5
+examine: A metal handle with an on switch.
+turn on[Light]: A laser blade extends from one and of the handle and it glows with the power of the Force.
+---
+50
+15
+---
+closet key
+1
+examine: A small metal key.
+---
+1
+100000
+---
+sword
+5
+examine: A sharp blade attached to a handle.
+fall on[Wound(1000)]: That was a bad idea.
+---
+15
+10
+---
+mop
+2
+examine: It's just a mop dude. 
+wield[Score(1)]:You realize that you DO have what it takes to be a janitor!
+clean bathroom with[Score(1)]:You're the bomb.com
+---
+100
+10
+---
+potion
+2
+examine: Some kind of funky smelling liquid in a glass bottle.
+shake: The liquid fizzes up to the brim of the bottle and settles back down.
+drink[Score(1),Teleport(Eagle Landing),Transform(glass bottle)]: That was gross. You blacked out. You don't remember how you got here.
+---
+1
+1
+---
+empty bottle
+1
+examine: Just an empty glass bottle.
+break[Transform(broken bottle)]: The glass shatters!
+---
+2
+1
+---
+broken bottle
+1
+examine: A broken glass bottle. It looks pretty sharp.
+---
+5
+3
+---
+note
+0
+examine: A piece of paper with some words scribbled on it.
+read: Squirrels LOVE pizza.
+---
+0
+1000
+---
+calculus book
+5
+examine: A book full of confusing graphs numbers and letters.
+burn[Light]: That looks better.
+---
+5
+15
+---
+nuts
+1
+examine: A handfull of nuts
+eat[Score(1)]: Raw nuts are kinda gross.
+---
+Jeff's project
+0
+examine: The coolest, most super awesome, gnarly, game you've ever played.
+---
+0
+10000
+---
+Stephen's light saber
+5
+examine: A metal handle with an on switch.
+turn on[Light]: A laser blade extends from one end of the handle and glows with the power of the Force.
+lick[Teleport(Seaco)]: The light saber glows brighter and brighter until you can't see anymore.
+---
+15
+10
+---
+Trinkle seal
+10000000
+examine: a very shiny plaque that shines with the power of knowledge!
+step on[Wound(1000)]: NEVER step on the seal.
+---
+1
+1
+---
+===
+
