@@ -18,7 +18,7 @@ eat[Score(1),Wound(-20),Disappear]:That was the single greatest slice of pizza y
 1
 1
 ---
-light saber
+lightSaber
 5
 examine: A metal handle with an on switch.
 turn on[Light]: A laser blade extends from one and of the handle and it glows with the power of the Force.
@@ -26,7 +26,7 @@ turn on[Light]: A laser blade extends from one and of the handle and it glows wi
 50
 15
 ---
-closet key
+closetKey
 1
 examine: A small metal key.
 ---
@@ -59,7 +59,7 @@ drink[Score(1),Teleport(Eagle Landing),Transform(glass bottle)]: That was gross.
 1
 1
 ---
-empty bottle
+emptyBottle
 1
 examine: Just an empty glass bottle.
 break[Transform(broken bottle)]: The glass shatters!
@@ -67,7 +67,7 @@ break[Transform(broken bottle)]: The glass shatters!
 2
 1
 ---
-broken bottle
+brokenBottle
 1
 examine: A broken glass bottle. It looks pretty sharp.
 ---
@@ -82,7 +82,7 @@ read: Squirrels LOVE pizza.
 0
 1000
 ---
-calculus book
+calculusBook
 5
 examine: A book full of confusing graphs numbers and letters.
 burn[Light]: That looks better.
@@ -95,14 +95,14 @@ nuts
 examine: A handfull of nuts
 eat[Score(1)]: Raw nuts are kinda gross.
 ---
-Jeff's project
+Jeff'sProject
 0
 examine: The coolest, most super awesome, gnarly, game you've ever played.
 ---
 0
 10000
 ---
-Stephen's light saber
+Stephen'sLightSaber
 5
 examine: A metal handle with an on switch.
 turn on[Light]: A laser blade extends from one end of the handle and glows with the power of the Force.
@@ -111,7 +111,7 @@ lick[Teleport(Seaco)]: The light saber glows brighter and brighter until you can
 15
 10
 ---
-Trinkle seal
+TrinkleSeal
 10000000
 examine: a very shiny plaque that shines with the power of knowledge!
 step on[Wound(1000)]: NEVER step on the seal.
@@ -120,4 +120,68 @@ step on[Wound(1000)]: NEVER step on the seal.
 1
 ---
 ===
+Rooms:
+Bell Tower
+A beautiful tall tower surrounded by trees. It rings every hour.
+---
+Russell Hall
+There is an unorganized assortment of tables and chairs here. There is a couch facing the TV, but none of the cushions match.
+There is a pool table here, but there are no balls and all the cues are broken.
+---
+Girl's Hall
+Contents:closetKey
+A long hallway of closed doors. It smells like flowers up here.
+---
+Boy's Hall
+A long hallway of closed doors. It smells like pizza.
+---
+Bathroom
+There are showers to your left and stalls to your right. The whole room smells like poop, and the floor is covered in pee.
+---
+Broom Closet
+Contentes:sword,mop
+A small dark closet used for storage. Ironically there are no brooms here.
+---
+Jeffy Square
+People:bigSquirrel,fatSquirrel,smallSquirrel
+A square patch of grass off in the corner of campus. Nobody really comes here other than the squirrls.
+---
+Campus Walk
+A long stretch of bricks in the center of campus. There are lots of students passing by.
+---
+Trinkle
+Contents:TrinkleSeal
+An old brick building where all the the best classes are taught. Be careful not to step on the seal or you won't graduate!
+---
+Basement
+Lit:false
+A dark area where students come to get their work done. They come here because they are scared of the light.
+---
+Stephen's Office
+People:Stephen
+Lit:false
+Some wouldn't even dare knock on this door, but you walked in anyways. It is suprisingly roomy in here
+---
+Ball Circle
+A large plot of grass that is roughly the shape of a circle. There are some holes and mud patches in the grass so watch your step!
+---
+Jeff's secret hideout
+Contents:lightSaber,Jeff'sProject
+A spacious bunker under Ball Circle that nobody knows about. It is completely decked out with a home theatre, recliners, and fridge. 
+---
+University Center
+You are greeted with a large staircase as a central focal point of the building. There are places to eat down the hall. This place is cluttered with students.
+---
+Payne Street
+There are houses on both sides of the street. The trees have overgrown the sidewalk and their branches hit you in the face as you walk.
+---
+Will's house
+People:Will
+All the walls are painted a funky orange color. There is a couch and recliners all facing the TV. The whole house has a funky smell to it, but it's not too funky. Just enough funk to know that theres funk here. 
+---
+Fountain
+There is a beautiful large fountain in the epicenter of three buildings. It's actually hard to hear over the fountain. 
+---
+Eagle's Nest
+
 
