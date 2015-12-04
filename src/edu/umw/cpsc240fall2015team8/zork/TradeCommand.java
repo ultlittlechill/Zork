@@ -29,7 +29,11 @@ class TradeCommand extends Command{
 		Npc Jorge = GameState.instance().getAdventurersCurrentRoom().getNpcNamed(merchant);
 		try{
 			DurableItem i = (DurableItem)GameState.instance().getItemInVicinityNamed(offer);
-			return Jorge.trade(i) + "\n";
+			if(Jorge != null){
+				return Jorge.trade(i) + "\n";
+			}else{
+				return merchant + " is not in this room.\n";
+			}
 		}catch(Item.NoItemException e){return "You don't have a " + offer + ".\n";}
 		//Jorge.trade(
 
