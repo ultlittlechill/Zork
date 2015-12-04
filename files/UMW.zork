@@ -119,6 +119,11 @@ step on[Wound(1000)]: NEVER step on the seal.
 1
 1
 ---
+PartyHat
+1
+examine:A red cone shaped hat with dots on it and a ball on top.
+wear[Score(1),Win]: "SURPRISE!" all your friends jump out from around the corner. Music begins to play as a mirror ball is lowered from the ceiling. Like magic the once empty tables are now full of chips and dip and cupcakes. 
+put on[Score(1),Win] "SURPRISE!" all your friends jump out from around the corner. Music begins to play as a mirror ball is lowered from the ceiling. Like magic the once empty tables are now full of chips and dip and cupcakes. 
 ===
 Rooms:
 Bell Tower
@@ -160,7 +165,7 @@ A dark area where students come to get their work done. They come here because t
 Stephen's Office
 People:Stephen
 Lit:false
-Some wouldn't even dare knock on this door, but you walked in anyways. It is suprisingly roomy in here
+Some wouldn't even dare knock on this door, but you walked in anyways. The ground is covered in a dense fog, and the sound of crying students echoes through your skull.
 ---
 Ball Circle
 A large plot of grass that is roughly the shape of a circle. There are some holes and mud patches in the grass so watch your step!
@@ -180,8 +185,30 @@ People:Will
 All the walls are painted a funky orange color. There is a couch and recliners all facing the TV. The whole house has a funky smell to it, but it's not too funky. Just enough funk to know that theres funk here. 
 ---
 Fountain
-There is a beautiful large fountain in the epicenter of three buildings. It's actually hard to hear over the fountain. 
+There is a beautiful large fountain in the epicenter of three buildings. The sound of pounding rain over powers your thoughts. 
 ---
 Eagle's Nest
-
-
+The home of vochelli's pizza. This building is a mere memory of what it once was. 
+---
+Simpson Library
+LOL nerd. Who goes to the library? Books are soo last century.
+---
+Hurley Convergence Center
+Contents:CalculusBook
+The place to be. Computers, Couches, and a comfortable study area. This is a beautiful modern building with giant glass windows.
+---
+UMW Bridge
+A long bridge over looking Route 1. Cars zoom by under your feet and sometimes rattle the ground.
+---
+Eagle Landing
+The best residence hall on campus. Every room is complete a kitchen and their own personal bathroom.
+---
+Jeff's Room
+Contents: note
+This place is a mess. There are cables strewn in every direction, and clothes all over the floor. Someone should clean in here.
+---
+Seaco
+Contents: PartyHat
+The historic dining hall. It's no longer in use, but it's still there. The whole place is empty. You've never been able to hear your own thoughts so clearly.
+---
+===
