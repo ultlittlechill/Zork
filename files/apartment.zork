@@ -223,7 +223,7 @@ eat[Win]:This one cake was worth it all!
 1
 1000
 ---
-SuperCake
+superCake
 0
 examine:Peach was hiding this from you! It looks really good!
 eat[Die]:This is what you get for killing peach!
@@ -398,7 +398,6 @@ superCake
 ===
 Rooms:
 Outside
-Contents: debugger
 You stand outside your perfectly normal apartment building, after a long day of work. You could really go for some cake right about now. Eat some to win!
 ---
 Living Room
@@ -576,7 +575,7 @@ Upper Hall
 Lower Hall
 w
 Cellar
-Keys: cellarKey
+Keys: cellarKey,overalls
 ---
 Cellar
 e
@@ -585,17 +584,17 @@ Lower Hall
 World 1
 n
 World 2
-Keys: chestnutKey
+Keys: chestnutKey,overalls
 ---
 World 2
 n
 World 3
-Keys: starman,starMan
+Keys: starman,starMan,overalls
 ---
 World 3
 n
 World 4
-Keys: tenticle
+Keys: tenticle,overalls
 ---
 World 4
 e
@@ -616,12 +615,12 @@ World 4
 World 5
 u
 World 7
-Keys: cloud
+Keys: cloud,overalls
 ---
 World 7
 d
 World 6
-Keys: cloud
+Keys: cloud,overalls
 ---
 World 7
 e
@@ -634,7 +633,7 @@ World 7
 World 8
 n
 Bowser's Throne
-Keys: shell
+Keys: shell,overalls
 ---
 Bowser's Throne
 s
@@ -643,16 +642,16 @@ World 8
 Bowser's Throne
 n
 Lava Bridge
-Keys: bridgeKey
+Keys: bridgeKey,overalls
 ---
 Lava Bridge
 n
 Dungeon
-Keys: cageKey
+Keys: cageKey,overalls
 ---
 Lava  Bridge
 n
 Dungeon
-Keys: cageKey
+Keys: cageKey,overalls
 ---
 ===

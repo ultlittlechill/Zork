@@ -1,0 +1,29 @@
+Normally, one would have to fight through numerous enemies, collecting many keys and weapons to advance. However, the overalls do it all for you. As long as you dont wear them, they act as a key which can open any door, and make a fairly powerful weapon.
+
+Do the following steps for an easy win.
+n
+e
+take overalls
+w
+n
+eat mushrooms
+n
+n
+w
+w
+enter pipe
+n
+n
+n
+w
+u
+e
+n
+n
+touch giantAxe
+take kingShell
+n
+trade kingShell with Peach
+eat cake
+
+Congrats! You have beat my dungeon!
