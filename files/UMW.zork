@@ -124,6 +124,88 @@ PartyHat
 examine:A red cone shaped hat with dots on it and a ball on top.
 wear[Score(1),Win]: "SURPRISE!" all your friends jump out from around the corner. Music begins to play as a mirror ball is lowered from the ceiling. Like magic the once empty tables are now full of chips and dip and cupcakes. 
 put on[Score(1),Win] "SURPRISE!" all your friends jump out from around the corner. Music begins to play as a mirror ball is lowered from the ceiling. Like magic the once empty tables are now full of chips and dip and cupcakes. 
+---
+1
+1
+---
+sudentTears
+1
+examine:If you listen close enough you can hear them cry.
+---
+1
+1
+---
+===
+NPCs:
+bigSquirrel
+35
+nuts
+nbnbnt
+ 
+ 
+The bigSquirrel is foaming at the mouth. It might have rabies.
+false
+heavy
+inventory:
+nuts
+---
+fatSquirrel
+30
+nuts
+nbnbnt
+ 
+ 
+The fatSquirrel is foaming at the mouth. It might have rabies.
+false
+block
+inventory:
+pizza
+---
+smallSquirrel
+25
+nuts
+nbnbnt
+
+ 
+The smallSquirrel is foaming at the mouth. It might have rabies.
+false
+light
+inventory:
+---
+squirrel
+100
+acorn
+The squirrel stares into your soul.
+The squirrel is devouring the pizza.
+The squirrel is foaming at the mouth. It might have rabies, or maybe it wants your pizza.
+pizza
+light
+inventory:
+nuts
+---
+Stephen
+120
+Stephen'sLightSaber
+Hey! Have you seen Jeff's project? It's due soon and he hasn't turned it in yet.
+Want to see something cool? Try licking that light saber.
+I AM YOUR FATHER!
+Jeff'sProject
+block
+inventory:
+studentTears
+---
+Will
+100
+potion
+Have you seen my calculs book? I don't know where I put it. I'll give you this potion if you find it for me.
+Thanks!
+Go away!
+heavy
+inventory:
+potion
+potion
+emptyBottle
+---
 ===
 Rooms:
 Bell Tower
@@ -180,7 +262,7 @@ You are greeted with a large staircase as a central focal point of the building.
 Payne Street
 There are houses on both sides of the street. The trees have overgrown the sidewalk and their branches hit you in the face as you walk.
 ---
-Will's house
+Will's House
 People:Will
 All the walls are painted a funky orange color. There is a couch and recliners all facing the TV. The whole house has a funky smell to it, but it's not too funky. Just enough funk to know that theres funk here. 
 ---
@@ -210,5 +292,177 @@ This place is a mess. There are cables strewn in every direction, and clothes al
 Seaco
 Contents: PartyHat
 The historic dining hall. It's no longer in use, but it's still there. The whole place is empty. You've never been able to hear your own thoughts so clearly.
+---
+===
+Exits:
+Bell Tower
+n
+Russell
+---
+Russell
+s
+BellTower
+---
+Bell Tower
+s
+Jeffy Square
+---
+Jeffy Square
+n
+Bell Tower
+---
+Russell
+w
+Boy's Hall
+---
+Russell
+e
+Boy'sHall
+---
+Boy's Hall
+s
+Bathroom
+---
+Bathroom
+n
+Boy's Hall
+---
+Boy's Hall
+n
+Broom Closet
+Keys: closetKey
+---
+Broom Closet
+s
+Boy's Hall
+---
+Bell Tower
+w
+Campus Walk
+---
+Campus Walk
+e
+Bell Tower
+---
+Campus Walk
+n
+Trinkle
+---
+Trinkle
+s
+Campus Walk
+---
+Trinkle
+d
+Basement
+---
+Basement
+u
+Trinkle
+---
+Basement
+w
+Stephen's Office
+---
+Stephen's Office
+e
+Basement
+---
+Campus Walk
+s
+Ball Circle
+---
+Ball Circle
+d
+Jeff's Secret Hideout
+Keys: acorn
+---
+Jeff's Secret Hideout
+u
+Ball Circle
+---
+Ball Circle
+s
+University Center
+---
+University Center
+n
+Ball Circle
+---
+University Center
+s
+Payne Street
+---
+Payne Street
+n
+University Center
+---
+Payne Street
+s
+Will's House
+---
+Will's House
+n
+Payne Street
+---
+Campus Walk
+w
+Fountain
+---
+Fountain
+e
+Campus Walk
+---
+Fountain
+n
+Eagle's Nest
+---
+Eagle's Nest
+s
+Fountain
+---
+Eagle's Nest
+w
+Simpson Library
+---
+Simpson Library
+e
+Eagle's Nest
+---
+Library
+n
+Hurley Convergence Center
+---
+Hurley Convergence Center
+s
+Library
+---
+Hurley Convergence Center
+w
+UMW Bridge
+---
+UMW Bridge
+e
+Hurley Convergence Center
+---
+Fountain
+d
+UMW Bridge
+---
+UMW Bridge
+s
+Fountain
+---
+Eagle Landing
+e
+UMW Bridge
+---
+Eagle Landing
+u
+Jeff's Room
+---
+Jeff's Room
+d
+Eagle Landing
 ---
 ===
