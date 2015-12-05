@@ -16,7 +16,7 @@ You will then want to go u,n,n,d, to get to the Basement.
 If you type "turn on lightSaber" you will be able to see. 
 From the Basement you will want to go w to Stephen's Office.
 Here you need to give Jeff'sProjcet to Stephen by typing "trade Jeff'sProject with Stephen"
-Stephen will have give you "Stephen'sLightSaber"
+Stephen will give you "Stephen'sLightSaber"
 If you "lick Stephen'sLightSaber" you will teleport to Seaco.
 There will be a partyHat here.
 If you type "wear partyHat" you will win!
