@@ -31,7 +31,7 @@ closetKey
 examine: A small metal key.
 ---
 1
-100000
+1000
 ---
 sword
 5
@@ -54,7 +54,7 @@ potion
 2
 examine: Some kind of funky smelling liquid in a glass bottle.
 shake: The liquid fizzes up to the brim of the bottle and settles back down.
-drink[Score(1),Teleport(Eagle Landing),Transform(glass bottle)]: That was gross. You blacked out. You don't remember how you got here.
+drink[Score(1),Teleport(Jeff's Room),Transform(emptyBottle)]: That was gross. You blacked out. You don't remember how you got here.
 ---
 1
 1
@@ -62,7 +62,7 @@ drink[Score(1),Teleport(Eagle Landing),Transform(glass bottle)]: That was gross.
 emptyBottle
 1
 examine: Just an empty glass bottle.
-break[Transform(broken bottle)]: The glass shatters!
+break[Transform(brokenBottle)]: The glass shatters!
 ---
 2
 1
@@ -77,7 +77,7 @@ examine: A broken glass bottle. It looks pretty sharp.
 note
 0
 examine: A piece of paper with some words scribbled on it.
-read: Squirrels LOVE pizza.
+read: Hopefully nobody bribes that squirrel by the fountain with pizza. It has the key to my hideout!
 ---
 0
 1000
@@ -93,7 +93,10 @@ burn[Light]: That looks better.
 nuts
 1
 examine: A handfull of nuts
-eat[Score(1)]: Raw nuts are kinda gross.
+eat[Score(1),Disappear]: Raw nuts are kinda gross.
+---
+1
+1
 ---
 Jeff'sProject
 0
@@ -119,11 +122,11 @@ step on[Wound(1000)]: NEVER step on the seal.
 1
 1
 ---
-PartyHat
+partyHat
 1
 examine:A red cone shaped hat with dots on it and a ball on top.
 wear[Score(1),Win]: "SURPRISE!" all your friends jump out from around the corner. Music begins to play as a mirror ball is lowered from the ceiling. Like magic the once empty tables are now full of chips and dip and cupcakes. 
-put on[Score(1),Win] "SURPRISE!" all your friends jump out from around the corner. Music begins to play as a mirror ball is lowered from the ceiling. Like magic the once empty tables are now full of chips and dip and cupcakes. 
+put on[Score(1),Win]: "SURPRISE!" all your friends jump out from around the corner. Music begins to play as a mirror ball is lowered from the ceiling. Like magic the once empty tables are now full of chips and dip and cupcakes. 
 ---
 1
 1
@@ -187,7 +190,7 @@ Stephen
 120
 Stephen'sLightSaber
 Hey! Have you seen Jeff's project? It's due soon and he hasn't turned it in yet.
-Want to see something cool? Try licking that light saber.
+Want to see something cool? Try licking that new light saber.
 I AM YOUR FATHER!
 Jeff'sProject
 block
@@ -200,6 +203,7 @@ potion
 Have you seen my calculs book? I don't know where I put it. I'll give you this potion if you find it for me.
 Thanks!
 Go away!
+calculusBook
 heavy
 inventory:
 potion
@@ -210,13 +214,14 @@ emptyBottle
 Rooms:
 Bell Tower
 A beautiful tall tower surrounded by trees. It rings every hour.
+Find and put on the Party Hat to win!
 ---
-Russell Hall
+Russell
 There is an unorganized assortment of tables and chairs here. There is a couch facing the TV, but none of the cushions match.
 There is a pool table here, but there are no balls and all the cues are broken.
 ---
 Girl's Hall
-Contents:closetKey
+Contents: closetKey
 A long hallway of closed doors. It smells like flowers up here.
 ---
 Boy's Hall
@@ -226,11 +231,11 @@ Bathroom
 There are showers to your left and stalls to your right. The whole room smells like poop, and the floor is covered in pee.
 ---
 Broom Closet
-Contentes:sword,mop
+Contents: sword,mop
 A small dark closet used for storage. Ironically there are no brooms here.
 ---
 Jeffy Square
-People:bigSquirrel,fatSquirrel,smallSquirrel
+People: bigSquirrel,fatSquirrel,smallSquirrel
 A square patch of grass off in the corner of campus. Nobody really comes here other than the squirrls.
 ---
 Campus Walk
@@ -245,15 +250,15 @@ Lit:false
 A dark area where students come to get their work done. They come here because they are scared of the light.
 ---
 Stephen's Office
-People:Stephen
-Lit:false
+People: Stephen
+Lit: false
 Some wouldn't even dare knock on this door, but you walked in anyways. The ground is covered in a dense fog, and the sound of crying students echoes through your skull.
 ---
 Ball Circle
 A large plot of grass that is roughly the shape of a circle. There are some holes and mud patches in the grass so watch your step!
 ---
-Jeff's secret hideout
-Contents:lightSaber,Jeff'sProject
+Jeff's Secret Hideout
+Contents: lightSaber,Jeff'sProject
 A spacious bunker under Ball Circle that nobody knows about. It is completely decked out with a home theatre, recliners, and fridge. 
 ---
 University Center
@@ -263,20 +268,22 @@ Payne Street
 There are houses on both sides of the street. The trees have overgrown the sidewalk and their branches hit you in the face as you walk.
 ---
 Will's House
-People:Will
+People: Will
 All the walls are painted a funky orange color. There is a couch and recliners all facing the TV. The whole house has a funky smell to it, but it's not too funky. Just enough funk to know that theres funk here. 
 ---
 Fountain
+People: squirrel
 There is a beautiful large fountain in the epicenter of three buildings. The sound of pounding rain over powers your thoughts. 
 ---
 Eagle's Nest
+Contents: pizza
 The home of vochelli's pizza. This building is a mere memory of what it once was. 
 ---
 Simpson Library
 LOL nerd. Who goes to the library? Books are soo last century.
 ---
 Hurley Convergence Center
-Contents:CalculusBook
+Contents: calculusBook
 The place to be. Computers, Couches, and a comfortable study area. This is a beautiful modern building with giant glass windows.
 ---
 UMW Bridge
@@ -290,7 +297,7 @@ Contents: note
 This place is a mess. There are cables strewn in every direction, and clothes all over the floor. Someone should clean in here.
 ---
 Seaco
-Contents: PartyHat
+Contents: partyHat
 The historic dining hall. It's no longer in use, but it's still there. The whole place is empty. You've never been able to hear your own thoughts so clearly.
 ---
 ===
@@ -301,7 +308,7 @@ Russell
 ---
 Russell
 s
-BellTower
+Bell Tower
 ---
 Bell Tower
 s
@@ -315,9 +322,9 @@ Russell
 w
 Boy's Hall
 ---
-Russell
+Boy's Hall
 e
-Boy'sHall
+Russell
 ---
 Boy's Hall
 s
@@ -334,6 +341,14 @@ Keys: closetKey
 ---
 Broom Closet
 s
+Boy's Hall
+---
+Boy's Hall
+u
+Girl's Hall
+---
+Girl's Hall
+d
 Boy's Hall
 ---
 Bell Tower
@@ -371,6 +386,10 @@ Basement
 Campus Walk
 s
 Ball Circle
+---
+Ball Circle
+n
+Campus Walk
 ---
 Ball Circle
 d
@@ -429,13 +448,13 @@ Simpson Library
 e
 Eagle's Nest
 ---
-Library
+Simpson Library
 n
 Hurley Convergence Center
 ---
 Hurley Convergence Center
 s
-Library
+Simpson Library
 ---
 Hurley Convergence Center
 w

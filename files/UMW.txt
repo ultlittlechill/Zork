@@ -1,0 +1,19 @@
+Welcome to UMW zork!
+
+To win this game you have to find the party hat and put it on to win!
+You will start at the Bell Tower and need to make your way to the Eagle's Nest.
+w,n, wil get you from the Bell Tower to the Eagle's Nest.
+From the Eagle's Nest you will want to take the pizza. 
+Then return (s) to the Fountain.
+Here you will trade you pizza with the squirrel by saying "trade pizza with squirrel".
+The Squirrel will give you an acorn in return. This is the key to be used to get into Jeff's Secret Hideout.
+From the Fountain e,s,d will get you to Jeff's Secret Hidout. 
+Here you will want to take both the lightSaber and the project. This can be done by typing "take all".
+You will then want to go u,n,n,d, to get to the Basement. 
+If you type "turn on lightSaber" you will be able to see. 
+From the Basement you will want to go w to Stephen's Office.
+Here you need to give Jeff'sProjcet to Stephen by typing "trade Jeff'sProject with Stephen"
+Stephen will have give you "Stephen'sLightSaber"
+If you "lick Stephen'sLightSaber" you will teleport to Seaco.
+There will be a partyHat here.
+If you type "wear partyHat" you will win!
