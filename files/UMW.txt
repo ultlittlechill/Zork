@@ -1,5 +1,8 @@
 Welcome to UMW zork!
 
+Keep in mind this is only about half the game. The other half of the game is running around collecting clues about what to do, 
+	 this is how to win in about the fewest moves possible.
+
 To win this game you have to find the party hat and put it on to win!
 You will start at the Bell Tower and need to make your way to the Eagle's Nest.
 w,n, wil get you from the Bell Tower to the Eagle's Nest.
@@ -17,3 +20,4 @@ Stephen will have give you "Stephen'sLightSaber"
 If you "lick Stephen'sLightSaber" you will teleport to Seaco.
 There will be a partyHat here.
 If you type "wear partyHat" you will win!
+Thanks for playing!
