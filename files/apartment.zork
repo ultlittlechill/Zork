@@ -1,0 +1,657 @@
+Simple Apartment
+Zork v2.0
+===
+DurableItems:
+debugger
+0
+tp[Teleport(World 4),Wound(-100)]:Whoosh here you are sir.
+---
+100
+1000
+---
+mushrooms
+2
+examine: Its some shiitake mushrooms! They look really good!
+eat[Teleport(Peach's Garden),Disappear]:You fall to the ground, feeling dizzy. When you open your eyes, things look a little different.
+---
+1
+1000
+---
+plunger
+2
+examine:It's a heavily used plunger. Gross.
+---
+5
+20
+---
+overalls
+2
+examine:Some red overalls. You could try wearing them.
+wear[Score(1)]:You are now wearing red overalls. How stylish!
+secret:These are actually quite strong when used as a weapon.
+---
+15
+50
+---
+fireflower
+2
+examine:A burning flower. I bet this does good damage!
+smell[Wound(2)]:The smell of brimstone makes you sick in the stomache.
+---
+8
+10
+---
+cellarKey
+0
+examine:The key to the cellar.
+---
+1
+1000
+---
+fish
+3
+examine:A freshly caught fish.
+---
+2
+15
+---
+hammer
+8
+examine:This hammer looks quite powerfull, but it's almost broken. Only use it in emergencies!
+sing:Stop! Hammer Time!
+---
+30
+3
+---
+block
+10
+examine:A holow question mark box. Maybe you can break it?
+break[Transform(hammer)]:A hammer fell out that looks really powerfull, but it appears to be almost broken. Only use it in emergencies!
+---
+1
+1000
+---
+greenMushroom
+0
+examine:This mushroom is incredibly powerfull! Eat it to get 100 hp!
+eat[Wound(-100),Disappear]:You feel super!
+---
+0
+1000
+---
+pipe
+1000
+examine:It looks big enough to Enter . . .
+enter[Teleport(World 1)]:You fall through the pipe, popping up in a large field!
+---
+0
+1000
+---
+chestnutKey
+0
+examine:This is used to open the chestnut door.
+---
+1
+1000
+---
+brownMushroom
+1
+examine:Eat this mushroom to gain 10 hp!
+eat[Wound(-10),Disappear]:You feel a little better.
+---
+0
+1000
+---
+warpPipe
+1000
+examine:It looks big enough to Enter . . .
+enter[Teleport(Cellar)]:You enter the pipe and begin to fall, popping up in a dank cellar.
+---
+0
+1000
+---
+starMan
+0
+examine[Light]:The starMan is glowing brightly!
+---
+2
+1000
+---
+starman
+2
+examine:It glows slightly, but is covered in dirt. If only you could Rub it off.
+rub[Transform(starMan)]:The starMan look different. Examine it again!
+---
+2
+1000
+---
+yellowMushroom
+0
+examine:Eat this to gain 20 hp!
+eat[Wound(-20),Disappear]:You feal really good.
+---
+0
+1000
+---
+tenticle
+5
+examine:This tenticle can open the next door!
+---
+4
+30
+---
+waterBottle
+0
+examine:Healthy water for you to drink.
+drink[Wound(-15),Disappear]:The water refreshes you.
+---
+1
+1000
+---
+chain
+5
+examine:This rusty chain doesn't look like much use to anyone.
+---
+5
+1000
+---
+cloud
+0
+examine:This cloud will let you reach high places.
+---
+0
+1000
+---
+tooth
+0
+examine:Just some nasty old tooth. Who would want this?
+brush:Now that's one clean tooth!
+---
+6
+15
+---
+shell
+8
+examine:This is a koopa's shell. It's heavy and packs quite the punch!
+throw:Good thing there are no carts around!
+---
+8
+10
+---
+redMushroom
+0
+examine:Eat this to heal 30 hp!
+eat[Wound(-30),Disappear]:You feel really good!
+---
+0
+1000
+---
+cakeFlavoredPotion
+0
+examine:Kamek said this would be good to drink . . .
+drink[Wound(50),Disappear]:You fall to your knees, horribly wounded. Kamek has betrayed you!
+---
+10
+10
+---
+bridgeKey
+0
+examine:This is the key to the bridge where Bowser is!
+---
+6
+1000
+---
+cageKey
+0
+examine:The key to Peach's cage!
+---
+100
+40
+---
+kingShell
+10
+examine:The shell of the koopa king, Bowser!
+---
+10
+10
+---
+cake
+0
+examine:Your cake reward!
+eat[Win]:This one cake was worth it all!
+---
+1
+1000
+---
+superCake
+0
+examine:Peach was hiding this from you! It looks really good!
+eat[Die]:This is what you get for killing peach!
+---
+1
+1000
+---
+giantAxe
+1000
+examine:This axe is quite large. If only I could pick it up!
+touch[Teleport(Lava  Bridge)]:As you touch the axe, the bridge breaks, killing the koopa king as falls into the lava below!
+---
+1000
+1000
+---
+ironBall
+1000
+examine:This is the head of a chain chomp. Much too massive to move.
+---
+100
+1000
+---
+petal
+1
+examine:This is a petal from a piranha plant. Not much use for it.
+smell[Wound(-1)]:This petal does smell good!
+---
+1
+5
+---
+toyCart
+2
+examine:Lakitu caried this as a reminder of his past job.
+---
+2
+10
+---
+===
+NPCs:
+Toad
+10
+cellarKey
+Man, I sure wish you had a fish to trade!
+Thanks for the fish! I hope this key helps.
+Whaaaaaaaaaa!
+fish
+false
+light
+inventory:
+greenMushroom
+---
+Goomba
+10
+chestnutKey
+ 
+ 
+Prepare to be whalloped!
+ 
+true
+block
+inventory:
+brownMushroom
+---
+AngrySun
+15
+starman
+ 
+ 
+I'll burn you!
+ 
+true
+heavy
+inventory:
+yellowMushroom
+---
+Blooper
+20
+tenticle
+ 
+ 
+Im a squid, I'm a kid, and I want to fight!
+ 
+true
+light
+inventory:
+waterBottle
+---
+ChainChomp
+25
+chain
+ 
+ 
+Bark Bark!
+ 
+true
+heavy
+inventory:
+ironBall
+---
+Lakitu
+30
+cloud
+This cloud is too light, I need something heavy!
+Thanks, be sure to use the cloud wherever you need to go up.
+How dare you?!? And after I fished you and your cart off the side of Rainbow Road!
+chain
+false
+light
+inventory:
+toyCart
+---
+PiranaPlant
+30
+tooth
+ 
+ 
+Feeeeed Meeeeee Seymore!
+ 
+true
+heavy
+inventory:
+petal
+---
+Koopa
+35
+shell
+ 
+ 
+Koopa Troopa, Marching On!
+ 
+true
+block
+inventory:
+redMushroom
+---
+Kamek
+40
+cakeFlavoredPotion
+Get me a tooth, and I'll give you a cake flavored potion.
+See, you don't need your princess's cake, just drink the potion.
+HAHAHA FOOL! I shall serve Bowser until the end!
+tooth
+false
+light
+inventory:
+bridgeKey
+---
+Bowser
+50
+kingShell
+ 
+ 
+Bwahahah! Just try to defeat me!
+ 
+true
+heavy
+inventory:
+cageKey
+---
+Peach
+20
+cake
+Bring me the kingShell, and you can have your cake!
+Enjoy your cake reward!
+Please, stop hurting me!
+kingShell
+false
+light
+inventory:
+superCake
+---
+===
+Rooms:
+Outside
+You stand outside your perfectly normal apartment building, after a long day of work. You could really go for some cake right about now. Eat some to win!
+---
+Living Room
+This is a perfectly normal living room. There is a couch against the wall facing a tv, with an old nintendo game paused.
+---
+Bathroom
+Contents: plunger
+This is your bathroom. The tiled floor are a little dirty, and the mirror is covered in grime.
+---
+Bedroom
+Contents: overalls
+This is your bedroom. It's a plain blue color, with a bed and a dresser.
+---
+Kitchen
+Contents: mushrooms
+This is a typical small apartment kitchen. You can't even open the dishwasher without hitting the fridge.
+---
+Peach's Garden
+Contents: fireflower
+Your standing in a beuatiful garden, the colors of which are gorgeous. The scent of flowers is overwhelming. To your north you see a magnificent tower, with a beautiful lady shown in a stained glass window.
+---
+Pond
+People: Toad
+Your standing at the edge of a large pond. This must be where people come to fish.
+---
+Throne Room
+The throne room is large and overwhelming. The throne sits empty, and you wonder where the princess might be.
+---
+Upper Hall
+This hallway leads to other places inthe castle. Its lined with many pictures. There are staircases at both the east and west ends.
+---
+Peach's Kitchen
+Contents: fish
+A kitchen fit for a king, which makes sense. The spices and food cooking has an overwhelming aroma.
+---
+Peach's Bedroom
+Contents: block
+This must be the princess's bedroom. Its very . . . pink. 
+---
+Lower Hall
+This hall, unlike the one above it, is very gloomy. no picture adorne theese walls. At the west end there appears to be a locked cellar door. 
+---
+Cellar
+Contents: pipe
+This cellar is very dimmly lit, and smells of must. You can barely make out the shape of a pipe in the corner. 
+---
+World 1
+Contents: warpPipe
+People: Goomba
+You see before you a grass land. The bushes are swaying, as if they were alive. In the middle of this are you see a a weird brown creature. Behind him is a chestnut shaped door.
+---
+World 2
+People: AngrySun
+As you passed through the chestnut door, sand rushed in behind you, sealing the exit. Around you now is a vast dessert. A ball of pure fire rests in the center with a star shaped door behind him, carved into a pyramid.
+---
+World 3
+People: Blooper
+After closing the star shaped door, the floor gave way and you fell into a pool of water. In the middle is a squid, with a door behind it. On the door is carved a strange tenticle shape.
+---
+World 4
+Lit:false
+This room is massive. The bricks used to construct it are easily ten times larger than normal. It gives you an unsettling feeling.
+---
+World 5
+People: Lakitu
+Here your path comes to end. In front of you is a sheer cliff, seemingly reaching the sky above. Too bad you can't fly.
+---
+World 6
+People: ChainChomp
+You enter an area covered in ice and snow. There is a blinding blizzard, making it difficult to see.
+---
+World 7
+People: PiranaPlant
+This area is covered in tiny nipper plants. It appears as though they are all gathered here to follow some larger being . . .
+---
+World 8
+People: Koopa
+This area is all fire and brimstone. Ahead of you stands a giant, menacing castle. On its gate is a picture of a shell.
+---
+Bowser's Throne
+People: Kamek
+The throne room itself is just as menacing as the outside of the castle. It appears as though the king is out, however.
+---
+Lava Bridge
+Contents: giantAxe
+People: Bowser
+You jump down to stand before a bridge hanging over a pit of lava. You can see a dungeon just up ahead, but first a certain someone needs his butt kicked.
+---
+Lava  Bridge
+Contents: kingShell,cageKey
+With the bridge now destroyed, you can see a small footpath leading around the lava pit, straight to the dungeon. The time is now!
+---
+Dungeon
+People: Peach
+You jump down into the dungeon and you finally see her: the beautiful princess Peach! Her radiant glow is truely amazing to behold. 
+---
+===
+Exits:
+Outside
+n
+Living Room
+---
+Living Room
+w
+Bathroom
+---
+Bathroom
+e
+Living Room
+---
+Living Room
+e
+Bedroom
+---
+Bedroom
+w
+Living Room
+---
+Living Room
+n
+Kitchen
+---
+Kitchen
+s
+Living Room
+---
+Peach's Garden
+e
+Pond
+---
+Pond
+w
+Peach's Garden
+---
+Peach's Garden
+n
+Throne Room
+---
+Throne Room
+s
+Peach's Garden
+---
+Throne Room
+n
+Upper Hall
+---
+Upper Hall
+s
+Throne Room
+---
+Upper Hall
+e
+Peach's Bedroom
+---
+Peach's Bedroom
+d
+Upper Hall
+---
+Upper Hall
+n
+Peach's Kitchen
+---
+Peach's Kitchen
+s
+Upper Hall
+---
+Upper Hall
+w
+Lower Hall
+---
+Lower Hall
+e
+Upper Hall
+---
+Lower Hall
+w
+Cellar
+Keys: cellarKey,overalls
+---
+Cellar
+e
+Lower Hall
+---
+World 1
+n
+World 2
+Keys: chestnutKey,overalls
+---
+World 2
+n
+World 3
+Keys: starman,starMan,overalls
+---
+World 3
+n
+World 4
+Keys: tenticle,overalls
+---
+World 4
+e
+World 6
+---
+World 6
+w
+World 4
+---
+World 4
+w
+World 5
+---
+World 5
+e
+World 4
+---
+World 5
+u
+World 7
+Keys: cloud,overalls
+---
+World 7
+d
+World 6
+Keys: cloud,overalls
+---
+World 7
+e
+World 8
+---
+World 8
+w
+World 7
+---
+World 8
+n
+Bowser's Throne
+Keys: shell,overalls
+---
+Bowser's Throne
+s
+World 8
+---
+Bowser's Throne
+n
+Lava Bridge
+Keys: bridgeKey,overalls
+---
+Lava Bridge
+n
+Dungeon
+Keys: cageKey,overalls
+---
+Lava  Bridge
+n
+Dungeon
+Keys: cageKey,overalls
+---
+===
